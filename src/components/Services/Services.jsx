@@ -5,6 +5,7 @@ import './Services.css';
 import icon1 from '../../assets/service-icon-it.png';
 import icon2 from '../../assets/service-icon-cyber.png';
 import icon3 from '../../assets/service-icon-backup.png';
+import iconAi from '../../assets/service-icon-ai.png';
 
 const Services = () => {
   const servicesList = [
@@ -19,9 +20,9 @@ const Services = () => {
       description: "Protecting your digital assets with advanced threat detection and mitigation strategies for enterprise safety."
     },
     {
-      icon: icon1,
-      title: "Backup & Recovery",
-      description: "Ensuring business continuity with robust data redundancy systems and rapid disaster recovery protocols."
+      icon: iconAi,
+      title: "AI Integration & Automation",
+      description: "Integrate AI to automate workflows and enhance decision-making."
     }
   ];
 

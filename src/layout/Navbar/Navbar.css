@@ -143,7 +143,7 @@
   transition: var(--transition-fast);
 }
 
-.nav-item.has-dropdown:hover .dropdown-caret {
+.nav-item.has-dropdown.show-dropdown .dropdown-caret {
   transform: rotate(180deg);
 }
 
@@ -178,7 +178,7 @@
 }
 
 /* Hover Triggers to open menu */
-.nav-item.has-dropdown:hover .navbar-mega-dropdown {
+.nav-item.has-dropdown.show-dropdown .navbar-mega-dropdown {
   opacity: 1;
   visibility: visible;
   transform: translateX(-50%) translateY(20px);

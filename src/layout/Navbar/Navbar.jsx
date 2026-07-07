@@ -17,6 +17,7 @@ const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const [activeItem, setActiveItem] = useState('home');
+  const [showDropdown, setShowDropdown] = useState(false);
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -198,9 +199,16 @@ const Navbar = () => {
             </li>
             
             {/* Services Mega Menu Trigger Link */}
-            <li className="nav-item has-dropdown">
+            <li 
+              className={`nav-item has-dropdown ${showDropdown ? 'show-dropdown' : ''}`}
+              onMouseEnter={() => setShowDropdown(true)}
+              onMouseLeave={() => setShowDropdown(false)}
+            >
               <button 
-                onClick={() => handleNavClick('services', 'services')} 
+                onClick={() => {
+                  setShowDropdown(false);
+                  handleNavClick('services2-section', 'services');
+                }} 
                 className={`nav-link ${activeItem === 'services' ? 'active' : ''}`}
               >
                 Services
@@ -219,11 +227,12 @@ const Navbar = () => {
                           onMouseEnter={() => setActiveTab(index)}
                           onClick={() => {
                             setIsMenuOpen(false);
+                            setShowDropdown(false);
                             if (service.title === "SAP BTP") {
                               navigate('/sap-service');
                               window.scrollTo({ top: 0, behavior: 'smooth' });
                             } else {
-                              handleNavClick('services', 'services');
+                              handleNavClick('services2-section', 'services');
                             }
                           }}
                         >
@@ -239,11 +248,12 @@ const Navbar = () => {
                       className="mega-right-header"
                       onClick={() => {
                         setIsMenuOpen(false);
+                        setShowDropdown(false);
                         if (dropdownServices[activeTab].title === "SAP BTP") {
                           navigate('/sap-service');
                           window.scrollTo({ top: 0, behavior: 'smooth' });
                         } else {
-                          handleNavClick('services', 'services');
+                          handleNavClick('services2-section', 'services');
                         }
                       }}
                     >
@@ -264,6 +274,7 @@ const Navbar = () => {
                             className="mega-right-item"
                             onClick={() => {
                               setIsMenuOpen(false);
+                              setShowDropdown(false);
                               if (subItem === "Code Assessment") {
                                 navigate('/solutions?type=code');
                               } else if (subItem === "DATA ASSESSMENT" || subItem === "Data Assessment") {
