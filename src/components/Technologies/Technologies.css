@@ -1,0 +1,95 @@
+.tech-section {
+  position: relative;
+  background-color: var(--bg-accent-light);
+  padding: 80px 0;
+  border-top: 1px solid var(--border-color);
+  border-bottom: 1px solid var(--border-color);
+}
+
+.tech-section-subtitle {
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+  letter-spacing: 3px;
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+/* Horizontal Centered Flex Row */
+.tech-grid-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 20px;
+  flex-wrap: wrap;
+  width: 100%;
+}
+
+.tech-logo-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 1;
+  min-width: 100px;
+  text-align: center;
+  transition: var(--transition-smooth);
+}
+
+.tech-logo-item:hover {
+  transform: translateY(-2px);
+}
+
+.tech-logo-wrapper {
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.tech-logo-img {
+  max-height: 38px;
+  max-width: 100%;
+  object-fit: contain;
+}
+
+/* Specific scaling for the robot svg icon so it matches others */
+.tech-logo-robot {
+  max-height: 34px;
+}
+
+.tech-logo-name {
+  font-size: 0.7rem;
+  font-weight: 800;
+  color: #1e293b;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-top: 16px;
+  display: block;
+}
+
+/* Responsive grid wrapping for smaller screens */
+@media (max-width: 991px) {
+  .tech-grid-row {
+    justify-content: center;
+    gap: 30px 20px;
+  }
+  .tech-logo-item {
+    flex: none;
+    width: 22%;
+  }
+}
+
+@media (max-width: 576px) {
+  .tech-logo-item {
+    width: 45%;
+  }
+  .tech-section {
+    padding: 60px 0;
+  }
+  .tech-section-subtitle {
+    margin-bottom: 30px;
+    letter-spacing: 2px;
+  }
+}

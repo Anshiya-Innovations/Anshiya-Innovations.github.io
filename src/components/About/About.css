@@ -1,0 +1,211 @@
+.about-section {
+  position: relative;
+  background-color: var(--bg-accent-light);
+  padding: 100px 0;
+}
+
+.about-container {
+  align-items: center;
+  gap: 60px;
+}
+
+/* Left Column: Overlapping Images Layout */
+.about-image-wrapper {
+  position: relative;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.about-overlapping-container {
+  position: relative;
+  width: 500px;
+  height: 310px;
+}
+
+.about-img-meeting {
+  position: absolute;
+  left: -50px;
+  top: 10px;
+  width: 276px;
+  height: 256px;
+  border-radius: 12px;
+  object-fit: cover;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.04);
+  z-index: 1;
+}
+
+.about-img-servers {
+  position: absolute;
+  left: 250px;
+  top: 40px;
+  width: 276px;
+  height: 256px;
+  border-radius: 12px;
+  object-fit: cover;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+  z-index: 2;
+}
+
+.about-img-play-card {
+  position: absolute;
+  left: 167px;
+  top: 90px;
+  width: 150px;
+  height: 150px;
+  object-fit: contain;
+  filter: drop-shadow(0 8px 20px rgba(0, 0, 0, 0.12));
+  z-index: 3;
+  cursor: pointer;
+  transition: var(--transition-smooth);
+}
+
+.about-img-play-card:hover {
+  transform: scale(1.06);
+  filter: drop-shadow(0 12px 25px rgba(0, 66, 200, 0.2));
+}
+
+/* Right Column: Content Column */
+.about-content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
+}
+
+.section-subtitle-left {
+  font-size: 0.95rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--primary-color);
+  letter-spacing: 1.5px;
+  display: inline-block;
+  margin-bottom: 12px;
+}
+
+.about-title {
+  font-size: var(--font-size-h2);
+  color: var(--text-primary);
+  margin-bottom: 20px;
+  line-height: 1.25;
+  font-weight: 800;
+  letter-spacing: -0.5px;
+}
+
+.about-description {
+  font-size: 1.05rem;
+  color: var(--text-secondary);
+  line-height: 1.65;
+  margin-bottom: 32px;
+}
+
+/* Statistics row style */
+.about-stats-row {
+  display: flex;
+  gap: 40px;
+  margin-bottom: 36px;
+  width: 100%;
+}
+
+.about-stat-card {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.about-stat-icon-box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.about-stat-icon-img {
+  width: 44px;
+  height: auto;
+  object-fit: contain;
+}
+
+.about-stat-info {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.about-stat-number {
+  font-size: 1.75rem;
+  font-weight: 800;
+  color: var(--text-primary);
+  line-height: 1.1;
+}
+
+.about-stat-label {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--text-secondary);
+  margin-top: 2px;
+  white-space: nowrap;
+}
+
+/* CTA button style */
+.about-cta-btn {
+  background-color: var(--primary-color);
+  color: var(--text-light);
+  border: none;
+  border-radius: 6px;
+  padding: 14px 32px;
+  font-size: 0.95rem;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: var(--shadow-sm);
+  transition: var(--transition-smooth);
+}
+
+.about-cta-btn:hover {
+  background-color: var(--primary-hover);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 15px rgba(0, 66, 200, 0.25);
+}
+
+/* Responsive adjust */
+@media (max-width: 991px) {
+  .about-container {
+    gap: 40px;
+  }
+}
+
+@media (max-width: 576px) {
+  .about-overlapping-container {
+    width: 100%;
+    max-width: 320px;
+    height: 220px;
+    margin: 0 auto;
+  }
+  .about-img-meeting {
+    width: 180px;
+    height: 167px;
+  }
+  .about-img-servers {
+    width: 180px;
+    height: 167px;
+    left: 140px;
+    top: 30px;
+  }
+  .about-img-play-card {
+    width: 60px;
+    height: 60px;
+    left: 110px;
+    top: 65px;
+  }
+  .about-stats-row {
+    flex-direction: column;
+    gap: 20px;
+  }
+  .about-cta-btn {
+    width: 100%;
+    text-align: center;
+  }
+}

@@ -1,0 +1,118 @@
+.cta-section {
+  position: relative;
+  background-color: var(--bg-primary);
+  padding: 80px 0;
+}
+
+/* Rounded Blue Consultation Banner */
+.cta-container {
+  height: 220px;
+  background-color: var(--primary-color);
+  border-radius: 24px;
+  padding: 60px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 40px;
+  box-shadow: 0 10px 30px rgba(0, 66, 200, 0.15);
+}
+
+.cta-content-left {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
+}
+
+.cta-title {
+  font-size: 2.25rem;
+  font-weight: 800;
+  color: var(--text-light);
+  margin-bottom: 12px;
+  letter-spacing: -0.5px;
+}
+
+.cta-description {
+  font-size: 1.05rem;
+  color: rgba(255, 255, 255, 0.9);
+  max-width: 580px;
+  line-height: 1.6;
+}
+
+/* Semi-transparent Email Card Link */
+.cta-contact-card {
+  background-color: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 12px;
+  padding: 20px 28px;
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  text-decoration: none;
+  transition: var(--transition-smooth);
+  flex-shrink: 0;
+  cursor: pointer;
+}
+
+.cta-contact-card:hover {
+  background-color: rgba(255, 255, 255, 0.15);
+  border-color: rgba(255, 255, 255, 0.3);
+  transform: translateY(-2px);
+}
+
+.cta-mail-icon-box {
+  color: var(--text-light);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cta-envelope-svg {
+  width: 26px;
+  height: 26px;
+}
+
+.cta-contact-text {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.cta-email-addr {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--text-light);
+  line-height: 1.2;
+}
+
+.cta-send-email-lbl {
+  font-size: 0.72rem;
+  font-weight: 800;
+  color: rgba(255, 255, 255, 0.7);
+  letter-spacing: 1px;
+  margin-top: 4px;
+}
+
+/* Responsive adjust */
+@media (max-width: 991px) {
+  .cta-container {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 40px;
+    gap: 30px;
+  }
+  .cta-contact-card {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 576px) {
+  .cta-title {
+    font-size: 1.75rem;
+  }
+  .cta-description {
+    font-size: 0.95rem;
+  }
+  
+}

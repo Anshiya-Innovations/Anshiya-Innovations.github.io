@@ -1,0 +1,153 @@
+.services2-section {
+  position: relative;
+  background-color: var(--bg-secondary);
+  padding: 100px 0;
+  border-top: 1px solid var(--border-color);
+  border-bottom: 1px solid var(--border-color);
+  overflow: hidden;
+}
+
+.services2-header {
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+.services2-subtitle {
+  font-size: 0.9rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--primary-color);
+  letter-spacing: 2px;
+}
+
+.services2-title {
+  font-size: var(--font-size-h2);
+  color: var(--text-primary);
+  font-weight: 800;
+  margin-top: 12px;
+  letter-spacing: -0.5px;
+}
+
+/* Infinite Marquee Slider Container */
+.services2-slider-container {
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  padding: 20px 0;
+  /* Adds premium fading gradients on left & right edges */
+  mask-image: linear-gradient(to right, transparent, #fff 15%, #fff 85%, transparent);
+  -webkit-mask-image: linear-gradient(to right, transparent, #fff 15%, #fff 85%, transparent);
+}
+
+.services2-slider-track {
+  display: flex;
+  gap: 24px;
+  width: max-content;
+  /* Seamless infinite loop translation keyframe */
+  animation: scrollServices 40s linear infinite;
+}
+
+/* Pause marquee scroll animation on hover */
+.services2-slider-container:hover .services2-slider-track {
+  animation-play-state: paused;
+}
+
+/* Card Styling (Preserving size and setting shrink to 0) */
+.service2-card {
+  flex-shrink: 0;
+  width: 250px;
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: 20px;
+  padding: 36px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  transition: var(--transition-smooth);
+  cursor: pointer;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.01);
+}
+
+.service2-icon-wrapper {
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 16px;
+}
+
+.service2-icon-img {
+  height: 40px;
+  width: auto;
+  object-fit: contain;
+}
+
+.service2-icon-text {
+  font-size: 2.25rem;
+  font-weight: 800;
+  color: var(--primary-color);
+  font-family: var(--font-primary);
+  line-height: 1;
+}
+
+.service2-card-title {
+  font-size: 1.05rem;
+  color: var(--text-primary);
+  font-weight: 700;
+  margin-bottom: 12px;
+  line-height: 1.4;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.service2-card-description {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  line-height: 1.5;
+  margin-bottom: 24px;
+  flex-grow: 1;
+}
+
+.service2-card-link {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--primary-color);
+  text-decoration: none;
+  transition: var(--transition-fast);
+}
+
+.service2-card-link:hover {
+  color: var(--primary-hover);
+}
+
+/* Hover Card Highlight Effect */
+.service2-card:hover {
+  border-color: rgba(0, 66, 200, 0.35);
+  box-shadow: 0 15px 35px rgba(0, 66, 200, 0.08);
+  transform: translateY(-5px) scale(1.02);
+}
+
+/* Loop Animation Translation */
+@keyframes scrollServices {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    /* Translates by exactly half the track width (compensating for half of the gap offset) */
+    transform: translateX(calc(-50% - 12px));
+  }
+}
+
+/* Responsive adjust padding */
+@media (max-width: 768px) {
+  .services2-section {
+    padding: 60px 0;
+  }
+  .services2-header {
+    margin-bottom: 30px;
+  }
+}
