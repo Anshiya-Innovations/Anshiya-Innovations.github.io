@@ -356,12 +356,16 @@ const Navbar = () => {
             </li>
 
             <li className="nav-item">
-              <button 
-                onClick={() => handleNavClick('technologies', 'technologies')} 
-                className={`nav-link ${activeItem === 'technologies' ? 'active' : ''}`}
+              <Link 
+                to="/industries" 
+                onClick={() => {
+                  setIsMenuOpen(false);
+                  setActiveItem('industries');
+                }}
+                className={`nav-link ${activeItem === 'industries' ? 'active' : ''}`}
               >
-                Technologies
-              </button>
+                Industries
+              </Link>
             </li>
             <li className="nav-item">
               <Link 
@@ -390,14 +394,14 @@ const Navbar = () => {
           </ul>
           
           <div className="navbar-cta-mobile">
-            <button onClick={() => handleNavClick('appointment', 'contact')} className="btn-primary">
+            <button onClick={() => window.open('https://calendly.com/anshiyainnovations/30min', '_blank', 'noopener,noreferrer')} className="btn-primary">
               Get Free Consultation
             </button>
           </div>
         </div>
 
         <div className="navbar-cta">
-          <button onClick={() => handleNavClick('appointment', 'contact')} className="btn-primary">
+          <button onClick={() => window.open('https://calendly.com/anshiyainnovations/30min', '_blank', 'noopener,noreferrer')} className="btn-primary">
             Get Free Consultation
           </button>
         </div>

@@ -207,6 +207,11 @@
   object-fit: contain;
 }
 
+.HQicon{
+  width: 50px;
+  height: 50px;
+}
+
 .contact-card-title {
   font-size: 1.3rem;
   font-weight: 700;
@@ -435,10 +440,12 @@
 }
 
 .contact-faq-arrow-icon {
-  font-size: 0.95rem;
+  font-size: 1.45rem;
+  font-weight: 500;
   color: #0c2340;
-  transition: transform 0.3s ease;
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), color 0.3s ease;
   display: inline-block;
+  line-height: 1;
 }
 
 /* Active State Styles */
@@ -449,7 +456,8 @@
 }
 
 .contact-faq-item.active .contact-faq-arrow-icon {
-  transform: rotate(180deg);
+  transform: rotate(45deg);
+  color: var(--primary-color);
 }
 
 .contact-faq-answer-wrapper {

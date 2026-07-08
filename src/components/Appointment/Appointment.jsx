@@ -14,12 +14,15 @@ const Appointment = () => {
   const [submitStatus, setSubmitStatus] = useState(null); // 'success' | 'error' | null
 
   const services = [
-    "Custom Software",
-    "IT Consultancy",
+    "AI Integration & Automation",
+    "SAP BTP",
     "Cyber Security",
-    "Backup & Recovery",
+    "Security Compliance & Audit",
     "Cloud Solutions",
-    "Business Automations"
+    "Business Automations",
+    "Employee Training Program",
+    "Internship for Students",
+    "Mobile App Development"
   ];
 
   const handleInputChange = (e) => {

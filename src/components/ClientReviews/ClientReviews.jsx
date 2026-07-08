@@ -8,23 +8,23 @@ const ClientReviews = () => {
   const reviews = [
     {
       stars: 5,
-      text: "Anshiya Innovations delivered our project with exceptional quality and professionalism. Their technical expertise and communication made our digital transformation seamless. Highly recommended for any complex enterprise project.",
-      name: "Emily Watson",
-      role: "Product Manager, TechFlow",
-      avatar: emilyWatsonAvatar
-    },
-    {
-      stars: 5,
-      text: "The automation systems built by Anshiya Innovations reduced our processing times by 40%. Their team was responsive, proactive, and completed the integration ahead of schedule. Truly a premium consulting partner!",
-      name: "Sarah Jenkins",
-      role: "Operations Director, InnovateTech",
+      text: "We came to Anshiya for a SAP integration and left with a partner. What used to take our old vendor months, their team delivered in weeks, without cutting corners on security. That's rare.",
+      name: "Co-Founder",
+      role: "Forte Innovations",
       avatar: null
     },
     {
       stars: 5,
-      text: "Anshiya Innovations team proved to be exceptional SAP BTP experts. They helped us migrate our legacy modules to the cloud flawlessly, ensuring zero downtime. Their attention to security compliance is top-tier.",
-      name: "Michael Chen",
-      role: "CTO, CloudScale Solutions",
+      text: "Anshiya didn't just build our systems, they trained our entire team on the AI tools behind them. Our employees went from watching automation happen to actually running it themselves. That knowledge transfer is worth more than the software itself.",
+      name: "CEO",
+      role: "Novus IT Solutions",
+      avatar: null
+    },
+    {
+      stars: 5,
+      text: "Cybersecurity was always the afterthought with our previous vendors. With Anshiya, it was built in from day one. Their team doesn't just build technology, they build it responsibly.",
+      name: "Founder",
+      role: "RVIT Solution",
       avatar: null
     }
   ];

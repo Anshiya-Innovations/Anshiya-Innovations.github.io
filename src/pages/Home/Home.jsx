@@ -43,9 +43,9 @@ const Home = () => {
     <div className="homepage">
       <Hero onCtaClick={handleScrollToSection} />
       <Clients />
-      <Services />
-      <About />
+      {/* <Services /> */}
       <Services2 />
+      <About />
       <Appointment />
       <Projects />
       <ClientReviews />

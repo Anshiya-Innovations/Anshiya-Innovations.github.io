@@ -37,7 +37,7 @@ const Services2 = () => {
     {
       type: "image",
       icon: iconShieldDoc,
-      title: <>Security<br />Complaints & Audit</>,
+      title: <>Security<br />Compliance & Audit</>,
       description: "Ensure compliance and mitigate risk with our audit services."
     },
     {

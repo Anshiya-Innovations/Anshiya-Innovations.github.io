@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import contactBuilding from '../../assets/contact-building.png';
+import contactBuilding from '../../assets/uploaded-contact-building-hero.png';
 import badgeCheck from '../../assets/contact-badge-check.png';
-import contactMockup from '../../assets/contact-mockup.png';
+import contactMockup from '../../assets/uploaded-contact-building.png';
 
 // Import Info icons
 import iconMail from '../../assets/contact-icon-mail.png';
@@ -132,16 +132,16 @@ const Contact = () => {
             </div>
             <h3 className="contact-card-title">Call Us</h3>
             <p className="contact-card-desc">Monday - Friday, 9am to 6pm IST.</p>
-            <a href="tel:+911234567890" className="contact-card-link">+91 12345 67890</a>
+            <a href="tel:+919003186479" className="contact-card-link">+91-9003186479</a>
           </div>
 
           {/* Card 3: Location */}
           <div className="contact-info-card">
             <div className="contact-card-icon-box">
-              <img src={iconLoc} alt="Location Pin Icon" className="contact-card-icon" />
+              <img src={iconLoc} alt="Location Pin Icon" className="contact-card-icon HQicon" />
             </div>
             <h3 className="contact-card-title">Headquarters</h3>
-            <p className="contact-card-desc">Coimbatore, Tamil Nadu, India</p>
+            <p className="contact-card-desc">Building No. D-52A, Anna Salai, Pammal, Chennai, Chengalpattu, Tamil Nadu 600075, India</p>
             <a 
               href="https://maps.google.com" 
               target="_blank" 
@@ -248,7 +248,7 @@ const Contact = () => {
                 >
                   <div className="contact-faq-question-row">
                     <h4 className="contact-faq-question">{faq.question}</h4>
-                    <span className="contact-faq-arrow-icon">&#9662;</span>
+                    <span className="contact-faq-arrow-icon">+</span>
                   </div>
                   <div className="contact-faq-answer-wrapper">
                     <p className="contact-faq-answer">{faq.answer}</p>

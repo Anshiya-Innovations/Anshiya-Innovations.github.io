@@ -158,7 +158,7 @@
   gap: 14px;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
   z-index: 20;
-  transition: var(--transition-smooth);
+  transition: opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1), transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1), visibility 0.6s, box-shadow 0.3s ease;
 }
 
 .badge-top-left {
@@ -166,9 +166,37 @@
   left: -4%;
 }
 
+/* Slide left for top-left badges */
+.badge-top-left.inactive {
+  opacity: 0;
+  visibility: hidden;
+  transform: translateX(-30px);
+  pointer-events: none;
+}
+
+.badge-top-left.active {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(0);
+}
+
 .badge-bottom-right {
   bottom: 12%;
   right: -4%;
+}
+
+/* Slide right for bottom-right badges */
+.badge-bottom-right.inactive {
+  opacity: 0;
+  visibility: hidden;
+  transform: translateX(30px);
+  pointer-events: none;
+}
+
+.badge-bottom-right.active {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(0);
 }
 
 .floating-icon-box {
@@ -181,17 +209,17 @@
   flex-shrink: 0;
 }
 
-.cloud-box {
+.cloud-box, .lock-box, .it-box, .ai-box {
   background: rgba(88, 101, 242, 0.1);
-  color: #5865f2;
+  color: #0042C8;
   border-radius: 8px;
 }
 
-.lock-box {
-  background: rgba(16, 185, 129, 0.1);
-  color: #00586D;
-;
-  border-radius: 8px;
+.floating-card-icon-img {
+  width: 22px;
+  height: 22px;
+  object-fit: contain;
+  filter: invert(40%) sepia(91%) saturate(2979%) hue-rotate(219deg) brightness(98%) contrast(92%);
 }
 
 .floating-info {
@@ -210,18 +238,18 @@
 .floating-subtitle {
   font-size: 0.85rem;
   font-weight: 700;
-  color: var(--primary-color);
+  color: #0042C8;
   line-height: 1.2;
   margin-top: 2px;
 }
 
-.green-text {
-  color:  #00586D !important;
+.green-text, .orange-text, .purple-text {
+  color: #0042C8 !important;
 }
 
-.hero-image-wrapper:hover .hero-floating-card {
-  transform: translateY(-2px);
-  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+.hero-image-wrapper:hover .hero-floating-card.active {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 35px rgba(0, 85, 255, 0.12);
 }
 
 /* Responsive Styles */

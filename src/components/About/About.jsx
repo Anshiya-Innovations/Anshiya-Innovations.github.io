@@ -36,7 +36,7 @@ const About = () => {
           <span className="section-subtitle-left">About Us</span>
           <h2 className="about-title">Building Innovative Digital Solutions for Modern Businesses</h2>
           <p className="about-description">
-            At Anshiya Innovations, we deliver secure, scalable, and future-ready IT solutions that drive growth and efficiency. Our expertise spans custom software development, SAP BTP, cloud services, and UI/UX design.
+            At Anshiya Innovations, we deliver secure, scalable, and future-ready IT solutions that drive growth and efficiency. Our expertise spans custom Software Development, SAP BTP, Application Security, Audit and Compliance, Cyber Security, Cloud Services, and Agentic AI Solutions.
           </p>
 
           <div className="about-stats-row">

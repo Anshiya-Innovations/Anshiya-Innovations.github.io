@@ -25,8 +25,7 @@ const SapService = () => {
   const navigate = useNavigate();
 
   const handleGetConsultation = () => {
-    navigate('/contact');
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    window.open('https://calendly.com/anshiyainnovations/30min', '_blank', 'noopener,noreferrer');
   };
 
   const handleContactSupport = () => {

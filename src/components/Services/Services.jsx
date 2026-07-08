@@ -2,15 +2,16 @@ import React from 'react';
 import './Services.css';
 
 // Import local cropped service icons
-import icon1 from '../../assets/service-icon-it.png';
+import icon1 from '../../assets/uploaded-it-consultancy-gear.png';
 import icon2 from '../../assets/service-icon-cyber.png';
 import icon3 from '../../assets/service-icon-backup.png';
 import iconAi from '../../assets/service-icon-ai.png';
+import iconSap from '../../assets/uploaded-sap-icon.png';
 
 const Services = () => {
   const servicesList = [
     {
-      icon: icon3,
+      icon: icon1,
       title: "IT Consultancy",
       description: "Professionally visualize resources via a visual team driven informatics platforms rather than professionals."
     },
@@ -23,17 +24,28 @@ const Services = () => {
       icon: iconAi,
       title: "AI Integration & Automation",
       description: "Integrate AI to automate workflows and enhance decision-making."
+    },
+    {
+      icon: iconSap,
+      title: "SAP BTP",
+      description: "Accelerate business transformation by building, integrating, and extending critical processes on the SAP Business Technology Platform."
     }
   ];
 
   return (
     <section id="services" className="services-section">
       <div className="container">
-        <div className="grid-3 services-grid">
+        <div className="grid-4 services-grid">
           {servicesList.map((service, index) => (
             <div key={index} className="service-card">
               <div className="service-icon-wrapper">
-                <img src={service.icon} alt={service.title} className="service-icon-img" />
+                <img
+  src={service.icon}
+  alt={service.title}
+  className={`service-icon-img ${
+    service.title === "SAP BTP" ? "sap-service-icon" : ""
+  }`}
+/>
               </div>
               <h3 className="service-card-title">{service.title}</h3>
               <p className="service-card-text">{service.description}</p>
