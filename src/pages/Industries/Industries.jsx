@@ -15,6 +15,17 @@ import iconEnergy from '../../assets/industry/icon-energy.png';
 import iconRealestate from '../../assets/industry/icon-realestate.png';
 import iconGovernment from '../../assets/industry/icon-government.png';
 
+// Import industry background images
+import bgHealthcare from '../../assets/industry/bg/image 3.png';
+import bgBanking from '../../assets/industry/bg/image 4.png';
+import bgManufacturing from '../../assets/industry/bg/image 5.png';
+import bgRetail from '../../assets/industry/bg/image 6.png';
+import bgEducation from '../../assets/industry/bg/image 7.png';
+import bgLogistics from '../../assets/industry/bg/image 8.png';
+import bgEnergy from '../../assets/industry/bg/image 10.png';
+import bgRealestate2 from '../../assets/industry/bg/image 11.png';
+import bgGovernment from '../../assets/industry/bg/image 12.png';
+
 import './Industries.css';
 
 const Industries = () => {
@@ -44,46 +55,55 @@ const Industries = () => {
   const industriesList = [
     {
       icon: iconHealthcare,
+      bgImage: bgHealthcare,
       title: "Healthcare",
       description: "Telemedicine and HIPAA-compliant data systems for modern medical providers."
     },
     {
       icon: iconBanking,
+      bgImage: bgBanking,
       title: "Banking & Finance",
       description: "Secure fintech, fraud detection, and robust digital banking infrastructures."
     },
     {
       icon: iconManufacturing,
+      bgImage: bgManufacturing,
       title: "Manufacturing",
       description: "Smart factory automation and predictive maintenance powered by IoT."
     },
     {
       icon: iconRetail,
+      bgImage: bgRetail,
       title: "Retail & E-Commerce",
       description: "Scalable marketplaces and AI-driven shopping experiences for global brands."
     },
     {
       icon: iconEducation,
+      bgImage: bgEducation,
       title: "Education",
       description: "Custom LMS platforms and digital tools for effective remote learning."
     },
     {
       icon: iconLogistics,
+      bgImage: bgLogistics,
       title: "Logistics",
       description: "End-to-end tracking and fleet management for seamless global distribution."
     },
     {
       icon: iconEnergy,
+      bgImage: bgGovernment,
       title: "Energy & Utilities",
       description: "Smart grid monitoring and renewable energy management for a sustainable future."
     },
     {
       icon: iconRealestate,
+      bgImage: bgRealestate2,
       title: "Real Estate",
       description: "PropTech solutions featuring virtual tours and automated property management."
     },
     {
       icon: iconGovernment,
+      bgImage: bgEnergy,
       title: "Government",
       description: "Digital governance, secure public records, and citizen-centric service portals."
     }
@@ -157,12 +177,19 @@ const Industries = () => {
 
           <div className="grid-3 industries-cards-container">
             {industriesList.map((ind, index) => (
-              <div key={index} className="industry-card">
-                <div className="industry-card-icon-box">
-                  <img src={ind.icon} alt={ind.title} className="industry-card-icon-img" />
+              <div 
+                key={index} 
+                className="industry-card"
+              >
+                <div 
+                  className="industry-card-bg" 
+                  style={{ backgroundImage: `url("${ind.bgImage}")` }}
+                ></div>
+                <div className="industry-card-overlay"></div>
+                <div className="industry-card-content">
+                  <h3 className="industry-card-title">{ind.title}</h3>
+                  <p className="industry-card-desc">{ind.description}</p>
                 </div>
-                <h3 className="industry-card-title">{ind.title}</h3>
-                <p className="industry-card-desc">{ind.description}</p>
               </div>
             ))}
           </div>
@@ -227,7 +254,7 @@ const Industries = () => {
       {/* 4. Ready to Transform Your Industry Bottom CTA */}
       <section className="industry-bottom-cta-section">
         <div className="container industry-bottom-cta-container">
-          <h2 className="industry-bottom-cta-title">Ready to Transform Your Industry?</h2>
+          <h2 className="industry-bottom-cta-title">Ready to Transform Your Business?</h2>
           <p className="industry-bottom-cta-subtitle">
             Join hundreds of successful companies that have partnered with us to accelerate their digital journey. Let's build the future together.
           </p>
@@ -239,7 +266,10 @@ const Industries = () => {
               Get Free Consultation
             </button>
             <button 
-              onClick={() => navigate('/contact')} 
+              onClick={() => {
+                navigate('/contact');
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+              }} 
               className="industry-bottom-cta-btn cta-btn-secondary"
             >
               Contact Support

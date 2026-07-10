@@ -1,4 +1,5 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import aboutMeeting from '../../assets/about-meeting.png';
 import aboutServers from '../../assets/about-servers.png';
 import aboutPlayCard from '../../assets/about-play-card.png';
@@ -7,6 +8,8 @@ import iconHappy from '../../assets/about-icon-happy.png';
 import './About.css';
 
 const About = () => {
+  const navigate = useNavigate();
+
   return (
     <section id="about" className="about-section">
       <div className="container grid-2 about-container">
@@ -64,7 +67,7 @@ const About = () => {
           </div>
 
           <div className="about-action">
-            <button className="about-cta-btn">More About Us</button>
+            <button onClick={() => { navigate('/about-us'); window.scrollTo({ top: 0, behavior: 'smooth' }); }} className="about-cta-btn">More About Us</button>
           </div>
         </div>
       </div>

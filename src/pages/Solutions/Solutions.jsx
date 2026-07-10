@@ -1,5 +1,5 @@
 import React from 'react';
-import { useNavigate, useLocation } from 'react-router-dom';
+import { useNavigate, useLocation, useParams } from 'react-router-dom';
 import solutionsDashboard from '../../assets/solutions-dashboard.png';
 import badgeChart from '../../assets/solutions-badge-chart.png';
 
@@ -48,9 +48,13 @@ const Solutions = () => {
     }
   };
 
-  const handleAskOurExperts = () => {
-    navigate('/contact');
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+  const handleCtaClick = (buttonText) => {
+    if (buttonText === "Get Free Consultation") {
+      window.open("https://calendly.com/anshiyainnovations/30min", "_blank");
+    } else {
+      navigate('/contact');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
   };
 
   return (
@@ -72,7 +76,7 @@ const Solutions = () => {
               {activeContent.hero.desc}
             </p>
             <div className="solutions-hero-actions">
-              <button onClick={handleAskOurExperts} className="solutions-hero-btn solutions-hero-btn-primary">
+              <button onClick={() => handleCtaClick(activeContent.hero.ctaPrimary)} className="solutions-hero-btn solutions-hero-btn-primary">
                 {activeContent.hero.ctaPrimary} <span className="solutions-arrow">&rarr;</span>
               </button>
               <button onClick={() => handleScrollToSection('insights')} className="solutions-hero-btn solutions-hero-btn-secondary">
@@ -255,7 +259,13 @@ const Solutions = () => {
                 <div className="solutions-showcase-media">
                   <div className="showcase-image-wrapper">
                     <img 
-                      src={row.img} 
+                      src={
+                        row.img === 'showcasePie' ? showcasePie :
+                        row.img === 'showcaseBars' ? showcaseBars :
+                        row.img === 'solutionsDashboard' ? solutionsDashboard :
+                        row.img === 'showcaseTable' ? showcaseTable :
+                        row.img
+                      } 
                       alt={row.title} 
                       className="showcase-img"
                     />
@@ -286,10 +296,10 @@ const Solutions = () => {
             {activeContent.cta.subtitle}
           </p>
           <div className="solutions-cta-banner-actions">
-            <button onClick={handleAskOurExperts} className="solutions-cta-btn solutions-cta-btn-primary">
+            <button onClick={() => handleCtaClick(activeContent.cta.primary)} className="solutions-cta-btn solutions-cta-btn-primary">
               {activeContent.cta.primary}
             </button>
-            <button onClick={handleAskOurExperts} className="solutions-cta-btn solutions-cta-btn-secondary">
+            <button onClick={() => handleCtaClick(activeContent.cta.secondary)} className="solutions-cta-btn solutions-cta-btn-secondary">
               {activeContent.cta.secondary}
             </button>
           </div>

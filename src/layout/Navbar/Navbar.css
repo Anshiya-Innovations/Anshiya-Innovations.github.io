@@ -38,6 +38,9 @@
   transition: var(--transition-smooth);
 }
 
+.navlogo{
+  margin-bottom: 7px;
+}
 .navbar.scrolled .navbar-logo img {
   height: 65px;
 }

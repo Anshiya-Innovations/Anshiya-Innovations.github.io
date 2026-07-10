@@ -1,0 +1,667 @@
+.about-us-page {
+  padding-top: 0;
+  overflow-x: hidden;
+  background-color: var(--bg-primary);
+}
+
+/* 1. About Us Hero Section */
+.about-page-hero {
+  position: relative;
+  min-height: calc(100vh - 80px);
+  display: flex;
+  align-items: center;
+  padding: 120px 0 100px;
+  background-color: var(--primary-color); /* Brand Solid Blue Background */
+}
+
+.about-page-container {
+  align-items: center;
+  gap: 60px;
+}
+
+.about-page-left {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  z-index: 10;
+}
+
+.about-badge {
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.8);
+  letter-spacing: 1.5px;
+  margin-bottom: 20px;
+  display: inline-block;
+}
+
+.about-page-title {
+  font-size: 2.8rem;
+  font-weight: 800;
+  line-height: 1.15;
+  color: #ffffff;
+  margin-bottom: 24px;
+  letter-spacing: -1.2px;
+  text-align: left;
+}
+
+.about-page-description {
+  font-size: 1.05rem;
+  line-height: 1.65;
+  color: rgba(255, 255, 255, 0.88);
+  margin-bottom: 36px;
+  max-width: 540px;
+  font-weight: 500;
+  text-align: left;
+}
+
+.about-quote-box {
+  background-color: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 12px;
+  padding: 24px 28px;
+  max-width: 540px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.05);
+}
+
+.about-quote-text {
+  font-size: 0.95rem;
+  font-style: italic;
+  color: rgba(255, 255, 255, 0.95);
+  line-height: 1.6;
+  margin: 0;
+  text-align: left;
+}
+
+/* Right Column Styling */
+.about-page-right {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.about-image-card-wrapper {
+  position: relative;
+  width: 100%;
+  max-width: 580px;
+}
+
+.about-page-img {
+  width: 100%;
+  height: auto;
+  border-radius: 16px;
+  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.12);
+}
+
+/* 1.5. Mission & Vision Section */
+.about-mission-vision-section {
+  padding: 80px 0 60px;
+  background-color: #ffffff;
+}
+
+.about-mv-container {
+  gap: 32px;
+}
+
+.about-mv-card {
+  background-color: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 40px 32px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.01);
+}
+
+.about-mv-card:hover {
+  transform: translateY(-5px);
+  border-color: #074EA6;
+  box-shadow: 0 12px 30px rgba(7, 78, 166, 0.06);
+}
+
+.about-mv-icon-box {
+  margin-bottom: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.about-mv-icon {
+  width: 44px;
+  height: auto;
+  object-fit: contain;
+}
+
+.about-mv-title {
+  font-size: 1.8rem;
+  font-weight: 800;
+  color: #074EA6;
+  margin-bottom: 16px;
+  letter-spacing: -0.5px;
+}
+
+.about-mv-text {
+  font-size: 0.98rem;
+  color: #475569;
+  line-height: 1.65;
+  margin: 0;
+  text-align: left;
+}
+
+/* 2. Core Services Section */
+.about-core-services-section {
+  padding: 100px 0;
+  background-color: #f8fafc;
+}
+
+.about-core-header {
+  text-align: center;
+  max-width: 700px;
+  margin: 0 auto 56px;
+}
+
+.about-core-title {
+  font-size: 2.2rem;
+  font-weight: 800;
+  color: #0f172a;
+  margin-bottom: 16px;
+  letter-spacing: -0.8px;
+}
+
+.about-core-subtitle {
+  font-size: 1rem;
+  color: #64748b;
+  line-height: 1.6;
+  font-weight: 500;
+}
+
+.about-core-cards-container {
+  gap: 24px;
+}
+
+.about-core-card {
+  background-color: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 40px 28px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.01);
+}
+
+.about-core-card:hover {
+  transform: translateY(-5px);
+  border-color: rgba(0, 66, 200, 0.15);
+  box-shadow: 0 12px 30px rgba(0, 66, 200, 0.05);
+}
+
+.about-core-icon-box {
+  width: 60px;
+  height: 60px;
+  background-color: rgba(0, 66, 200, 0.05);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 24px;
+  transition: all 0.3s ease;
+}
+
+.about-core-icon-img {
+  width: 32px;
+  height: 32px;
+  object-fit: contain;
+  transition: all 0.3s ease;
+}
+
+.about-core-card-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #0f172a;
+  margin-bottom: 12px;
+  letter-spacing: -0.3px;
+}
+
+.about-core-card-desc {
+  font-size: 0.92rem;
+  color: #64748b;
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* 3. Empowering Every Organization Section */
+.about-empower-section {
+  padding: 100px 0;
+  background-color: #ffffff;
+  border-top: 1px solid #f1f5f9;
+}
+
+.about-empower-header {
+  text-align: center;
+  max-width: 700px;
+  margin: 0 auto 56px;
+}
+
+.about-empower-title {
+  font-size: 2.25rem;
+  font-weight: 800;
+  color: #0f172a;
+  margin-bottom: 16px;
+  letter-spacing: -0.8px;
+}
+
+.about-empower-subtitle {
+  font-size: 1rem;
+  color: #64748b;
+  line-height: 1.6;
+  font-weight: 500;
+}
+
+.empower-row-top {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  margin-bottom: 24px;
+}
+
+.empower-row-bottom {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 24px;
+}
+
+.empower-card {
+  background-color: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 16px;
+  padding: 40px 32px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.015);
+}
+
+.empower-card:hover {
+  transform: translateY(-5px);
+  border-color: rgba(0, 66, 200, 0.15);
+  box-shadow: 0 12px 30px rgba(0, 66, 200, 0.05);
+}
+
+/* Blue card override for Enterprises */
+.empower-card.blue-card {
+  background-color: #0042C8;
+  border-color: #0042C8;
+}
+
+.empower-card.blue-card:hover {
+  background-color: #0038aa;
+  border-color: #0038aa;
+  box-shadow: 0 12px 30px rgba(0, 66, 200, 0.15);
+}
+
+.empower-icon-box {
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 24px;
+}
+
+.empower-icon-img {
+  width: 32px;
+  height: 32px;
+  object-fit: contain;
+}
+
+/* Convert the enterprise icon to pure white for readability on solid blue background */
+.empower-icon-img.white-icon {
+  filter: brightness(0) invert(1);
+}
+
+.empower-card-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #0c2340;
+  margin-bottom: 12px;
+  letter-spacing: -0.3px;
+}
+
+.empower-card.blue-card .empower-card-title {
+  color: #ffffff;
+}
+
+.empower-card-desc {
+  font-size: 0.92rem;
+  color: #64748b;
+  line-height: 1.6;
+  margin: 0;
+}
+
+.empower-card.blue-card .empower-card-desc {
+  color: rgba(255, 255, 255, 0.88);
+}
+
+/* 4. Industries We Serve Section */
+.about-industries-section {
+  padding: 100px 0;
+  background-color: #f8fafc;
+  border-top: 1px solid #e2e8f0;
+}
+
+.about-industries-header {
+  text-align: center;
+  margin-bottom: 56px;
+}
+
+.about-industries-title {
+  font-size: 2.25rem;
+  font-weight: 800;
+  color: #0f172a;
+  letter-spacing: -0.8px;
+  margin: 0;
+}
+
+.about-ind-row {
+  margin-bottom: 24px;
+}
+
+.about-ind-row:last-child {
+  margin-bottom: 0;
+}
+
+.row-5-cols {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 20px;
+}
+
+.row-4-cols {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  max-width: 980px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.about-ind-card {
+  background-color: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 28px 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.01);
+  cursor: pointer;
+}
+
+.about-ind-card:hover {
+  transform: translateY(-4px);
+  border-color: #0042C8;
+  box-shadow: 0 10px 25px rgba(0, 66, 200, 0.05);
+}
+
+.about-ind-icon-img {
+  width: 32px;
+  height: 32px;
+  object-fit: contain;
+  margin-bottom: 16px;
+  transition: transform 0.3s ease;
+}
+
+.about-ind-card:hover .about-ind-icon-img {
+  transform: scale(1.1);
+}
+
+.about-ind-name {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #0c2340;
+  margin: 0;
+  letter-spacing: -0.2px;
+}
+
+/* 5. Why Choose Us Section */
+.about-why-choose-section {
+  padding: 100px 0;
+  background-color: var(--primary-color); /* Solid Blue Background */
+  position: relative;
+  z-index: 10;
+}
+
+.about-why-choose-header {
+  text-align: center;
+  margin-bottom: 64px;
+}
+
+.why-choose-title {
+  font-size: 2.4rem;
+  font-weight: 800;
+  color: #ffffff;
+  letter-spacing: -0.8px;
+  margin: 0;
+}
+
+.why-choose-grid {
+  gap: 40px 32px;
+}
+
+.why-choose-item {
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+  text-align: left;
+}
+
+.why-choose-icon-box {
+  width: 42px;
+  height: 42px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.why-choose-icon-img {
+  width: 32px;
+  height: 32px;
+  object-fit: contain;
+  filter: brightness(0) invert(1); /* Converts icons to white for solid blue backdrop */
+}
+
+.why-choose-content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.why-choose-item-title {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 10px;
+  letter-spacing: -0.2px;
+}
+
+.why-choose-item-desc {
+  font-size: 0.92rem;
+  color: rgba(255, 255, 255, 0.88);
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* 6. The Difference Section */
+.about-difference-section {
+  padding: 100px 0;
+  background-color: #ffffff;
+  border-top: 1px solid #f1f5f9;
+}
+
+.about-difference-header {
+  text-align: center;
+  margin-bottom: 56px;
+}
+
+.difference-title {
+  font-size: 2.4rem;
+  font-weight: 800;
+  color: #0f172a;
+  letter-spacing: -0.8px;
+  margin: 0;
+}
+
+.difference-table-card {
+  background-color: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.02);
+  overflow: hidden;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.difference-table-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.difference-table-row:last-child {
+  border-bottom: none;
+}
+
+.difference-table-row.header-row {
+  background-color: #f8fafc;
+}
+
+.difference-table-cell {
+  padding: 24px 32px;
+  display: flex;
+  align-items: center;
+}
+
+.difference-table-cell.left-cell {
+  border-right: 1px solid #e2e8f0;
+  justify-content: flex-start;
+  text-align: left;
+}
+
+.difference-table-cell.right-cell {
+  justify-content: flex-start;
+  text-align: left;
+}
+
+.diff-header-text {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #0c2340;
+  margin: 0;
+  letter-spacing: -0.2px;
+}
+
+.diff-header-text.highlight-text {
+  color: #0042c8;
+}
+
+.diff-anshiya-content {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.diff-check-icon {
+  flex-shrink: 0;
+}
+
+.diff-row-text {
+  font-size: 0.98rem;
+  color: #475569;
+  line-height: 1.55;
+  margin: 0;
+  font-weight: 500;
+}
+
+.diff-row-text.highlight-text {
+  color: #0c2340;
+  font-weight: 700;
+}
+
+/* Responsive adjustments */
+@media (max-width: 991px) {
+  .about-page-hero {
+    padding: 80px 0;
+    min-height: auto;
+  }
+
+  .about-page-title {
+    font-size: 2.3rem;
+  }
+
+  .about-page-container {
+    gap: 40px;
+  }
+
+  .about-core-services-section, 
+  .about-empower-section, 
+  .about-industries-section,
+  .about-why-choose-section,
+  .about-difference-section {
+    padding: 70px 0;
+  }
+
+  .about-core-title, 
+  .about-empower-title,
+  .about-industries-title,
+  .why-choose-title,
+  .difference-title {
+    font-size: 1.85rem;
+  }
+
+  .empower-row-top, .row-5-cols, .row-4-cols {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .row-4-cols {
+    max-width: 100%;
+  }
+
+  .difference-table-cell {
+    padding: 16px 20px;
+  }
+}
+
+@media (max-width: 768px) {
+  .about-quote-box {
+    padding: 20px;
+  }
+  
+  .about-page-title {
+    font-size: 2rem;
+  }
+
+  .empower-row-bottom, .row-5-cols, .row-4-cols {
+    grid-template-columns: 1fr;
+  }
+
+  .difference-table-row {
+    grid-template-columns: 1fr;
+  }
+
+  .difference-table-cell.left-cell {
+    border-right: none;
+    border-bottom: 1px solid #e2e8f0;
+  }
+}

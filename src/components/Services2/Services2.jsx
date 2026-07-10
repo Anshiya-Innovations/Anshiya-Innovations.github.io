@@ -20,55 +20,64 @@ const Services2 = () => {
       type: "image",
       icon: iconMonitor,
       title: <>AI Integration &<br />Automation</>,
-      description: "Integrate AI to automate workflows and enhance decision-making."
+      description: "Integrate AI to automate workflows and enhance decision-making.",
+      slug: "ai-integration-automation"
     },
     {
       type: "text",
       iconText: "SAP",
       title: <>SAP BTP</>,
-      description: "Build, extend, and integrate SAP solutions on the Business Technology Platform."
+      description: "Build, extend, and integrate SAP solutions on the Business Technology Platform.",
+      slug: "sap-btp"
     },
     {
       type: "image",
       icon: iconLock,
       title: <>Cyber Security</>,
-      description: "Protect your data, systems, and users with advanced security solutions."
+      description: "Protect your data, systems, and users with advanced security solutions.",
+      slug: "cyber-security"
     },
     {
       type: "image",
       icon: iconShieldDoc,
       title: <>Security<br />Compliance & Audit</>,
-      description: "Ensure compliance and mitigate risk with our audit services."
+      description: "Ensure compliance and mitigate risk with our audit services.",
+      slug: "security-compliance-audit"
     },
     {
       type: "image",
       icon: iconGearBriefcase,
       title: <>Business Automations</>,
-      description: "Automate repetitive tasks and streamline business operations."
+      description: "Automate repetitive tasks and streamline business operations.",
+      slug: "business-automations"
     },
     {
       type: "image",
       icon: iconCloud,
       title: <>Cloud Solutions</>,
-      description: "Migrate, manage, and scale with secure and reliable cloud services."
+      description: "Migrate, manage, and scale with secure and reliable cloud services.",
+      slug: "cloud-solutions"
     },
     {
       type: "image",
       icon: iconCap,
       title: <>Employee Training Program</>,
-      description: "Upskill your workforce with specialized job-oriented training."
+      description: "Upskill your workforce with specialized job-oriented training.",
+      slug: "employee-training-program"
     },
     {
       type: "image",
       icon: iconPeople,
       title: <>Internship for Students</>,
-      description: "Real-world exposure and mentorship for future tech professionals."
+      description: "Real-world exposure and mentorship for future tech professionals.",
+      slug: "internship-for-students"
     },
     {
       type: "image",
       icon: iconPhone,
       title: <>Mobile App Development</>,
-      description: "Build user-friendly and scalable mobile apps for iOS and Android."
+      description: "Build user-friendly and scalable mobile apps for iOS and Android.",
+      slug: "mobile-app-development"
     }
   ];
 
@@ -86,17 +95,14 @@ const Services2 = () => {
         <div className="services2-slider-track">
           {/* Double list mapping for seamless infinite loop */}
           {[...allServices, ...allServices].map((service, index) => {
-            const isSapBtp = service.iconText === "SAP";
             return (
               <div 
                 key={index} 
                 className="service2-card"
-                style={{ cursor: isSapBtp ? 'pointer' : 'default' }}
+                style={{ cursor: 'pointer' }}
                 onClick={() => {
-                  if (isSapBtp) {
-                    navigate('/sap-service');
-                    window.scrollTo({ top: 0, behavior: 'smooth' });
-                  }
+                  navigate(`/service-details/${service.slug}`);
+                  window.scrollTo({ top: 0, behavior: 'smooth' });
                 }}
               >
                 <div className="service2-icon-wrapper">
@@ -108,23 +114,12 @@ const Services2 = () => {
                 </div>
                 <h3 className="service2-card-title">{service.title}</h3>
                 <p className="service2-card-description">{service.description}</p>
-                {isSapBtp ? (
-                  <span 
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      navigate('/sap-service');
-                      window.scrollTo({ top: 0, behavior: 'smooth' });
-                    }}
-                    className="service2-card-link"
-                    style={{ cursor: 'pointer' }}
-                  >
-                    See More Details &gt;
-                  </span>
-                ) : (
-                  <a href="#contact" className="service2-card-link">
-                    See More Details &gt;
-                  </a>
-                )}
+                <span 
+                  className="service2-card-link"
+                  style={{ cursor: 'pointer' }}
+                >
+                  See More Details &gt;
+                </span>
               </div>
             );
           })}

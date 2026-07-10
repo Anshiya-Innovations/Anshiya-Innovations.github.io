@@ -25,10 +25,21 @@ const Navbar = () => {
     {
       title: "AI Integration & Automation",
       description: "Integrate AI to automate workflows and enhance decision-making.",
-      subItems: []
+      subItems: [
+        "AI Consulting",
+        "SAP AI Services",
+        "AI Solutions Implementation",
+        "SAP Business AI",
+        "AI App Development",
+        "SAP Joule",
+        "AI Agent Development",
+        "SAP Joule Studio",
+        "Generative AI",
+        "AI Assistant Development"
+      ]
     },
     {
-      title: "SAP BTP",
+      title: "SAP S/4 or SAP BTP",
       description: "Build, extend, and integrate SAP solutions on the Business Technology Platform.",
       subItems: [
         "Code Assessment",
@@ -44,7 +55,9 @@ const Navbar = () => {
         "SAP Analytics Cloud",
         "Line of Business Enhancements on SAP BTP",
         "Application  Managed Services",
-        "Infrastructure Services"
+        "Infrastructure Services",
+        "SAP Applicationn Security",
+        "SAP Security & Controls Monitoring"
       ]
     },
     {
@@ -58,17 +71,17 @@ const Navbar = () => {
         "Cloud Security Posture Management (CSPM)",
         "Data Security Posture Management (DSPM)",
         "Infrastructure Entitlements Management (CIEM)",
-        "Wiz Cloud Compliance",
+        "Cloud Compliance",
         "Infrastructure-as-Code Scanning",
         "Supply Chain Security (SCA and SBOM)",
-        "WizOS: Secured Container Images",
+        "Secured Container Images",
         "Application Security Posture Management (ASPM)",
         "Static Application Security Testing (SAST)",
         "Workload Protection Platform (CWPP)",
         "Container & Kubernetes security",
         "Cloud Detection & Response (CDR)",
         "Cloud Cost",
-        "Wiz Sensor: Runtime Protection"
+        "Sensor: Runtime Protection"
       ]
     },
     {
@@ -93,27 +106,68 @@ const Navbar = () => {
     {
       title: "Business Automations",
       description: "Automate repetitive tasks and streamline business operations.",
-      subItems: []
+      subItems: [
+        "Customer Service Automation",
+        "Finance & Accounting Automation",
+        "Human Resources Automation",
+        "Information Technology (IT) Automation",
+        "Service Operations Automation",
+        "Shared Services & Operations Automation"
+      ]
     },
     {
       title: "Cloud Solutions",
       description: "Migrate, manage, and scale with secure and reliable cloud services.",
-      subItems: []
+      subItems: [
+        "Cloud Consulting",
+        "Cloud Migration & Modernization",
+        "Managed Cloud Operations",
+        "Cloud Optimization",
+        "Platform Engineering & Automation"
+      ]
     },
     {
       title: "Employee Training Program",
       description: "Upskill your workforce with specialized job-oriented training.",
-      subItems: []
+      subItems: [
+        "AI & ML Corporate",
+        "Project & Process Management",
+        "Data Science & Analytics Corporate",
+        "Cloud & DevOps Corporate",
+        "Cybersecurity Corporate",
+        "Software Development Corporate",
+        "Digital Business Corporate"
+      ]
     },
     {
       title: "Internship for Students",
       description: "Real-world exposure and mentorship for future tech professionals.",
-      subItems: []
+      subItems: [
+        "Agentic AI Applied Program",
+        "Digital Communication and GenAI Tools",
+        "Front-end Dev with React & GenAI Advanced Program",
+        "Full-Stack Development with GenAI Honours Program",
+        "Java Development Certificate Program",
+        "Java: Object-Oriented Programming",
+        "Programming using Python",
+        "SQL Essentials with GenAI",
+        "PGP in Machine Learning & Artificial Intelligence",
+        "Data Analytics Using Python and SQL Certificate Program",
+        "Managing and Querying Database",
+        "Cybersecurity with GenAI Advanced Program",
+        "IT SysAdmin & Cloud Computing Advanced Program",
+        "SAP BTP Internship"
+      ]
     },
     {
       title: "Mobile App Development",
       description: "Build user-friendly and scalable mobile apps for iOS and Android.",
-      subItems: []
+      subItems: [
+        "iOS App Development",
+        "Android App Development",
+        "React Native App Development",
+        "Flutter App Development"
+      ]
     }
   ];
 
@@ -131,6 +185,27 @@ const Navbar = () => {
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
+  useEffect(() => {
+    const path = location.pathname;
+    if (path === '/industries') {
+      setActiveItem('industries');
+    } else if (path === '/contact') {
+      setActiveItem('contact');
+    } else if (path === '/about-us') {
+      setActiveItem('about');
+    } else if (path === '/career') {
+      setActiveItem('career');
+    } else if (path === '/') {
+      if (location.state?.scrollTo === 'services2-section') {
+        setActiveItem('services');
+      } else {
+        setActiveItem('home');
+      }
+    } else {
+      setActiveItem('');
+    }
+  }, [location.pathname, location.state]);
 
   const handleNavClick = (sectionId, itemName) => {
     setIsMenuOpen(false);
@@ -170,7 +245,7 @@ const Navbar = () => {
             setActiveItem('home');
           }}
         >
-          <img src={logoImg} alt="Anshiya Innovations Logo" />
+          <img src={logoImg} alt="Anshiya Innovations Logo" className='navlogo' />
         </Link>
  
         <button className="navbar-toggle" onClick={toggleMenu} aria-label="Toggle Navigation">
@@ -187,14 +262,6 @@ const Navbar = () => {
                 className={`nav-link ${activeItem === 'home' ? 'active' : ''}`}
               >
                 Home
-              </button>
-            </li>
-            <li className="nav-item">
-              <button 
-                onClick={() => handleNavClick('about', 'about')} 
-                className={`nav-link ${activeItem === 'about' ? 'active' : ''}`}
-              >
-                About Us
               </button>
             </li>
             
@@ -228,7 +295,7 @@ const Navbar = () => {
                           onClick={() => {
                             setIsMenuOpen(false);
                             setShowDropdown(false);
-                            if (service.title === "SAP BTP") {
+                            if (service.title === "SAP S/4 or SAP BTP") {
                               navigate('/sap-service');
                               window.scrollTo({ top: 0, behavior: 'smooth' });
                             } else {
@@ -249,7 +316,7 @@ const Navbar = () => {
                       onClick={() => {
                         setIsMenuOpen(false);
                         setShowDropdown(false);
-                        if (dropdownServices[activeTab].title === "SAP BTP") {
+                        if (dropdownServices[activeTab].title === "SAP S/4 or SAP BTP") {
                           navigate('/sap-service');
                           window.scrollTo({ top: 0, behavior: 'smooth' });
                         } else {
@@ -275,66 +342,161 @@ const Navbar = () => {
                             onClick={() => {
                               setIsMenuOpen(false);
                               setShowDropdown(false);
-                              if (subItem === "Code Assessment") {
-                                navigate('/solutions?type=code');
+                              if (subItem === "AI Consulting") {
+                                navigate('/solutions/ai_consulting');
+                              } else if (subItem === "SAP AI Services") {
+                                navigate('/solutions/sap_ai_services');
+                              } else if (subItem === "AI Solutions Implementation") {
+                                navigate('/solutions/ai_solutions_implementation');
+                              } else if (subItem === "SAP Business AI") {
+                                navigate('/solutions/sap_business_ai');
+                              } else if (subItem === "AI App Development") {
+                                navigate('/solutions/ai_app_development');
+                              } else if (subItem === "SAP Joule") {
+                                navigate('/solutions/sap_joule');
+                              } else if (subItem === "AI Agent Development") {
+                                navigate('/solutions/ai_agent_development');
+                              } else if (subItem === "SAP Joule Studio") {
+                                navigate('/solutions/sap_joule_studio');
+                              } else if (subItem === "Generative AI") {
+                                navigate('/solutions/generative_ai');
+                              } else if (subItem === "AI Assistant Development") {
+                                navigate('/solutions/ai_assistant_development');
+                              } else if (subItem === "iOS App Development") {
+                                navigate('/solutions/ios_app_development');
+                              } else if (subItem === "Android App Development") {
+                                navigate('/solutions/android_app_development');
+                              } else if (subItem === "React Native App Development") {
+                                navigate('/solutions/react_native_app_development');
+                              } else if (subItem === "Flutter App Development") {
+                                navigate('/solutions/flutter_app_development');
+                              } else if (subItem === "Cloud Consulting") {
+                                navigate('/solutions/cloud_consulting');
+                              } else if (subItem === "Cloud Migration & Modernization") {
+                                navigate('/solutions/cloud_migration_modernization');
+                              } else if (subItem === "Managed Cloud Operations") {
+                                navigate('/solutions/managed_cloud_operations');
+                              } else if (subItem === "Cloud Optimization") {
+                                navigate('/solutions/cloud_optimization');
+                              } else if (subItem === "Platform Engineering & Automation") {
+                                navigate('/solutions/platform_engineering_automation');
+                              } else if (subItem === "Customer Service Automation") {
+                                navigate('/solutions/customer_service_automation');
+                              } else if (subItem === "Finance & Accounting Automation") {
+                                navigate('/solutions/finance_accounting_automation');
+                              } else if (subItem === "Human Resources Automation") {
+                                navigate('/solutions/human_resources_automation');
+                              } else if (subItem === "Information Technology (IT) Automation") {
+                                navigate('/solutions/it_automation');
+                              } else if (subItem === "Service Operations Automation") {
+                                navigate('/solutions/service_operations_automation');
+                              } else if (subItem === "Shared Services & Operations Automation") {
+                                navigate('/solutions/shared_services_operations_automation');
+                              } else if (subItem === "AI & ML Corporate") {
+                                navigate('/solutions/ai_ml_corporate');
+                              } else if (subItem === "Project & Process Management") {
+                                navigate('/solutions/project_process_management');
+                              } else if (subItem === "Data Science & Analytics Corporate") {
+                                navigate('/solutions/data_science_analytics_corporate');
+                              } else if (subItem === "Cloud & DevOps Corporate") {
+                                navigate('/solutions/cloud_devops_corporate');
+                              } else if (subItem === "Cybersecurity Corporate") {
+                                navigate('/solutions/cybersecurity_corporate');
+                              } else if (subItem === "Software Development Corporate") {
+                                navigate('/solutions/software_development_corporate');
+                              } else if (subItem === "Digital Business Corporate") {
+                                navigate('/solutions/digital_business_corporate');
+                              } else if (subItem === "Agentic AI Applied Program") {
+                                navigate('/solutions/agentic_ai_applied_program');
+                              } else if (subItem === "Digital Communication and GenAI Tools") {
+                                navigate('/solutions/digital_communication_genai_tools');
+                              } else if (subItem === "Front-end Dev with React & GenAI Advanced Program") {
+                                navigate('/solutions/frontend_dev_react_genai');
+                              } else if (subItem === "Full-Stack Development with GenAI Honours Program") {
+                                navigate('/solutions/fullstack_dev_genai');
+                              } else if (subItem === "Java Development Certificate Program") {
+                                navigate('/solutions/java_dev_certificate');
+                              } else if (subItem === "Java: Object-Oriented Programming") {
+                                navigate('/solutions/java_oop');
+                              } else if (subItem === "Programming using Python") {
+                                navigate('/solutions/programming_python');
+                              } else if (subItem === "SQL Essentials with GenAI") {
+                                navigate('/solutions/sql_essentials_genai');
+                              } else if (subItem === "PGP in Machine Learning & Artificial Intelligence") {
+                                navigate('/solutions/pgp_ml_ai');
+                              } else if (subItem === "Data Analytics Using Python and SQL Certificate Program") {
+                                navigate('/solutions/data_analytics_python_sql');
+                              } else if (subItem === "Managing and Querying Database") {
+                                navigate('/solutions/managing_querying_database');
+                              } else if (subItem === "Cybersecurity with GenAI Advanced Program") {
+                                navigate('/solutions/cybersecurity_genai');
+                              } else if (subItem === "IT SysAdmin & Cloud Computing Advanced Program") {
+                                navigate('/solutions/it_sysadmin_cloud');
+                              } else if (subItem === "SAP BTP Internship") {
+                                navigate('/solutions/sap_btp_internship');
+                              } else if (subItem === "Code Assessment") {
+                                navigate('/solutions/code');
                               } else if (subItem === "DATA ASSESSMENT" || subItem === "Data Assessment") {
-                                navigate('/solutions?type=data');
+                                navigate('/solutions/data');
                               } else if (subItem === "Integration Assessment") {
-                                navigate('/solutions?type=integration');
+                                navigate('/solutions/integration');
                               } else if (subItem === "Analytics Assessment") {
-                                navigate('/solutions?type=analytics');
+                                navigate('/solutions/analytics');
                               } else if (subItem === "Planning  Assessment") {
-                                navigate('/solutions?type=planning');
+                                navigate('/solutions/planning');
                               } else if (subItem === "S/4HANA Migration Services") {
-                                navigate('/solutions?type=s4hana');
+                                navigate('/solutions/s4hana');
                               } else if (subItem === "Business Data Cloud") {
-                                navigate('/solutions?type=datacloud');
+                                navigate('/solutions/datacloud');
                               } else if (subItem === "PIPO to Integration Suite") {
-                                navigate('/solutions?type=pipo');
+                                navigate('/solutions/pipo');
                               } else if (subItem === "Clean Core") {
-                                navigate('/solutions?type=cleancore_main');
+                                navigate('/solutions/cleancore_main');
                               } else if (subItem === "SAP S/4HANA") {
-                                navigate('/solutions?type=s4hana_main');
+                                navigate('/solutions/s4hana_main');
                               } else if (subItem === "SAP Analytics Cloud") {
-                                navigate('/solutions?type=sac_main');
+                                navigate('/solutions/sac_main');
                               } else if (subItem === "Line of Business Enhancements on SAP BTP") {
-                                navigate('/solutions?type=lob_btp');
+                                navigate('/solutions/lob_btp');
                               } else if (subItem === "Application  Managed Services") {
-                                navigate('/solutions?type=ams');
-                              } else if (subItem === "Infrastructure Services") {
-                                navigate('/solutions?type=infrastructure');
-                              
-                              } else if (subItem === "AI Security") { navigate('/solutions?type=ai_security');
-                              } else if (subItem === "Exposure Management") { navigate('/solutions?type=exposure_management');
-                              } else if (subItem === "Unified Vulnerability Management") { navigate('/solutions?type=uvm');
-                              } else if (subItem === "Attack Surface Management (ASM)") { navigate('/solutions?type=asm');
-                              } else if (subItem === "Cloud Security Posture Management (CSPM)") { navigate('/solutions?type=cspm');
-                              } else if (subItem === "Data Security Posture Management (DSPM)") { navigate('/solutions?type=dspm');
-                              } else if (subItem === "Infrastructure Entitlements Management (CIEM)") { navigate('/solutions?type=ciem');
-                              } else if (subItem === "Wiz Cloud Compliance") { navigate('/solutions?type=wiz_compliance');
-                              } else if (subItem === "Infrastructure-as-Code Scanning") { navigate('/solutions?type=iac_scanning');
-                              } else if (subItem === "Supply Chain Security (SCA and SBOM)") { navigate('/solutions?type=sca_sbom');
-                              } else if (subItem === "WizOS: Secured Container Images") { navigate('/solutions?type=wiz_os');
-                              } else if (subItem === "Application Security Posture Management (ASPM)") { navigate('/solutions?type=aspm');
-                              } else if (subItem === "Static Application Security Testing (SAST)") { navigate('/solutions?type=sast');
-                              } else if (subItem === "Workload Protection Platform (CWPP)") { navigate('/solutions?type=cwpp');
-                              } else if (subItem === "Container & Kubernetes security") { navigate('/solutions?type=k8s_security');
-                              } else if (subItem === "Cloud Detection & Response (CDR)") { navigate('/solutions?type=cdr');
-                              } else if (subItem === "Cloud Cost") { navigate('/solutions?type=cloud_cost');
-                              } else if (subItem === "Wiz Sensor: Runtime Protection") { navigate('/solutions?type=wiz_sensor');
-                              } else if (subItem === "SOC 2") { navigate('/solutions?type=soc2');
-                              } else if (subItem === "ISO 27001") { navigate('/solutions?type=iso27001');
-                              } else if (subItem === "HIPAA") { navigate('/solutions?type=hipaa');
-                              } else if (subItem === "GDPR") { navigate('/solutions?type=gdpr');
-                              } else if (subItem === "FedRAMP") { navigate('/solutions?type=fedramp');
-                              } else if (subItem === "CMMC") { navigate('/solutions?type=cmmc');
-                              } else if (subItem === "ISO 42001") { navigate('/solutions?type=iso42001');
-                              } else if (subItem === "PCI DSS") { navigate('/solutions?type=pci_dss');
-                              } else if (subItem === "HITRUST") { navigate('/solutions?type=hitrust');
-                              } else if (subItem === "NIST AI RMF") { navigate('/solutions?type=nist_ai_rmf');
-                              } else if (subItem === "DORA") { navigate('/solutions?type=dora');
-                              } else if (subItem === "Custom Frameworks") { navigate('/solutions?type=custom_frameworks');
-                              } else if (subItem === "Audit Services") { navigate('/solutions?type=audit_services');
+                                 navigate('/solutions/ams');
+                               } else if (subItem === "Infrastructure Services") {
+                                 navigate('/solutions/infrastructure');
+                               } else if (subItem === "SAP Applicationn Security") {
+                                 navigate('/solutions/sap_application_security');
+                               } else if (subItem === "SAP Security & Controls Monitoring") {
+                                 navigate('/solutions/sap_security_controls_monitoring');
+                               } else if (subItem === "AI Security") { navigate('/solutions/ai_security');
+                              } else if (subItem === "Exposure Management") { navigate('/solutions/exposure_management');
+                              } else if (subItem === "Unified Vulnerability Management") { navigate('/solutions/uvm');
+                              } else if (subItem === "Attack Surface Management (ASM)") { navigate('/solutions/asm');
+                              } else if (subItem === "Cloud Security Posture Management (CSPM)") { navigate('/solutions/cspm');
+                              } else if (subItem === "Data Security Posture Management (DSPM)") { navigate('/solutions/dspm');
+                              } else if (subItem === "Infrastructure Entitlements Management (CIEM)") { navigate('/solutions/ciem');
+                              } else if (subItem === "Wiz Cloud Compliance") { navigate('/solutions/wiz_compliance');
+                              } else if (subItem === "Infrastructure-as-Code Scanning") { navigate('/solutions/iac_scanning');
+                              } else if (subItem === "Supply Chain Security (SCA and SBOM)") { navigate('/solutions/sca_sbom');
+                              } else if (subItem === "WizOS: Secured Container Images") { navigate('/solutions/wiz_os');
+                              } else if (subItem === "Application Security Posture Management (ASPM)") { navigate('/solutions/aspm');
+                              } else if (subItem === "Static Application Security Testing (SAST)") { navigate('/solutions/sast');
+                              } else if (subItem === "Workload Protection Platform (CWPP)") { navigate('/solutions/cwpp');
+                              } else if (subItem === "Container & Kubernetes security") { navigate('/solutions/k8s_security');
+                              } else if (subItem === "Cloud Detection & Response (CDR)") { navigate('/solutions/cdr');
+                              } else if (subItem === "Cloud Cost") { navigate('/solutions/cloud_cost');
+                              } else if (subItem === "Wiz Sensor: Runtime Protection") { navigate('/solutions/wiz_sensor');
+                              } else if (subItem === "SOC 2") { navigate('/solutions/soc2');
+                              } else if (subItem === "ISO 27001") { navigate('/solutions/iso27001');
+                              } else if (subItem === "HIPAA") { navigate('/solutions/hipaa');
+                              } else if (subItem === "GDPR") { navigate('/solutions/gdpr');
+                              } else if (subItem === "FedRAMP") { navigate('/solutions/fedramp');
+                              } else if (subItem === "CMMC") { navigate('/solutions/cmmc');
+                              } else if (subItem === "ISO 42001") { navigate('/solutions/iso42001');
+                              } else if (subItem === "PCI DSS") { navigate('/solutions/pci_dss');
+                              } else if (subItem === "HITRUST") { navigate('/solutions/hitrust');
+                              } else if (subItem === "NIST AI RMF") { navigate('/solutions/nist_ai_rmf');
+                              } else if (subItem === "DORA") { navigate('/solutions/dora');
+                              } else if (subItem === "Custom Frameworks") { navigate('/solutions/custom_frameworks');
+                              } else if (subItem === "Audit Services") { navigate('/solutions/audit_services');
                               } else { navigate('/sap-service'); }
                               window.scrollTo({ top: 0, behavior: 'smooth' });
                             }}
@@ -381,14 +543,26 @@ const Navbar = () => {
             </li>
             <li className="nav-item">
               <Link 
-                to="/solutions" 
+                to="/career" 
                 onClick={() => {
                   setIsMenuOpen(false);
-                  setActiveItem('solutions');
+                  setActiveItem('career');
                 }}
-                className={`nav-link ${activeItem === 'solutions' ? 'active' : ''}`}
+                className={`nav-link ${activeItem === 'career' ? 'active' : ''}`}
               >
-                Solutions
+                Career
+              </Link>
+            </li>
+            <li className="nav-item">
+              <Link 
+                to="/about-us" 
+                onClick={() => {
+                  setIsMenuOpen(false);
+                  setActiveItem('about');
+                }}
+                className={`nav-link ${activeItem === 'about' ? 'active' : ''}`}
+              >
+                About Us
               </Link>
             </li>
           </ul>

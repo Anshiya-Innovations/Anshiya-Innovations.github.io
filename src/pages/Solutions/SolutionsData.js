@@ -4,14 +4,17 @@ import showcaseBars from '../../assets/showcase-dashboard-bars.png';
 import showcaseTable from '../../assets/showcase-dashboard-table.png';
 import solutionsDashboard from '../../assets/solutions-dashboard.png';
 
+import { aiContentMap } from './aiContentMap';
+
 export const contentMap = {
+  ...aiContentMap,
   code: {
     hero: {
       badge: "FUTURE-READY ENTERPRISE",
       title1: "SAP Clean Core",
       title2: "Assessment",
       desc: "Evaluate, optimize, and modernize your SAP landscape for sustainable growth. A Clean Core strategy minimizes unnecessary customizations, making SAP systems easier to upgrade, maintain, and extend. Our assessment identifies optimization opportunities and delivers a clear roadmap for a modern, scalable, and future-ready SAP landscape.",
-      ctaPrimary: "Start Assessment",
+      ctaPrimary: "Get Free Consultation",
       ctaSecondary: "View Methodology"
     },
     insights: {
@@ -102,7 +105,7 @@ export const contentMap = {
       title: "Schedule Your SAP Clean Core Assessment",
       subtitle: "Build a Smarter, Simpler, and Future-Ready SAP Landscape. Take the first step toward a more agile, scalable, and upgrade-ready SAP environment. Let our experts help you unlock the full potential of your SAP investment.",
       primary: "Get Started Today",
-      secondary: "Download Brochure"
+      secondary: "Contact support"
     }
   },
   data: {
