@@ -27,10 +27,15 @@ import { contentMap } from './SolutionsData';
 const Solutions = () => {
   const navigate = useNavigate();
   const location = useLocation();
+  const { type: pathType } = useParams();
   const queryParams = new URLSearchParams(location.search);
-  const typeParam = queryParams.get('type');
+  const typeParam = queryParams.get('type') || pathType;
   const type = contentMap[typeParam] ? typeParam : 'code';
   const activeContent = contentMap[type];
+
+  React.useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [type]);
 
   const handleScrollToSection = (id) => {
     const element = document.getElementById(id);
