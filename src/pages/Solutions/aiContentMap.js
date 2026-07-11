@@ -5256,6 +5256,12 @@ export const aiContentMap = {
         ]
       }
     ]
+  },
+  "cta": {
+    "title": "Ready to Secure Your SAP Applications?",
+    "subtitle": "Protect critical business processes, enforce secure access policies, and ensure governance. Partner with Anshiya to implement intelligent SAP Application Security.",
+    "primary": "Get Free Consultation",
+    "secondary": "Schedule Discovery Session"
   }
 },
   "sap_security_controls_monitoring": {
@@ -5362,6 +5368,12 @@ export const aiContentMap = {
         ]
       }
     ]
+  },
+  "cta": {
+    "title": "Ready to Monitor SAP Security & Controls?",
+    "subtitle": "Automate threat detection, monitor user access in real time, and simplify compliance audits. Partner with Anshiya to deploy proactive security monitoring.",
+    "primary": "Get Free Consultation",
+    "secondary": "Schedule Discovery Session"
   }
 },
 };

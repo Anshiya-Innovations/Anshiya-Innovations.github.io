@@ -178,28 +178,24 @@
 }
 
 @media (max-width: 576px) {
+  .about-image-wrapper {
+    height: 180px;
+    overflow: visible;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
   .about-overlapping-container {
-    width: 100%;
-    max-width: 320px;
-    height: 220px;
+    width: 500px;
+    height: 310px;
+    transform: scale(0.5);
+    transform-origin: center center;
     margin: 0 auto;
+    flex-shrink: 0;
+    margin-left: -18%;
   }
-  .about-img-meeting {
-    width: 180px;
-    height: 167px;
-  }
-  .about-img-servers {
-    width: 180px;
-    height: 167px;
-    left: 140px;
-    top: 30px;
-  }
-  .about-img-play-card {
-    width: 60px;
-    height: 60px;
-    left: 110px;
-    top: 65px;
-  }
+
   .about-stats-row {
     flex-direction: column;
     gap: 20px;

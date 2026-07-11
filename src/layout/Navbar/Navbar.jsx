@@ -3,6 +3,128 @@ import { Link, useNavigate, useLocation } from 'react-router-dom';
 import logoImg from '../../assets/logo.png';
 import './Navbar.css';
 
+const getCategorySlug = (title) => {
+  const mapping = {
+    "AI Integration & Automation": "ai-integration-automation",
+    "SAP S/4 or SAP BTP": "sap-btp",
+    "Cyber Security": "cyber-security",
+    "Security Compliance & Audit": "security-compliance-audit",
+    "Business Automations": "business-automations",
+    "Cloud Solutions": "cloud-solutions",
+    "Employee Training Program": "employee-training-program",
+    "Internship for Students": "internship-for-students",
+    "Mobile App Development": "mobile-app-development"
+  };
+  return mapping[title] || "general";
+};
+
+const getSubItemSolutionKey = (subItem) => {
+  const item = subItem.trim();
+  if (item === "AI Consulting") return "ai_consulting";
+  if (item === "SAP AI Services") return "sap_ai_services";
+  if (item === "AI Solutions Implementation") return "ai_solutions_implementation";
+  if (item === "SAP Business AI") return "sap_business_ai";
+  if (item === "AI App Development") return "ai_app_development";
+  if (item === "SAP Joule") return "sap_joule";
+  if (item === "AI Agent Development") return "ai_agent_development";
+  if (item === "SAP Joule Studio") return "sap_joule_studio";
+  if (item === "Generative AI") return "generative_ai";
+  if (item === "AI Assistant Development") return "ai_assistant_development";
+
+  if (item === "Code Assessment") return "code";
+  if (item === "DATA ASSESSMENT" || item === "Data Assessment") return "data";
+  if (item === "Integration Assessment") return "integration";
+  if (item === "Analytics Assessment") return "analytics";
+  if (item === "Planning  Assessment") return "planning";
+  if (item === "S/4HANA Migration Services") return "s4hana";
+  if (item === "Business Data Cloud") return "datacloud";
+  if (item === "PIPO to Integration Suite") return "pipo";
+  if (item === "Clean Core") return "cleancore_main";
+  if (item === "SAP S/4HANA") return "s4hana_main";
+  if (item === "SAP Analytics Cloud") return "sac_main";
+  if (item === "Line of Business Enhancements on SAP BTP") return "lob_btp";
+  if (item === "Application  Managed Services") return "ams";
+  if (item === "Infrastructure Services") return "infrastructure";
+  if (item === "SAP Applicationn Security") return "sap_application_security";
+  if (item === "SAP Security & Controls Monitoring") return "sap_security_controls_monitoring";
+
+  if (item === "AI Security") return "ai_security";
+  if (item === "Exposure Management") return "exposure_management";
+  if (item === "Unified Vulnerability Management") return "uvm";
+  if (item === "Attack Surface Management (ASM)") return "asm";
+  if (item === "Cloud Security Posture Management (CSPM)") return "cspm";
+  if (item === "Data Security Posture Management (DSPM)") return "dspm";
+  if (item === "Infrastructure Entitlements Management (CIEM)") return "ciem";
+  if (item === "Cloud Compliance" || item === "Wiz Cloud Compliance") return "wiz_compliance";
+  if (item === "Infrastructure-as-Code Scanning") return "iac_scanning";
+  if (item === "Supply Chain Security (SCA and SBOM)") return "sca_sbom";
+  if (item === "Secured Container Images" || item === "WizOS: Secured Container Images") return "wiz_os";
+  if (item === "Application Security Posture Management (ASPM)") return "aspm";
+  if (item === "Static Application Security Testing (SAST)") return "sast";
+  if (item === "Workload Protection Platform (CWPP)") return "cwpp";
+  if (item === "Container & Kubernetes security") return "k8s_security";
+  if (item === "Cloud Detection & Response (CDR)") return "cdr";
+  if (item === "Cloud Cost") return "cloud_cost";
+  if (item === "Sensor: Runtime Protection" || item === "Wiz Sensor: Runtime Protection") return "wiz_sensor";
+
+  if (item === "SOC 2") return "soc2";
+  if (item === "ISO 27001") return "iso27001";
+  if (item === "HIPAA") return "hipaa";
+  if (item === "GDPR") return "gdpr";
+  if (item === "FedRAMP") return "fedramp";
+  if (item === "CMMC") return "cmmc";
+  if (item === "ISO 42001") return "iso42001";
+  if (item === "PCI DSS") return "pci_dss";
+  if (item === "HITRUST") return "hitrust";
+  if (item === "NIST AI RMF") return "nist_ai_rmf";
+  if (item === "DORA") return "dora";
+  if (item === "Custom Frameworks") return "custom_frameworks";
+  if (item === "Audit Services") return "audit_services";
+
+  if (item === "Customer Service Automation") return "customer_service_automation";
+  if (item === "Finance & Accounting Automation") return "finance_accounting_automation";
+  if (item === "Human Resources Automation") return "human_resources_automation";
+  if (item === "Information Technology (IT) Automation") return "it_automation";
+  if (item === "Service Operations Automation") return "service_operations_automation";
+  if (item === "Shared Services & Operations Automation") return "shared_services_operations_automation";
+
+  if (item === "Cloud Consulting") return "cloud_consulting";
+  if (item === "Cloud Migration & Modernization") return "cloud_migration_modernization";
+  if (item === "Managed Cloud Operations") return "managed_cloud_operations";
+  if (item === "Cloud Optimization") return "cloud_optimization";
+  if (item === "Platform Engineering & Automation") return "platform_engineering_automation";
+
+  if (item === "AI & ML Corporate") return "ai_ml_corporate";
+  if (item === "Project & Process Management") return "project_process_management";
+  if (item === "Data Science & Analytics Corporate") return "data_science_analytics_corporate";
+  if (item === "Cloud & DevOps Corporate") return "cloud_devops_corporate";
+  if (item === "Cybersecurity Corporate") return "cybersecurity_corporate";
+  if (item === "Software Development Corporate") return "software_development_corporate";
+  if (item === "Digital Business Corporate") return "digital_business_corporate";
+
+  if (item === "Agentic AI Applied Program") return "agentic_ai_applied_program";
+  if (item === "Digital Communication and GenAI Tools") return "digital_communication_genai_tools";
+  if (item === "Front-end Dev with React & GenAI Advanced Program") return "frontend_dev_react_genai";
+  if (item === "Full-Stack Development with GenAI Honours Program") return "fullstack_dev_genai";
+  if (item === "Java Development Certificate Program") return "java_dev_certificate";
+  if (item === "Java: Object-Oriented Programming") return "java_oop";
+  if (item === "Programming using Python") return "programming_python";
+  if (item === "SQL Essentials with GenAI") return "sql_essentials_genai";
+  if (item === "PGP in Machine Learning & Artificial Intelligence") return "pgp_ml_ai";
+  if (item === "Data Analytics Using Python and SQL Certificate Program") return "data_analytics_python_sql";
+  if (item === "Managing and Querying Database") return "managing_querying_database";
+  if (item === "Cybersecurity with GenAI Advanced Program") return "cybersecurity_genai";
+  if (item === "IT SysAdmin & Cloud Computing Advanced Program") return "it_sysadmin_cloud";
+  if (item === "SAP BTP Internship") return "sap_btp_internship";
+
+  if (item === "iOS App Development") return "ios_app_development";
+  if (item === "Android App Development") return "android_app_development";
+  if (item === "React Native App Development") return "react_native_app_development";
+  if (item === "Flutter App Development") return "flutter_app_development";
+
+  return null;
+};
+
 // Import icons for the dropdown mega menu matching Services2
 import iconMonitor from '../../assets/services2/icon-monitor.png';
 import iconLock from '../../assets/services2/icon-lock.png';
@@ -18,6 +140,7 @@ const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [activeItem, setActiveItem] = useState('home');
   const [showDropdown, setShowDropdown] = useState(false);
+  const [mobileDropdownOpen, setMobileDropdownOpen] = useState(false);
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -267,19 +390,51 @@ const Navbar = () => {
             
             {/* Services Mega Menu Trigger Link */}
             <li 
-              className={`nav-item has-dropdown ${showDropdown ? 'show-dropdown' : ''}`}
-              onMouseEnter={() => setShowDropdown(true)}
-              onMouseLeave={() => setShowDropdown(false)}
+              className={`nav-item has-dropdown ${showDropdown ? 'show-dropdown' : ''} ${mobileDropdownOpen ? 'mobile-dropdown-open' : ''}`}
+              onMouseEnter={() => {
+                if (window.innerWidth > 768) setShowDropdown(true);
+              }}
+              onMouseLeave={() => {
+                if (window.innerWidth > 768) setShowDropdown(false);
+              }}
             >
               <button 
-                onClick={() => {
-                  setShowDropdown(false);
-                  handleNavClick('services2-section', 'services');
+                onClick={(e) => {
+                  if (window.innerWidth <= 768) {
+                    e.preventDefault();
+                    setMobileDropdownOpen(!mobileDropdownOpen);
+                  } else {
+                    setShowDropdown(false);
+                    handleNavClick('services2-section', 'services');
+                  }
                 }} 
                 className={`nav-link ${activeItem === 'services' ? 'active' : ''}`}
               >
                 Services
+                <span className="dropdown-caret-icon">&#9662;</span>
               </button>
+              
+              {/* Mobile Services Dropdown (Visible only on mobile/tablet view) */}
+              {mobileDropdownOpen && (
+                <ul className="navbar-mobile-dropdown">
+                  {dropdownServices.map((service, index) => (
+                    <li key={index} className="mobile-dropdown-item">
+                      <button
+                        onClick={() => {
+                          setIsMenuOpen(false);
+                          setMobileDropdownOpen(false);
+                          const slug = getCategorySlug(service.title);
+                          navigate(`/service-details/${slug}`);
+                          window.scrollTo({ top: 0, behavior: 'smooth' });
+                        }}
+                        className="mobile-dropdown-link"
+                      >
+                        {service.title}
+                      </button>
+                    </li>
+                  ))}
+                </ul>
+              )}
               
               {/* Dropdown Mega Menu Panel */}
               <div className="navbar-mega-dropdown">
@@ -295,12 +450,9 @@ const Navbar = () => {
                           onClick={() => {
                             setIsMenuOpen(false);
                             setShowDropdown(false);
-                            if (service.title === "SAP S/4 or SAP BTP") {
-                              navigate('/sap-service');
-                              window.scrollTo({ top: 0, behavior: 'smooth' });
-                            } else {
-                              handleNavClick('services2-section', 'services');
-                            }
+                            const slug = getCategorySlug(service.title);
+                            navigate(`/service-details/${slug}`);
+                            window.scrollTo({ top: 0, behavior: 'smooth' });
                           }}
                         >
                           {service.title}
@@ -311,21 +463,9 @@ const Navbar = () => {
 
                   {/* Right Column: Active Tab Content Panel */}
                   <div className="mega-dropdown-right">
-                    <div 
-                      className="mega-right-header"
-                      onClick={() => {
-                        setIsMenuOpen(false);
-                        setShowDropdown(false);
-                        if (dropdownServices[activeTab].title === "SAP S/4 or SAP BTP") {
-                          navigate('/sap-service');
-                          window.scrollTo({ top: 0, behavior: 'smooth' });
-                        } else {
-                          handleNavClick('services2-section', 'services');
-                        }
-                      }}
-                    >
+                    <div className="mega-right-header">
                       <h4 className="mega-right-title">
-                        {dropdownServices[activeTab].title} <span className="arrow-link">&rarr;</span>
+                        {dropdownServices[activeTab].title}
                       </h4>
                       <p className="mega-right-subtitle">
                         {dropdownServices[activeTab].description}
@@ -342,162 +482,16 @@ const Navbar = () => {
                             onClick={() => {
                               setIsMenuOpen(false);
                               setShowDropdown(false);
-                              if (subItem === "AI Consulting") {
-                                navigate('/solutions/ai_consulting');
-                              } else if (subItem === "SAP AI Services") {
-                                navigate('/solutions/sap_ai_services');
-                              } else if (subItem === "AI Solutions Implementation") {
-                                navigate('/solutions/ai_solutions_implementation');
-                              } else if (subItem === "SAP Business AI") {
-                                navigate('/solutions/sap_business_ai');
-                              } else if (subItem === "AI App Development") {
-                                navigate('/solutions/ai_app_development');
-                              } else if (subItem === "SAP Joule") {
-                                navigate('/solutions/sap_joule');
-                              } else if (subItem === "AI Agent Development") {
-                                navigate('/solutions/ai_agent_development');
-                              } else if (subItem === "SAP Joule Studio") {
-                                navigate('/solutions/sap_joule_studio');
-                              } else if (subItem === "Generative AI") {
-                                navigate('/solutions/generative_ai');
-                              } else if (subItem === "AI Assistant Development") {
-                                navigate('/solutions/ai_assistant_development');
-                              } else if (subItem === "iOS App Development") {
-                                navigate('/solutions/ios_app_development');
-                              } else if (subItem === "Android App Development") {
-                                navigate('/solutions/android_app_development');
-                              } else if (subItem === "React Native App Development") {
-                                navigate('/solutions/react_native_app_development');
-                              } else if (subItem === "Flutter App Development") {
-                                navigate('/solutions/flutter_app_development');
-                              } else if (subItem === "Cloud Consulting") {
-                                navigate('/solutions/cloud_consulting');
-                              } else if (subItem === "Cloud Migration & Modernization") {
-                                navigate('/solutions/cloud_migration_modernization');
-                              } else if (subItem === "Managed Cloud Operations") {
-                                navigate('/solutions/managed_cloud_operations');
-                              } else if (subItem === "Cloud Optimization") {
-                                navigate('/solutions/cloud_optimization');
-                              } else if (subItem === "Platform Engineering & Automation") {
-                                navigate('/solutions/platform_engineering_automation');
-                              } else if (subItem === "Customer Service Automation") {
-                                navigate('/solutions/customer_service_automation');
-                              } else if (subItem === "Finance & Accounting Automation") {
-                                navigate('/solutions/finance_accounting_automation');
-                              } else if (subItem === "Human Resources Automation") {
-                                navigate('/solutions/human_resources_automation');
-                              } else if (subItem === "Information Technology (IT) Automation") {
-                                navigate('/solutions/it_automation');
-                              } else if (subItem === "Service Operations Automation") {
-                                navigate('/solutions/service_operations_automation');
-                              } else if (subItem === "Shared Services & Operations Automation") {
-                                navigate('/solutions/shared_services_operations_automation');
-                              } else if (subItem === "AI & ML Corporate") {
-                                navigate('/solutions/ai_ml_corporate');
-                              } else if (subItem === "Project & Process Management") {
-                                navigate('/solutions/project_process_management');
-                              } else if (subItem === "Data Science & Analytics Corporate") {
-                                navigate('/solutions/data_science_analytics_corporate');
-                              } else if (subItem === "Cloud & DevOps Corporate") {
-                                navigate('/solutions/cloud_devops_corporate');
-                              } else if (subItem === "Cybersecurity Corporate") {
-                                navigate('/solutions/cybersecurity_corporate');
-                              } else if (subItem === "Software Development Corporate") {
-                                navigate('/solutions/software_development_corporate');
-                              } else if (subItem === "Digital Business Corporate") {
-                                navigate('/solutions/digital_business_corporate');
-                              } else if (subItem === "Agentic AI Applied Program") {
-                                navigate('/solutions/agentic_ai_applied_program');
-                              } else if (subItem === "Digital Communication and GenAI Tools") {
-                                navigate('/solutions/digital_communication_genai_tools');
-                              } else if (subItem === "Front-end Dev with React & GenAI Advanced Program") {
-                                navigate('/solutions/frontend_dev_react_genai');
-                              } else if (subItem === "Full-Stack Development with GenAI Honours Program") {
-                                navigate('/solutions/fullstack_dev_genai');
-                              } else if (subItem === "Java Development Certificate Program") {
-                                navigate('/solutions/java_dev_certificate');
-                              } else if (subItem === "Java: Object-Oriented Programming") {
-                                navigate('/solutions/java_oop');
-                              } else if (subItem === "Programming using Python") {
-                                navigate('/solutions/programming_python');
-                              } else if (subItem === "SQL Essentials with GenAI") {
-                                navigate('/solutions/sql_essentials_genai');
-                              } else if (subItem === "PGP in Machine Learning & Artificial Intelligence") {
-                                navigate('/solutions/pgp_ml_ai');
-                              } else if (subItem === "Data Analytics Using Python and SQL Certificate Program") {
-                                navigate('/solutions/data_analytics_python_sql');
-                              } else if (subItem === "Managing and Querying Database") {
-                                navigate('/solutions/managing_querying_database');
-                              } else if (subItem === "Cybersecurity with GenAI Advanced Program") {
-                                navigate('/solutions/cybersecurity_genai');
-                              } else if (subItem === "IT SysAdmin & Cloud Computing Advanced Program") {
-                                navigate('/solutions/it_sysadmin_cloud');
-                              } else if (subItem === "SAP BTP Internship") {
-                                navigate('/solutions/sap_btp_internship');
-                              } else if (subItem === "Code Assessment") {
-                                navigate('/solutions/code');
-                              } else if (subItem === "DATA ASSESSMENT" || subItem === "Data Assessment") {
-                                navigate('/solutions/data');
-                              } else if (subItem === "Integration Assessment") {
-                                navigate('/solutions/integration');
-                              } else if (subItem === "Analytics Assessment") {
-                                navigate('/solutions/analytics');
-                              } else if (subItem === "Planning  Assessment") {
-                                navigate('/solutions/planning');
-                              } else if (subItem === "S/4HANA Migration Services") {
-                                navigate('/solutions/s4hana');
-                              } else if (subItem === "Business Data Cloud") {
-                                navigate('/solutions/datacloud');
-                              } else if (subItem === "PIPO to Integration Suite") {
-                                navigate('/solutions/pipo');
-                              } else if (subItem === "Clean Core") {
-                                navigate('/solutions/cleancore_main');
-                              } else if (subItem === "SAP S/4HANA") {
-                                navigate('/solutions/s4hana_main');
-                              } else if (subItem === "SAP Analytics Cloud") {
-                                navigate('/solutions/sac_main');
-                              } else if (subItem === "Line of Business Enhancements on SAP BTP") {
-                                navigate('/solutions/lob_btp');
-                              } else if (subItem === "Application  Managed Services") {
-                                 navigate('/solutions/ams');
-                               } else if (subItem === "Infrastructure Services") {
-                                 navigate('/solutions/infrastructure');
-                               } else if (subItem === "SAP Applicationn Security") {
-                                 navigate('/solutions/sap_application_security');
-                               } else if (subItem === "SAP Security & Controls Monitoring") {
-                                 navigate('/solutions/sap_security_controls_monitoring');
-                               } else if (subItem === "AI Security") { navigate('/solutions/ai_security');
-                              } else if (subItem === "Exposure Management") { navigate('/solutions/exposure_management');
-                              } else if (subItem === "Unified Vulnerability Management") { navigate('/solutions/uvm');
-                              } else if (subItem === "Attack Surface Management (ASM)") { navigate('/solutions/asm');
-                              } else if (subItem === "Cloud Security Posture Management (CSPM)") { navigate('/solutions/cspm');
-                              } else if (subItem === "Data Security Posture Management (DSPM)") { navigate('/solutions/dspm');
-                              } else if (subItem === "Infrastructure Entitlements Management (CIEM)") { navigate('/solutions/ciem');
-                              } else if (subItem === "Wiz Cloud Compliance") { navigate('/solutions/wiz_compliance');
-                              } else if (subItem === "Infrastructure-as-Code Scanning") { navigate('/solutions/iac_scanning');
-                              } else if (subItem === "Supply Chain Security (SCA and SBOM)") { navigate('/solutions/sca_sbom');
-                              } else if (subItem === "WizOS: Secured Container Images") { navigate('/solutions/wiz_os');
-                              } else if (subItem === "Application Security Posture Management (ASPM)") { navigate('/solutions/aspm');
-                              } else if (subItem === "Static Application Security Testing (SAST)") { navigate('/solutions/sast');
-                              } else if (subItem === "Workload Protection Platform (CWPP)") { navigate('/solutions/cwpp');
-                              } else if (subItem === "Container & Kubernetes security") { navigate('/solutions/k8s_security');
-                              } else if (subItem === "Cloud Detection & Response (CDR)") { navigate('/solutions/cdr');
-                              } else if (subItem === "Cloud Cost") { navigate('/solutions/cloud_cost');
-                              } else if (subItem === "Wiz Sensor: Runtime Protection") { navigate('/solutions/wiz_sensor');
-                              } else if (subItem === "SOC 2") { navigate('/solutions/soc2');
-                              } else if (subItem === "ISO 27001") { navigate('/solutions/iso27001');
-                              } else if (subItem === "HIPAA") { navigate('/solutions/hipaa');
-                              } else if (subItem === "GDPR") { navigate('/solutions/gdpr');
-                              } else if (subItem === "FedRAMP") { navigate('/solutions/fedramp');
-                              } else if (subItem === "CMMC") { navigate('/solutions/cmmc');
-                              } else if (subItem === "ISO 42001") { navigate('/solutions/iso42001');
-                              } else if (subItem === "PCI DSS") { navigate('/solutions/pci_dss');
-                              } else if (subItem === "HITRUST") { navigate('/solutions/hitrust');
-                              } else if (subItem === "NIST AI RMF") { navigate('/solutions/nist_ai_rmf');
-                              } else if (subItem === "DORA") { navigate('/solutions/dora');
-                              } else if (subItem === "Custom Frameworks") { navigate('/solutions/custom_frameworks');
-                              } else if (subItem === "Audit Services") { navigate('/solutions/audit_services');
-                              } else { navigate('/sap-service'); }
+                              
+                              const categoryTitle = dropdownServices[activeTab].title;
+                              const categorySlug = getCategorySlug(categoryTitle);
+                              const solutionKey = getSubItemSolutionKey(subItem);
+                              
+                              if (solutionKey) {
+                                navigate(`/services/${categorySlug}/${solutionKey}`);
+                              } else {
+                                navigate('/sap-service');
+                              }
                               window.scrollTo({ top: 0, behavior: 'smooth' });
                             }}
                           >
@@ -535,6 +529,7 @@ const Navbar = () => {
                 onClick={() => {
                   setIsMenuOpen(false);
                   setActiveItem('contact');
+                  window.scrollTo({ top: 0, behavior: 'smooth' });
                 }}
                 className={`nav-link ${activeItem === 'contact' ? 'active' : ''}`}
               >

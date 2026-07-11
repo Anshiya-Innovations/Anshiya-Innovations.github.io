@@ -321,6 +321,9 @@
   .service-details-hero .hero-title {
     font-size: 36px;
   }
+  .service-subitems-grid {
+    grid-template-columns: 1fr;
+  }
   .service-details-cta {
     padding: 40px 20px;
   }

@@ -102,6 +102,7 @@
 
 .about-mv-container {
   gap: 32px;
+  align-items: stretch;
 }
 
 .about-mv-card {
@@ -114,6 +115,7 @@
   align-items: flex-start;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.01);
+  height: 100%;
 }
 
 .about-mv-card:hover {
@@ -652,7 +654,7 @@
     font-size: 2rem;
   }
 
-  .empower-row-bottom, .row-5-cols, .row-4-cols {
+  .empower-row-bottom, .row-5-cols, .row-4-cols, .empower-row-top {
     grid-template-columns: 1fr;
   }
 

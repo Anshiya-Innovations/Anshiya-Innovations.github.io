@@ -16,7 +16,7 @@ const Projects = () => {
             <span className="section-subtitle-left">OUR PORTFOLIO</span>
             <h2 className="projects-title">Explore Our Latest Projects</h2>
           </div>
-          <button className="btn-primary view-all-btn">View More Projects</button>
+          {/* <button className="btn-primary view-all-btn">View More Projects</button> */}
         </div>
 
         {/* Projects Grid Layout */}

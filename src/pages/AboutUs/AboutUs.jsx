@@ -1,8 +1,8 @@
 import React, { useEffect } from 'react';
 import aboutMeeting from '../../assets/uploaded-about-meeting.png';
 import CTA from '../../components/CTA/CTA';
-import aboutMissionIcon from '../../assets/about-mission-icon.png';
-import aboutVisionIcon from '../../assets/about-vision-icon.png';
+import aboutMissionRocket from '../../assets/about-mission-rocket.png';
+import aboutVisionEye from '../../assets/about-vision-eye.png';
 
 // Import core services icons
 import iconAi from '../../assets/service-icon-ai.png';
@@ -174,7 +174,7 @@ const AboutUs = () => {
         <div className="container grid-2 about-mv-container">
           <div className="about-mv-card">
             <div className="about-mv-icon-box">
-              <img src={aboutVisionIcon} alt="Our Mission Icon" className="about-mv-icon" />
+              <img src={aboutMissionRocket} alt="Our Mission Icon" className="about-mv-icon" />
             </div>
             <h3 className="about-mv-title">Our Mission</h3>
             <p className="about-mv-text">
@@ -183,7 +183,7 @@ const AboutUs = () => {
           </div>
           <div className="about-mv-card">
             <div className="about-mv-icon-box">
-              <img src={aboutMissionIcon } alt="Our Vision Icon" className="about-mv-icon" />
+              <img src={aboutVisionEye} alt="Our Vision Icon" className="about-mv-icon" />
             </div>
             <h3 className="about-mv-title">Our Vision</h3>
             <p className="about-mv-text">

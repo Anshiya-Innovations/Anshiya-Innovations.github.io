@@ -67,7 +67,7 @@ const Footer = () => {
             <a href="https://www.instagram.com/anshiyainnovations/?__pwa=1#" target="_blank" rel="noopener noreferrer" className="footer-social-link">
               <img src={iconYoutube} alt="YouTube Icon" className="footer-social-icon insta" />
             </a>
-            <a href="https://studio.youtube.com/channel/UCS-f2mO98vy7Q7OkFU4nGOg?c=UCS-f2mO98vy7Q7OkFU4nGOg#:~:text=Channel-,Anshiya%20Innovations,-Dashboard" target="_blank" rel="noopener noreferrer" className="footer-social-link">
+            <a href="https://youtube.com/@anshiyainnovations?si=7p6KQh7JljZCy4zA" target="_blank" rel="noopener noreferrer" className="footer-social-link">
               <img src={iconInstagram} alt="Instagram Icon" className="footer-social-icon " />
             </a>
           </div>

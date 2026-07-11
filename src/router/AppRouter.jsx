@@ -21,6 +21,8 @@ const AppRouter = () => {
           <Route path="contact" element={<Contact />} />
           <Route path="solutions/:type" element={<Solutions />} />
           <Route path="solutions" element={<Solutions />} />
+          <Route path="services/:category/:type" element={<Solutions />} />
+          <Route path="services/:type" element={<Solutions />} />
           <Route path="sap-service" element={<SapService />} />
           <Route path="industries" element={<Industries />} />
           <Route path="about-us" element={<AboutUs />} />

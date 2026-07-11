@@ -161,109 +161,110 @@ const dropdownServices = [
   }
 ];
 
-const getSubItemRoute = (subItem) => {
+const getSubItemRoute = (subItem, categorySlug = "general") => {
   const item = subItem.trim();
-  if (item === "AI Consulting") return "/solutions/ai_consulting";
-  if (item === "SAP AI Services") return "/solutions/sap_ai_services";
-  if (item === "AI Solutions Implementation") return "/solutions/ai_solutions_implementation";
-  if (item === "SAP Business AI") return "/solutions/sap_business_ai";
-  if (item === "AI App Development") return "/solutions/ai_app_development";
-  if (item === "SAP Joule") return "/solutions/sap_joule";
-  if (item === "AI Agent Development") return "/solutions/ai_agent_development";
-  if (item === "SAP Joule Studio") return "/solutions/sap_joule_studio";
-  if (item === "Generative AI") return "/solutions/generative_ai";
-  if (item === "AI Assistant Development") return "/solutions/ai_assistant_development";
+  const prefix = `/services/${categorySlug}/`;
+  if (item === "AI Consulting") return `${prefix}ai_consulting`;
+  if (item === "SAP AI Services") return `${prefix}sap_ai_services`;
+  if (item === "AI Solutions Implementation") return `${prefix}ai_solutions_implementation`;
+  if (item === "SAP Business AI") return `${prefix}sap_business_ai`;
+  if (item === "AI App Development") return `${prefix}ai_app_development`;
+  if (item === "SAP Joule") return `${prefix}sap_joule`;
+  if (item === "AI Agent Development") return `${prefix}ai_agent_development`;
+  if (item === "SAP Joule Studio") return `${prefix}sap_joule_studio`;
+  if (item === "Generative AI") return `${prefix}generative_ai`;
+  if (item === "AI Assistant Development") return `${prefix}ai_assistant_development`;
 
-  if (item === "Code Assessment") return "/solutions/code";
-  if (item === "DATA ASSESSMENT" || item === "Data Assessment") return "/solutions/data";
-  if (item === "Integration Assessment") return "/solutions/integration";
-  if (item === "Analytics Assessment") return "/solutions/analytics";
-  if (item === "Planning  Assessment") return "/solutions/planning";
-  if (item === "S/4HANA Migration Services") return "/solutions/s4hana";
-  if (item === "Business Data Cloud") return "/solutions/datacloud";
-  if (item === "PIPO to Integration Suite") return "/solutions/pipo";
-  if (item === "Clean Core") return "/solutions/cleancore_main";
-  if (item === "SAP S/4HANA") return "/solutions/s4hana_main";
-  if (item === "SAP Analytics Cloud") return "/solutions/sac_main";
-  if (item === "Line of Business Enhancements on SAP BTP") return "/solutions/lob_btp";
-  if (item === "Application  Managed Services") return "/solutions/ams";
-  if (item === "Infrastructure Services") return "/solutions/infrastructure";
-  if (item === "SAP Applicationn Security") return "/solutions/sap_application_security";
-  if (item === "SAP Security & Controls Monitoring") return "/solutions/sap_security_controls_monitoring";
+  if (item === "Code Assessment") return `${prefix}code`;
+  if (item === "DATA ASSESSMENT" || item === "Data Assessment") return `${prefix}data`;
+  if (item === "Integration Assessment") return `${prefix}integration`;
+  if (item === "Analytics Assessment") return `${prefix}analytics`;
+  if (item === "Planning  Assessment") return `${prefix}planning`;
+  if (item === "S/4HANA Migration Services") return `${prefix}s4hana`;
+  if (item === "Business Data Cloud") return `${prefix}datacloud`;
+  if (item === "PIPO to Integration Suite") return `${prefix}pipo`;
+  if (item === "Clean Core") return `${prefix}cleancore_main`;
+  if (item === "SAP S/4HANA") return `${prefix}s4hana_main`;
+  if (item === "SAP Analytics Cloud") return `${prefix}sac_main`;
+  if (item === "Line of Business Enhancements on SAP BTP") return `${prefix}lob_btp`;
+  if (item === "Application  Managed Services") return `${prefix}ams`;
+  if (item === "Infrastructure Services") return `${prefix}infrastructure`;
+  if (item === "SAP Applicationn Security") return `${prefix}sap_application_security`;
+  if (item === "SAP Security & Controls Monitoring") return `${prefix}sap_security_controls_monitoring`;
 
-  if (item === "AI Security") return "/solutions/ai_security";
-  if (item === "Exposure Management") return "/solutions/exposure_management";
-  if (item === "Unified Vulnerability Management") return "/solutions/uvm";
-  if (item === "Attack Surface Management (ASM)") return "/solutions/asm";
-  if (item === "Cloud Security Posture Management (CSPM)") return "/solutions/cspm";
-  if (item === "Data Security Posture Management (DSPM)") return "/solutions/dspm";
-  if (item === "Infrastructure Entitlements Management (CIEM)") return "/solutions/ciem";
-  if (item === "Cloud Compliance" || item === "Wiz Cloud Compliance") return "/solutions/wiz_compliance";
-  if (item === "Infrastructure-as-Code Scanning") return "/solutions/iac_scanning";
-  if (item === "Supply Chain Security (SCA and SBOM)") return "/solutions/sca_sbom";
-  if (item === "Secured Container Images" || item === "WizOS: Secured Container Images") return "/solutions/wiz_os";
-  if (item === "Application Security Posture Management (ASPM)") return "/solutions/aspm";
-  if (item === "Static Application Security Testing (SAST)") return "/solutions/sast";
-  if (item === "Workload Protection Platform (CWPP)") return "/solutions/cwpp";
-  if (item === "Container & Kubernetes security") return "/solutions/k8s_security";
-  if (item === "Cloud Detection & Response (CDR)") return "/solutions/cdr";
-  if (item === "Cloud Cost") return "/solutions/cloud_cost";
-  if (item === "Sensor: Runtime Protection" || item === "Wiz Sensor: Runtime Protection") return "/solutions/wiz_sensor";
+  if (item === "AI Security") return `${prefix}ai_security`;
+  if (item === "Exposure Management") return `${prefix}exposure_management`;
+  if (item === "Unified Vulnerability Management") return `${prefix}uvm`;
+  if (item === "Attack Surface Management (ASM)") return `${prefix}asm`;
+  if (item === "Cloud Security Posture Management (CSPM)") return `${prefix}cspm`;
+  if (item === "Data Security Posture Management (DSPM)") return `${prefix}dspm`;
+  if (item === "Infrastructure Entitlements Management (CIEM)") return `${prefix}ciem`;
+  if (item === "Cloud Compliance" || item === "Wiz Cloud Compliance") return `${prefix}wiz_compliance`;
+  if (item === "Infrastructure-as-Code Scanning") return `${prefix}iac_scanning`;
+  if (item === "Supply Chain Security (SCA and SBOM)") return `${prefix}sca_sbom`;
+  if (item === "Secured Container Images" || item === "WizOS: Secured Container Images") return `${prefix}wiz_os`;
+  if (item === "Application Security Posture Management (ASPM)") return `${prefix}aspm`;
+  if (item === "Static Application Security Testing (SAST)") return `${prefix}sast`;
+  if (item === "Workload Protection Platform (CWPP)") return `${prefix}cwpp`;
+  if (item === "Container & Kubernetes security") return `${prefix}k8s_security`;
+  if (item === "Cloud Detection & Response (CDR)") return `${prefix}cdr`;
+  if (item === "Cloud Cost") return `${prefix}cloud_cost`;
+  if (item === "Sensor: Runtime Protection" || item === "Wiz Sensor: Runtime Protection") return `${prefix}wiz_sensor`;
 
-  if (item === "SOC 2") return "/solutions/soc2";
-  if (item === "ISO 27001") return "/solutions/iso27001";
-  if (item === "HIPAA") return "/solutions/hipaa";
-  if (item === "GDPR") return "/solutions/gdpr";
-  if (item === "FedRAMP") return "/solutions/fedramp";
-  if (item === "CMMC") return "/solutions/cmmc";
-  if (item === "ISO 42001") return "/solutions/iso42001";
-  if (item === "PCI DSS") return "/solutions/pci_dss";
-  if (item === "HITRUST") return "/solutions/hitrust";
-  if (item === "NIST AI RMF") return "/solutions/nist_ai_rmf";
-  if (item === "DORA") return "/solutions/dora";
-  if (item === "Custom Frameworks") return "/solutions/custom_frameworks";
-  if (item === "Audit Services") return "/solutions/audit_services";
+  if (item === "SOC 2") return `${prefix}soc2`;
+  if (item === "ISO 27001") return `${prefix}iso27001`;
+  if (item === "HIPAA") return `${prefix}hipaa`;
+  if (item === "GDPR") return `${prefix}gdpr`;
+  if (item === "FedRAMP") return `${prefix}fedramp`;
+  if (item === "CMMC") return `${prefix}cmmc`;
+  if (item === "ISO 42001") return `${prefix}iso42001`;
+  if (item === "PCI DSS") return `${prefix}pci_dss`;
+  if (item === "HITRUST") return `${prefix}hitrust`;
+  if (item === "NIST AI RMF") return `${prefix}nist_ai_rmf`;
+  if (item === "DORA") return `${prefix}dora`;
+  if (item === "Custom Frameworks") return `${prefix}custom_frameworks`;
+  if (item === "Audit Services") return `${prefix}audit_services`;
 
-  if (item === "Customer Service Automation") return "/solutions/customer_service_automation";
-  if (item === "Finance & Accounting Automation") return "/solutions/finance_accounting_automation";
-  if (item === "Human Resources Automation") return "/solutions/human_resources_automation";
-  if (item === "Information Technology (IT) Automation") return "/solutions/it_automation";
-  if (item === "Service Operations Automation") return "/solutions/service_operations_automation";
-  if (item === "Shared Services & Operations Automation") return "/solutions/shared_services_operations_automation";
+  if (item === "Customer Service Automation") return `${prefix}customer_service_automation`;
+  if (item === "Finance & Accounting Automation") return `${prefix}finance_accounting_automation`;
+  if (item === "Human Resources Automation") return `${prefix}human_resources_automation`;
+  if (item === "Information Technology (IT) Automation") return `${prefix}it_automation`;
+  if (item === "Service Operations Automation") return `${prefix}service_operations_automation`;
+  if (item === "Shared Services & Operations Automation") return `${prefix}shared_services_operations_automation`;
 
-  if (item === "Cloud Consulting") return "/solutions/cloud_consulting";
-  if (item === "Cloud Migration & Modernization") return "/solutions/cloud_migration_modernization";
-  if (item === "Managed Cloud Operations") return "/solutions/managed_cloud_operations";
-  if (item === "Cloud Optimization") return "/solutions/cloud_optimization";
-  if (item === "Platform Engineering & Automation") return "/solutions/platform_engineering_automation";
+  if (item === "Cloud Consulting") return `${prefix}cloud_consulting`;
+  if (item === "Cloud Migration & Modernization") return `${prefix}cloud_migration_modernization`;
+  if (item === "Managed Cloud Operations") return `${prefix}managed_cloud_operations`;
+  if (item === "Cloud Optimization") return `${prefix}cloud_optimization`;
+  if (item === "Platform Engineering & Automation") return `${prefix}platform_engineering_automation`;
 
-  if (item === "AI & ML Corporate") return "/solutions/ai_ml_corporate";
-  if (item === "Project & Process Management") return "/solutions/project_process_management";
-  if (item === "Data Science & Analytics Corporate") return "/solutions/data_science_analytics_corporate";
-  if (item === "Cloud & DevOps Corporate") return "/solutions/cloud_devops_corporate";
-  if (item === "Cybersecurity Corporate") return "/solutions/cybersecurity_corporate";
-  if (item === "Software Development Corporate") return "/solutions/software_development_corporate";
-  if (item === "Digital Business Corporate") return "/solutions/digital_business_corporate";
+  if (item === "AI & ML Corporate") return `${prefix}ai_ml_corporate`;
+  if (item === "Project & Process Management") return `${prefix}project_process_management`;
+  if (item === "Data Science & Analytics Corporate") return `${prefix}data_science_analytics_corporate`;
+  if (item === "Cloud & DevOps Corporate") return `${prefix}cloud_devops_corporate`;
+  if (item === "Cybersecurity Corporate") return `${prefix}cybersecurity_corporate`;
+  if (item === "Software Development Corporate") return `${prefix}software_development_corporate`;
+  if (item === "Digital Business Corporate") return `${prefix}digital_business_corporate`;
 
-  if (item === "Agentic AI Applied Program") return "/solutions/agentic_ai_applied_program";
-  if (item === "Digital Communication and GenAI Tools") return "/solutions/digital_communication_genai_tools";
-  if (item === "Front-end Dev with React & GenAI Advanced Program") return "/solutions/frontend_dev_react_genai";
-  if (item === "Full-Stack Development with GenAI Honours Program") return "/solutions/fullstack_dev_genai";
-  if (item === "Java Development Certificate Program") return "/solutions/java_dev_certificate";
-  if (item === "Java: Object-Oriented Programming") return "/solutions/java_oop";
-  if (item === "Programming using Python") return "/solutions/programming_python";
-  if (item === "SQL Essentials with GenAI") return "/solutions/sql_essentials_genai";
-  if (item === "PGP in Machine Learning & Artificial Intelligence") return "/solutions/pgp_ml_ai";
-  if (item === "Data Analytics Using Python and SQL Certificate Program") return "/solutions/data_analytics_python_sql";
-  if (item === "Managing and Querying Database") return "/solutions/managing_querying_database";
-  if (item === "Cybersecurity with GenAI Advanced Program") return "/solutions/cybersecurity_genai";
-  if (item === "IT SysAdmin & Cloud Computing Advanced Program") return "/solutions/it_sysadmin_cloud";
-  if (item === "SAP BTP Internship") return "/solutions/sap_btp_internship";
+  if (item === "Agentic AI Applied Program") return `${prefix}agentic_ai_applied_program`;
+  if (item === "Digital Communication and GenAI Tools") return `${prefix}digital_communication_genai_tools`;
+  if (item === "Front-end Dev with React & GenAI Advanced Program") return `${prefix}frontend_dev_react_genai`;
+  if (item === "Full-Stack Development with GenAI Honours Program") return `${prefix}fullstack_dev_genai`;
+  if (item === "Java Development Certificate Program") return `${prefix}java_dev_certificate`;
+  if (item === "Java: Object-Oriented Programming") return `${prefix}java_oop`;
+  if (item === "Programming using Python") return `${prefix}programming_python`;
+  if (item === "SQL Essentials with GenAI") return `${prefix}sql_essentials_genai`;
+  if (item === "PGP in Machine Learning & Artificial Intelligence") return `${prefix}pgp_ml_ai`;
+  if (item === "Data Analytics Using Python and SQL Certificate Program") return `${prefix}data_analytics_python_sql`;
+  if (item === "Managing and Querying Database") return `${prefix}managing_querying_database`;
+  if (item === "Cybersecurity with GenAI Advanced Program") return `${prefix}cybersecurity_genai`;
+  if (item === "IT SysAdmin & Cloud Computing Advanced Program") return `${prefix}it_sysadmin_cloud`;
+  if (item === "SAP BTP Internship") return `${prefix}sap_btp_internship`;
 
-  if (item === "iOS App Development") return "/solutions/ios_app_development";
-  if (item === "Android App Development") return "/solutions/android_app_development";
-  if (item === "React Native App Development") return "/solutions/react_native_app_development";
-  if (item === "Flutter App Development") return "/solutions/flutter_app_development";
+  if (item === "iOS App Development") return `${prefix}ios_app_development`;
+  if (item === "Android App Development") return `${prefix}android_app_development`;
+  if (item === "React Native App Development") return `${prefix}react_native_app_development`;
+  if (item === "Flutter App Development") return `${prefix}flutter_app_development`;
 
   return "/sap-service";
 };
@@ -304,7 +305,7 @@ const ServiceDetails = () => {
           <h2 className="grid-section-title">Explore Our Offerings</h2>
           <div className="service-subitems-grid">
             {activeService.subItems.map((subItem, idx) => {
-              const route = getSubItemRoute(subItem);
+              const route = getSubItemRoute(subItem, activeService.slug);
               return (
                 <div 
                   key={idx} 
