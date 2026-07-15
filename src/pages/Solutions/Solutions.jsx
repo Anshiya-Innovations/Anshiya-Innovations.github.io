@@ -1,21 +1,22 @@
 import React from 'react';
-import { useNavigate, useLocation } from 'react-router-dom';
-import solutionsDashboard from '../../assets/solutions-dashboard.png';
-import badgeChart from '../../assets/solutions-badge-chart.png';
+import { useNavigate, useLocation, useParams } from 'react-router-dom';
 
-// Import newly copied card assets
-import cardMonitor from '../../assets/solutions-card-monitor.png';
+// Import template asset images
+import solutionsDashboard from '../../assets/template-asset/After the Deal – 5 Strategies to Ensure a Successful Merger.jpg';
+import cardMonitor from '../../assets/template-asset/Trusted E-commerce Experts for Store Growth _ 99 E-commerce Experts.jpg';
+import showcasePie from '../../assets/template-asset/Creating an Effective Customer Support Survey.jpg';
+import showcaseBars from '../../assets/template-asset/Inteligencia multigeneracional_ la clave para liderar equipos diversos.jpg';
+import showcaseThree from '../../assets/template-asset/7 Proven Tips to Get Sales Fast.jpg';
+import showcaseTable from '../../assets/template-asset/The Role of Workplace Policies in Supporting Employees Through Life Events - HousesItWorld.jpg';
+
+// Import icon assets
+import badgeChart from '../../assets/solutions-badge-chart.png';
 import iconDoc from '../../assets/solutions-icon-document.png';
 import iconSpeed from '../../assets/solutions-icon-speed.png';
 import iconBrain from '../../assets/solutions-icon-brain.png';
 import iconChart from '../../assets/solutions-icon-chart.png';
 import badgeSeal from '../../assets/solutions-badge-seal.png';
 import iconBrainNew from '../../assets/solutions-icon-brain-new.png';
-
-// Import Showcase Assets
-import showcasePie from '../../assets/showcase-dashboard-pie.png';
-import showcaseBars from '../../assets/showcase-dashboard-bars.png';
-import showcaseTable from '../../assets/showcase-dashboard-table.png';
 
 import './Solutions.css';
 
@@ -27,10 +28,25 @@ import { contentMap } from './SolutionsData';
 const Solutions = () => {
   const navigate = useNavigate();
   const location = useLocation();
+  const { type: pathType } = useParams();
   const queryParams = new URLSearchParams(location.search);
-  const typeParam = queryParams.get('type');
+  const typeParam = queryParams.get('type') || pathType;
   const type = contentMap[typeParam] ? typeParam : 'code';
-  const activeContent = contentMap[type];
+  
+  // Clone activeContent and ensure it has a cta fallback to prevent crashes
+  const activeContent = contentMap[type] ? { ...contentMap[type] } : null;
+  if (activeContent && !activeContent.cta) {
+    activeContent.cta = {
+      title: "Ready to Secure Your Enterprise Landscape?",
+      subtitle: "Reshape how your organization manages compute scale, automates processes, and optimizes spends. Partner with Anshiya to deploy intelligent solutions today.",
+      primary: "Get Free Consultation",
+      secondary: "Schedule Discovery Session"
+    };
+  }
+
+  React.useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [type]);
 
   const handleScrollToSection = (id) => {
     const element = document.getElementById(id);
@@ -48,9 +64,13 @@ const Solutions = () => {
     }
   };
 
-  const handleAskOurExperts = () => {
-    navigate('/contact');
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+  const handleCtaClick = (buttonText) => {
+    if (buttonText === "Get Free Consultation") {
+      window.open("https://calendly.com/anshiyainnovations/30min", "_blank");
+    } else {
+      navigate('/contact');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
   };
 
   return (
@@ -72,11 +92,17 @@ const Solutions = () => {
               {activeContent.hero.desc}
             </p>
             <div className="solutions-hero-actions">
-              <button onClick={handleAskOurExperts} className="solutions-hero-btn solutions-hero-btn-primary">
-                {activeContent.hero.ctaPrimary} <span className="solutions-arrow">&rarr;</span>
+              <button 
+                onClick={() => window.open('https://calendly.com/anshiyainnovations/30min', '_blank', 'noopener,noreferrer')} 
+                className="solutions-hero-btn solutions-hero-btn-primary"
+              >
+                Get Started <span className="solutions-arrow">&rarr;</span>
               </button>
-              <button onClick={() => handleScrollToSection('insights')} className="solutions-hero-btn solutions-hero-btn-secondary">
-                {activeContent.hero.ctaSecondary}
+              <button 
+                onClick={() => handleScrollToSection('insights')} 
+                className="solutions-hero-btn solutions-hero-btn-secondary"
+              >
+                View Methodology
               </button>
             </div>
           </div>
@@ -206,16 +232,19 @@ const Solutions = () => {
               {activeContent.debt.desc}
             </p>
             <ul className="solutions-debt-features-list">
-              {activeContent.debt.bullets.map((bullet, idx) => (
-                <li key={idx}>
-                  <span className="solutions-check-circle">
-                    <svg className="check-svg" viewBox="0 0 20 20" fill="currentColor">
-                      <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
-                    </svg>
-                  </span>
-                  <span className="debt-feature-text">{bullet}</span>
-                </li>
-              ))}
+              {activeContent.debt.bullets.map((bullet, idx) => {
+                const cleanBullet = bullet.replace(/^\d+[\s\.\-\\]*/, '');
+                return (
+                  <li key={idx}>
+                    <span className="solutions-check-circle">
+                      <svg className="check-svg" viewBox="0 0 20 20" fill="currentColor">
+                        <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                      </svg>
+                    </span>
+                    <span className="debt-feature-text">{cleanBullet}</span>
+                  </li>
+                );
+              })}
             </ul>
           </div>
 
@@ -255,7 +284,13 @@ const Solutions = () => {
                 <div className="solutions-showcase-media">
                   <div className="showcase-image-wrapper">
                     <img 
-                      src={row.img} 
+                      src={
+                        row.img === 'showcasePie' ? showcasePie :
+                        row.img === 'showcaseBars' ? showcaseBars :
+                        row.img === 'solutionsDashboard' ? showcaseThree :
+                        row.img === 'showcaseTable' ? showcaseTable :
+                        row.img
+                      } 
                       alt={row.title} 
                       className="showcase-img"
                     />
@@ -286,11 +321,20 @@ const Solutions = () => {
             {activeContent.cta.subtitle}
           </p>
           <div className="solutions-cta-banner-actions">
-            <button onClick={handleAskOurExperts} className="solutions-cta-btn solutions-cta-btn-primary">
-              {activeContent.cta.primary}
+            <button 
+              onClick={() => window.open('https://calendly.com/anshiyainnovations/30min', '_blank', 'noopener,noreferrer')} 
+              className="solutions-cta-btn solutions-cta-btn-primary"
+            >
+              Talk to Our Experts
             </button>
-            <button onClick={handleAskOurExperts} className="solutions-cta-btn solutions-cta-btn-secondary">
-              {activeContent.cta.secondary}
+            <button 
+              onClick={() => {
+                navigate('/contact');
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+              }} 
+              className="solutions-cta-btn solutions-cta-btn-secondary"
+            >
+              Contact Us Today
             </button>
           </div>
         </div>

@@ -1,0 +1,354 @@
+.service-details-page {
+  position: relative;
+  background: #FFFFFF;
+  color: #111827;
+  padding: 120px 0 80px 0;
+  min-height: 100vh;
+  overflow: hidden;
+}
+
+/* Glowing background effects - adapted for white background */
+.glow-effect {
+  position: absolute;
+  width: 500px;
+  height: 500px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(7, 78, 166, 0.04) 0%, rgba(7, 78, 166, 0) 70%);
+  pointer-events: none;
+  filter: blur(80px);
+  z-index: 1;
+}
+
+.glow-effect.top-left {
+  top: -100px;
+  left: -100px;
+}
+
+.glow-effect.bottom-right {
+  bottom: -100px;
+  right: -100px;
+  background: radial-gradient(circle, rgba(59, 130, 246, 0.03) 0%, rgba(59, 130, 246, 0) 70%);
+}
+
+.service-details-container {
+  position: relative;
+  z-index: 2;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* Breadcrumb styling */
+.service-details-breadcrumb {
+  font-size: 14px;
+  color: rgba(0, 0, 0, 0.4);
+  margin-bottom: 40px;
+}
+
+.service-details-breadcrumb a {
+  color: rgba(0, 0, 0, 0.6);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.service-details-breadcrumb a:hover {
+  color: #074EA6;
+}
+
+.service-details-breadcrumb .active-breadcrumb {
+  color: #074EA6;
+  font-weight: 500;
+}
+
+/* Hero Section */
+.service-details-hero {
+  margin-bottom: 60px;
+  max-width: 800px;
+}
+
+.service-details-hero .hero-badge {
+  display: inline-block;
+  padding: 6px 16px;
+  background: rgba(7, 78, 166, 0.05);
+  border: 1px solid rgba(7, 78, 166, 0.1);
+  border-radius: 30px;
+  color: #074EA6;
+  font-size: 13px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 20px;
+}
+
+.service-details-hero .hero-title {
+  font-size: 48px;
+  font-weight: 800;
+  line-height: 1.2;
+  background: linear-gradient(135deg, #111827 0%, #074EA6 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 20px;
+}
+
+.service-details-hero .hero-description {
+  font-size: 18px;
+  line-height: 1.6;
+  color: #4B5563;
+}
+
+/* Grid Section */
+.service-details-grid-section {
+  margin-bottom: 80px;
+}
+
+.service-details-grid-section .grid-section-title {
+  font-size: 28px;
+  font-weight: 700;
+  color: #111827;
+  margin-bottom: 30px;
+  position: relative;
+  display: inline-block;
+}
+
+.service-details-grid-section .grid-section-title::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -6px;
+  width: 50px;
+  height: 3px;
+  background: #074EA6;
+  border-radius: 2px;
+}
+
+.service-subitems-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 25px;
+}
+
+/* Card glassmorphism & borders */
+.subitem-card {
+  position: relative;
+  background: #FFFFFF;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 16px;
+  padding: 30px;
+  cursor: pointer;
+  overflow: hidden;
+  transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1), box-shadow 0.4s cubic-bezier(0.165, 0.84, 0.44, 1), border-color 0.4s ease;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+}
+
+.subitem-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 40px rgba(7, 78, 166, 0.08);
+  border-color: rgba(7, 78, 166, 0.2);
+}
+
+/* Glowing border effect on hover */
+.card-hover-border {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, #074EA6, #3B82F6);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.subitem-card:hover .card-hover-border {
+  opacity: 1;
+}
+
+.subitem-card-content {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.subitem-icon-wrapper {
+  width: 50px;
+  height: 50px;
+  border-radius: 12px;
+  background: rgba(7, 78, 166, 0.05);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+  color: #074EA6;
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+.subitem-card:hover .subitem-icon-wrapper {
+  background: #074EA6;
+  color: #FFFFFF;
+}
+
+.subitem-icon-img {
+  width: 28px;
+  height: 28px;
+  object-fit: contain;
+  transition: filter 0.3s ease;
+}
+
+.subitem-card:hover .subitem-icon-img {
+  filter: brightness(0) invert(1);
+}
+
+.subitem-icon-text {
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: #074EA6;
+  transition: color 0.3s ease;
+}
+
+.subitem-card:hover .subitem-icon-text {
+  color: #FFFFFF;
+}
+
+.subitem-title {
+  font-size: 20px;
+  font-weight: 600;
+  color: #111827;
+  margin-bottom: 15px;
+  transition: color 0.3s ease;
+}
+
+.subitem-card:hover .subitem-title {
+  color: #074EA6;
+}
+
+.subitem-link {
+  font-size: 14px;
+  font-weight: 600;
+  color: #074EA6;
+  margin-top: auto;
+  transition: color 0.3s ease, transform 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+}
+
+.subitem-card:hover .subitem-link {
+  color: #3B82F6;
+  transform: translateX(4px);
+}
+
+/* Bottom CTA section styling */
+.service-details-cta {
+  background: #074EA6;
+  border: none;
+  border-radius: 24px;
+  padding: 60px;
+  text-align: center;
+}
+
+.service-details-cta .cta-title {
+  font-size: 32px;
+  font-weight: 800;
+  margin-bottom: 15px;
+  color: #FFFFFF;
+}
+
+.service-details-cta .cta-subtitle {
+  font-size: 16px;
+  color: rgba(255, 255, 255, 0.9);
+  max-width: 700px;
+  margin: 0 auto 30px auto;
+  line-height: 1.6;
+}
+
+.cta-actions {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+}
+
+/* Custom button overrides for training page */
+.service-details-page .btn-primary {
+  background-color: #074EA6 !important;
+  color: #FFFFFF !important;
+  border: 1px solid #074EA6 !important;
+}
+
+.service-details-page .btn-primary:hover {
+  background-color: #000FAD !important;
+  border-color: #000FAD !important;
+}
+
+.service-details-page .btn-outline {
+  background-color: transparent !important;
+  color: #074EA6 !important;
+  border: 1px solid #074EA6 !important;
+}
+
+.service-details-page .btn-outline:hover {
+  background-color: rgba(7, 78, 166, 0.05) !important;
+  color: #074EA6 !important;
+}
+
+/* Specific buttons inside CTA section matching the uploaded image */
+.service-details-cta .btn-primary {
+  background-color: #16376A !important;
+  color: #FFFFFF !important;
+  border: 1px solid #16376A !important;
+  padding: 14px 32px !important;
+  font-size: 0.95rem !important;
+  font-weight: 700 !important;
+  border-radius: 8px !important;
+  transition: all 0.3s ease !important;
+  cursor: pointer !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+.service-details-cta .btn-primary:hover {
+  background-color: #0f2445 !important;
+  border-color: #0f2445 !important;
+  transform: translateY(-2px) !important;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2) !important;
+}
+
+.service-details-cta .btn-outline {
+  background-color: transparent !important;
+  color: #FFFFFF !important;
+  border: 2px solid #FFFFFF !important;
+  padding: 14px 32px !important;
+  font-size: 0.95rem !important;
+  font-weight: 700 !important;
+  border-radius: 8px !important;
+  transition: all 0.3s ease !important;
+  cursor: pointer !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+.service-details-cta .btn-outline:hover {
+  background-color: #FFFFFF !important;
+  color: #074EA6 !important;
+  transform: translateY(-2px) !important;
+  box-shadow: 0 4px 15px rgba(255, 255, 255, 0.2) !important;
+}
+
+/* Responsive adjustment */
+@media (max-width: 768px) {
+  .service-details-hero .hero-title {
+    font-size: 36px;
+  }
+  .service-subitems-grid {
+    grid-template-columns: 1fr;
+  }
+  .service-details-cta {
+    padding: 40px 20px;
+  }
+  .service-details-cta .cta-title {
+    font-size: 26px;
+  }
+  .cta-actions {
+    flex-direction: column;
+    gap: 15px;
+  }
+}

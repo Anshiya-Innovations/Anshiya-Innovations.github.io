@@ -7,7 +7,7 @@
 }
 
 .tech-section-subtitle {
-  font-size: 0.85rem;
+  font-size: 0.95rem;
   font-weight: 700;
   text-transform: uppercase;
   color: var(--text-secondary);
@@ -41,7 +41,7 @@
 }
 
 .tech-logo-wrapper {
-  height: 50px;
+  height: 64px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -49,18 +49,18 @@
 }
 
 .tech-logo-img {
-  max-height: 38px;
+  max-height: 48px;
   max-width: 100%;
   object-fit: contain;
 }
 
 /* Specific scaling for the robot svg icon so it matches others */
 .tech-logo-robot {
-  max-height: 34px;
+  max-height: 44px;
 }
 
 .tech-logo-name {
-  font-size: 0.7rem;
+  font-size: 0.82rem;
   font-weight: 800;
   color: #1e293b;
   text-transform: uppercase;

@@ -3,6 +3,128 @@ import { Link, useNavigate, useLocation } from 'react-router-dom';
 import logoImg from '../../assets/logo.png';
 import './Navbar.css';
 
+const getCategorySlug = (title) => {
+  const mapping = {
+    "AI Integration & Automation": "ai-integration-automation",
+    "SAP S/4 or SAP BTP": "sap-btp",
+    "Cyber Security": "cyber-security",
+    "Security Compliance & Audit": "security-compliance-audit",
+    "Business Automations": "business-automations",
+    "Cloud Solutions": "cloud-solutions",
+    "Employee Training Program": "employee-training-program",
+    "Internship for Students": "internship-for-students",
+    "Mobile App Development": "mobile-app-development"
+  };
+  return mapping[title] || "general";
+};
+
+const getSubItemSolutionKey = (subItem) => {
+  const item = subItem.trim();
+  if (item === "AI Consulting") return "ai_consulting";
+  if (item === "SAP AI Services") return "sap_ai_services";
+  if (item === "AI Solutions Implementation") return "ai_solutions_implementation";
+  if (item === "SAP Business AI") return "sap_business_ai";
+  if (item === "AI App Development") return "ai_app_development";
+  if (item === "SAP Joule") return "sap_joule";
+  if (item === "AI Agent Development") return "ai_agent_development";
+  if (item === "SAP Joule Studio") return "sap_joule_studio";
+  if (item === "Generative AI") return "generative_ai";
+  if (item === "AI Assistant Development") return "ai_assistant_development";
+
+  if (item === "Code Assessment") return "code";
+  if (item === "DATA ASSESSMENT" || item === "Data Assessment") return "data";
+  if (item === "Integration Assessment") return "integration";
+  if (item === "Analytics Assessment") return "analytics";
+  if (item === "Planning  Assessment") return "planning";
+  if (item === "S/4HANA Migration Services") return "s4hana";
+  if (item === "Business Data Cloud") return "datacloud";
+  if (item === "PIPO to Integration Suite") return "pipo";
+  if (item === "Clean Core") return "cleancore_main";
+  if (item === "SAP S/4HANA") return "s4hana_main";
+  if (item === "SAP Analytics Cloud") return "sac_main";
+  if (item === "Line of Business Enhancements on SAP BTP") return "lob_btp";
+  if (item === "Application  Managed Services") return "ams";
+  if (item === "Infrastructure Services") return "infrastructure";
+  if (item === "SAP Applicationn Security") return "sap_application_security";
+  if (item === "SAP Security & Controls Monitoring") return "sap_security_controls_monitoring";
+
+  if (item === "AI Security") return "ai_security";
+  if (item === "Exposure Management") return "exposure_management";
+  if (item === "Unified Vulnerability Management") return "uvm";
+  if (item === "Attack Surface Management (ASM)") return "asm";
+  if (item === "Cloud Security Posture Management (CSPM)") return "cspm";
+  if (item === "Data Security Posture Management (DSPM)") return "dspm";
+  if (item === "Infrastructure Entitlements Management (CIEM)") return "ciem";
+  if (item === "Cloud Compliance" || item === "Wiz Cloud Compliance") return "wiz_compliance";
+  if (item === "Infrastructure-as-Code Scanning") return "iac_scanning";
+  if (item === "Supply Chain Security (SCA and SBOM)") return "sca_sbom";
+  if (item === "Secured Container Images" || item === "WizOS: Secured Container Images") return "wiz_os";
+  if (item === "Application Security Posture Management (ASPM)") return "aspm";
+  if (item === "Static Application Security Testing (SAST)") return "sast";
+  if (item === "Workload Protection Platform (CWPP)") return "cwpp";
+  if (item === "Container & Kubernetes security") return "k8s_security";
+  if (item === "Cloud Detection & Response (CDR)") return "cdr";
+  if (item === "Cloud Cost") return "cloud_cost";
+  if (item === "Sensor: Runtime Protection" || item === "Wiz Sensor: Runtime Protection") return "wiz_sensor";
+
+  if (item === "SOC 2") return "soc2";
+  if (item === "ISO 27001") return "iso27001";
+  if (item === "HIPAA") return "hipaa";
+  if (item === "GDPR") return "gdpr";
+  if (item === "FedRAMP") return "fedramp";
+  if (item === "CMMC") return "cmmc";
+  if (item === "ISO 42001") return "iso42001";
+  if (item === "PCI DSS") return "pci_dss";
+  if (item === "HITRUST") return "hitrust";
+  if (item === "NIST AI RMF") return "nist_ai_rmf";
+  if (item === "DORA") return "dora";
+  if (item === "Custom Frameworks") return "custom_frameworks";
+  if (item === "Audit Services") return "audit_services";
+
+  if (item === "Customer Service Automation") return "customer_service_automation";
+  if (item === "Finance & Accounting Automation") return "finance_accounting_automation";
+  if (item === "Human Resources Automation") return "human_resources_automation";
+  if (item === "Information Technology (IT) Automation") return "it_automation";
+  if (item === "Service Operations Automation") return "service_operations_automation";
+  if (item === "Shared Services & Operations Automation") return "shared_services_operations_automation";
+
+  if (item === "Cloud Consulting") return "cloud_consulting";
+  if (item === "Cloud Migration & Modernization") return "cloud_migration_modernization";
+  if (item === "Managed Cloud Operations") return "managed_cloud_operations";
+  if (item === "Cloud Optimization") return "cloud_optimization";
+  if (item === "Platform Engineering & Automation") return "platform_engineering_automation";
+
+  if (item === "AI & ML Corporate") return "ai_ml_corporate";
+  if (item === "Project & Process Management") return "project_process_management";
+  if (item === "Data Science & Analytics Corporate") return "data_science_analytics_corporate";
+  if (item === "Cloud & DevOps Corporate") return "cloud_devops_corporate";
+  if (item === "Cybersecurity Corporate") return "cybersecurity_corporate";
+  if (item === "Software Development Corporate") return "software_development_corporate";
+  if (item === "Digital Business Corporate") return "digital_business_corporate";
+
+  if (item === "Agentic AI Applied Program") return "agentic_ai_applied_program";
+  if (item === "Digital Communication and GenAI Tools") return "digital_communication_genai_tools";
+  if (item === "Front-end Dev with React & GenAI Advanced Program") return "frontend_dev_react_genai";
+  if (item === "Full-Stack Development with GenAI Honours Program") return "fullstack_dev_genai";
+  if (item === "Java Development Certificate Program") return "java_dev_certificate";
+  if (item === "Java: Object-Oriented Programming") return "java_oop";
+  if (item === "Programming using Python") return "programming_python";
+  if (item === "SQL Essentials with GenAI") return "sql_essentials_genai";
+  if (item === "PGP in Machine Learning & Artificial Intelligence") return "pgp_ml_ai";
+  if (item === "Data Analytics Using Python and SQL Certificate Program") return "data_analytics_python_sql";
+  if (item === "Managing and Querying Database") return "managing_querying_database";
+  if (item === "Cybersecurity with GenAI Advanced Program") return "cybersecurity_genai";
+  if (item === "IT SysAdmin & Cloud Computing Advanced Program") return "it_sysadmin_cloud";
+  if (item === "SAP BTP Internship") return "sap_btp_internship";
+
+  if (item === "iOS App Development") return "ios_app_development";
+  if (item === "Android App Development") return "android_app_development";
+  if (item === "React Native App Development") return "react_native_app_development";
+  if (item === "Flutter App Development") return "flutter_app_development";
+
+  return null;
+};
+
 // Import icons for the dropdown mega menu matching Services2
 import iconMonitor from '../../assets/services2/icon-monitor.png';
 import iconLock from '../../assets/services2/icon-lock.png';
@@ -17,6 +139,8 @@ const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const [activeItem, setActiveItem] = useState('home');
+  const [showDropdown, setShowDropdown] = useState(false);
+  const [mobileDropdownOpen, setMobileDropdownOpen] = useState(false);
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -24,10 +148,21 @@ const Navbar = () => {
     {
       title: "AI Integration & Automation",
       description: "Integrate AI to automate workflows and enhance decision-making.",
-      subItems: []
+      subItems: [
+        "AI Consulting",
+        "SAP AI Services",
+        "AI Solutions Implementation",
+        "SAP Business AI",
+        "AI App Development",
+        "SAP Joule",
+        "AI Agent Development",
+        "SAP Joule Studio",
+        "Generative AI",
+        "AI Assistant Development"
+      ]
     },
     {
-      title: "SAP BTP",
+      title: "SAP S/4 or SAP BTP",
       description: "Build, extend, and integrate SAP solutions on the Business Technology Platform.",
       subItems: [
         "Code Assessment",
@@ -43,7 +178,9 @@ const Navbar = () => {
         "SAP Analytics Cloud",
         "Line of Business Enhancements on SAP BTP",
         "Application  Managed Services",
-        "Infrastructure Services"
+        "Infrastructure Services",
+        "SAP Applicationn Security",
+        "SAP Security & Controls Monitoring"
       ]
     },
     {
@@ -57,17 +194,17 @@ const Navbar = () => {
         "Cloud Security Posture Management (CSPM)",
         "Data Security Posture Management (DSPM)",
         "Infrastructure Entitlements Management (CIEM)",
-        "Wiz Cloud Compliance",
+        "Cloud Compliance",
         "Infrastructure-as-Code Scanning",
         "Supply Chain Security (SCA and SBOM)",
-        "WizOS: Secured Container Images",
+        "Secured Container Images",
         "Application Security Posture Management (ASPM)",
         "Static Application Security Testing (SAST)",
         "Workload Protection Platform (CWPP)",
         "Container & Kubernetes security",
         "Cloud Detection & Response (CDR)",
         "Cloud Cost",
-        "Wiz Sensor: Runtime Protection"
+        "Sensor: Runtime Protection"
       ]
     },
     {
@@ -92,27 +229,68 @@ const Navbar = () => {
     {
       title: "Business Automations",
       description: "Automate repetitive tasks and streamline business operations.",
-      subItems: []
+      subItems: [
+        "Customer Service Automation",
+        "Finance & Accounting Automation",
+        "Human Resources Automation",
+        "Information Technology (IT) Automation",
+        "Service Operations Automation",
+        "Shared Services & Operations Automation"
+      ]
     },
     {
       title: "Cloud Solutions",
       description: "Migrate, manage, and scale with secure and reliable cloud services.",
-      subItems: []
+      subItems: [
+        "Cloud Consulting",
+        "Cloud Migration & Modernization",
+        "Managed Cloud Operations",
+        "Cloud Optimization",
+        "Platform Engineering & Automation"
+      ]
     },
     {
       title: "Employee Training Program",
       description: "Upskill your workforce with specialized job-oriented training.",
-      subItems: []
+      subItems: [
+        "AI & ML Corporate",
+        "Project & Process Management",
+        "Data Science & Analytics Corporate",
+        "Cloud & DevOps Corporate",
+        "Cybersecurity Corporate",
+        "Software Development Corporate",
+        "Digital Business Corporate"
+      ]
     },
     {
       title: "Internship for Students",
       description: "Real-world exposure and mentorship for future tech professionals.",
-      subItems: []
+      subItems: [
+        "Agentic AI Applied Program",
+        "Digital Communication and GenAI Tools",
+        "Front-end Dev with React & GenAI Advanced Program",
+        "Full-Stack Development with GenAI Honours Program",
+        "Java Development Certificate Program",
+        "Java: Object-Oriented Programming",
+        "Programming using Python",
+        "SQL Essentials with GenAI",
+        "PGP in Machine Learning & Artificial Intelligence",
+        "Data Analytics Using Python and SQL Certificate Program",
+        "Managing and Querying Database",
+        "Cybersecurity with GenAI Advanced Program",
+        "IT SysAdmin & Cloud Computing Advanced Program",
+        "SAP BTP Internship"
+      ]
     },
     {
       title: "Mobile App Development",
       description: "Build user-friendly and scalable mobile apps for iOS and Android.",
-      subItems: []
+      subItems: [
+        "iOS App Development",
+        "Android App Development",
+        "React Native App Development",
+        "Flutter App Development"
+      ]
     }
   ];
 
@@ -130,6 +308,27 @@ const Navbar = () => {
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
+  useEffect(() => {
+    const path = location.pathname;
+    if (path === '/industries') {
+      setActiveItem('industries');
+    } else if (path === '/contact') {
+      setActiveItem('contact');
+    } else if (path === '/about-us') {
+      setActiveItem('about');
+    } else if (path === '/career') {
+      setActiveItem('career');
+    } else if (path === '/') {
+      if (location.state?.scrollTo === 'services2-section') {
+        setActiveItem('services');
+      } else {
+        setActiveItem('home');
+      }
+    } else {
+      setActiveItem('');
+    }
+  }, [location.pathname, location.state]);
 
   const handleNavClick = (sectionId, itemName) => {
     setIsMenuOpen(false);
@@ -169,7 +368,7 @@ const Navbar = () => {
             setActiveItem('home');
           }}
         >
-          <img src={logoImg} alt="Anshiya Innovations Logo" />
+          <img src={logoImg} alt="Anshiya Innovations Logo" className='navlogo' />
         </Link>
  
         <button className="navbar-toggle" onClick={toggleMenu} aria-label="Toggle Navigation">
@@ -188,23 +387,53 @@ const Navbar = () => {
                 Home
               </button>
             </li>
-            <li className="nav-item">
-              <button 
-                onClick={() => handleNavClick('about', 'about')} 
-                className={`nav-link ${activeItem === 'about' ? 'active' : ''}`}
-              >
-                About Us
-              </button>
-            </li>
             
             {/* Services Mega Menu Trigger Link */}
-            <li className="nav-item has-dropdown">
+            <li 
+              className={`nav-item has-dropdown ${showDropdown ? 'show-dropdown' : ''} ${mobileDropdownOpen ? 'mobile-dropdown-open' : ''}`}
+              onMouseEnter={() => {
+                if (window.innerWidth > 768) setShowDropdown(true);
+              }}
+              onMouseLeave={() => {
+                if (window.innerWidth > 768) setShowDropdown(false);
+              }}
+            >
               <button 
-                onClick={() => handleNavClick('services', 'services')} 
+                onClick={(e) => {
+                  if (window.innerWidth <= 768) {
+                    e.preventDefault();
+                    setMobileDropdownOpen(!mobileDropdownOpen);
+                  } else {
+                    setShowDropdown(false);
+                    handleNavClick('services2-section', 'services');
+                  }
+                }} 
                 className={`nav-link ${activeItem === 'services' ? 'active' : ''}`}
               >
                 Services
               </button>
+              
+              {/* Mobile Services Dropdown (Visible only on mobile/tablet view) */}
+              {mobileDropdownOpen && (
+                <ul className="navbar-mobile-dropdown">
+                  {dropdownServices.map((service, index) => (
+                    <li key={index} className="mobile-dropdown-item">
+                      <button
+                        onClick={() => {
+                          setIsMenuOpen(false);
+                          setMobileDropdownOpen(false);
+                          const slug = getCategorySlug(service.title);
+                          navigate(`/service-details/${slug}`);
+                          window.scrollTo({ top: 0, behavior: 'smooth' });
+                        }}
+                        className="mobile-dropdown-link"
+                      >
+                        {service.title}
+                      </button>
+                    </li>
+                  ))}
+                </ul>
+              )}
               
               {/* Dropdown Mega Menu Panel */}
               <div className="navbar-mega-dropdown">
@@ -219,12 +448,10 @@ const Navbar = () => {
                           onMouseEnter={() => setActiveTab(index)}
                           onClick={() => {
                             setIsMenuOpen(false);
-                            if (service.title === "SAP BTP") {
-                              navigate('/sap-service');
-                              window.scrollTo({ top: 0, behavior: 'smooth' });
-                            } else {
-                              handleNavClick('services', 'services');
-                            }
+                            setShowDropdown(false);
+                            const slug = getCategorySlug(service.title);
+                            navigate(`/service-details/${slug}`);
+                            window.scrollTo({ top: 0, behavior: 'smooth' });
                           }}
                         >
                           {service.title}
@@ -235,20 +462,9 @@ const Navbar = () => {
 
                   {/* Right Column: Active Tab Content Panel */}
                   <div className="mega-dropdown-right">
-                    <div 
-                      className="mega-right-header"
-                      onClick={() => {
-                        setIsMenuOpen(false);
-                        if (dropdownServices[activeTab].title === "SAP BTP") {
-                          navigate('/sap-service');
-                          window.scrollTo({ top: 0, behavior: 'smooth' });
-                        } else {
-                          handleNavClick('services', 'services');
-                        }
-                      }}
-                    >
+                    <div className="mega-right-header">
                       <h4 className="mega-right-title">
-                        {dropdownServices[activeTab].title} <span className="arrow-link">&rarr;</span>
+                        {dropdownServices[activeTab].title}
                       </h4>
                       <p className="mega-right-subtitle">
                         {dropdownServices[activeTab].description}
@@ -264,67 +480,17 @@ const Navbar = () => {
                             className="mega-right-item"
                             onClick={() => {
                               setIsMenuOpen(false);
-                              if (subItem === "Code Assessment") {
-                                navigate('/solutions?type=code');
-                              } else if (subItem === "DATA ASSESSMENT" || subItem === "Data Assessment") {
-                                navigate('/solutions?type=data');
-                              } else if (subItem === "Integration Assessment") {
-                                navigate('/solutions?type=integration');
-                              } else if (subItem === "Analytics Assessment") {
-                                navigate('/solutions?type=analytics');
-                              } else if (subItem === "Planning  Assessment") {
-                                navigate('/solutions?type=planning');
-                              } else if (subItem === "S/4HANA Migration Services") {
-                                navigate('/solutions?type=s4hana');
-                              } else if (subItem === "Business Data Cloud") {
-                                navigate('/solutions?type=datacloud');
-                              } else if (subItem === "PIPO to Integration Suite") {
-                                navigate('/solutions?type=pipo');
-                              } else if (subItem === "Clean Core") {
-                                navigate('/solutions?type=cleancore_main');
-                              } else if (subItem === "SAP S/4HANA") {
-                                navigate('/solutions?type=s4hana_main');
-                              } else if (subItem === "SAP Analytics Cloud") {
-                                navigate('/solutions?type=sac_main');
-                              } else if (subItem === "Line of Business Enhancements on SAP BTP") {
-                                navigate('/solutions?type=lob_btp');
-                              } else if (subItem === "Application  Managed Services") {
-                                navigate('/solutions?type=ams');
-                              } else if (subItem === "Infrastructure Services") {
-                                navigate('/solutions?type=infrastructure');
+                              setShowDropdown(false);
                               
-                              } else if (subItem === "AI Security") { navigate('/solutions?type=ai_security');
-                              } else if (subItem === "Exposure Management") { navigate('/solutions?type=exposure_management');
-                              } else if (subItem === "Unified Vulnerability Management") { navigate('/solutions?type=uvm');
-                              } else if (subItem === "Attack Surface Management (ASM)") { navigate('/solutions?type=asm');
-                              } else if (subItem === "Cloud Security Posture Management (CSPM)") { navigate('/solutions?type=cspm');
-                              } else if (subItem === "Data Security Posture Management (DSPM)") { navigate('/solutions?type=dspm');
-                              } else if (subItem === "Infrastructure Entitlements Management (CIEM)") { navigate('/solutions?type=ciem');
-                              } else if (subItem === "Wiz Cloud Compliance") { navigate('/solutions?type=wiz_compliance');
-                              } else if (subItem === "Infrastructure-as-Code Scanning") { navigate('/solutions?type=iac_scanning');
-                              } else if (subItem === "Supply Chain Security (SCA and SBOM)") { navigate('/solutions?type=sca_sbom');
-                              } else if (subItem === "WizOS: Secured Container Images") { navigate('/solutions?type=wiz_os');
-                              } else if (subItem === "Application Security Posture Management (ASPM)") { navigate('/solutions?type=aspm');
-                              } else if (subItem === "Static Application Security Testing (SAST)") { navigate('/solutions?type=sast');
-                              } else if (subItem === "Workload Protection Platform (CWPP)") { navigate('/solutions?type=cwpp');
-                              } else if (subItem === "Container & Kubernetes security") { navigate('/solutions?type=k8s_security');
-                              } else if (subItem === "Cloud Detection & Response (CDR)") { navigate('/solutions?type=cdr');
-                              } else if (subItem === "Cloud Cost") { navigate('/solutions?type=cloud_cost');
-                              } else if (subItem === "Wiz Sensor: Runtime Protection") { navigate('/solutions?type=wiz_sensor');
-                              } else if (subItem === "SOC 2") { navigate('/solutions?type=soc2');
-                              } else if (subItem === "ISO 27001") { navigate('/solutions?type=iso27001');
-                              } else if (subItem === "HIPAA") { navigate('/solutions?type=hipaa');
-                              } else if (subItem === "GDPR") { navigate('/solutions?type=gdpr');
-                              } else if (subItem === "FedRAMP") { navigate('/solutions?type=fedramp');
-                              } else if (subItem === "CMMC") { navigate('/solutions?type=cmmc');
-                              } else if (subItem === "ISO 42001") { navigate('/solutions?type=iso42001');
-                              } else if (subItem === "PCI DSS") { navigate('/solutions?type=pci_dss');
-                              } else if (subItem === "HITRUST") { navigate('/solutions?type=hitrust');
-                              } else if (subItem === "NIST AI RMF") { navigate('/solutions?type=nist_ai_rmf');
-                              } else if (subItem === "DORA") { navigate('/solutions?type=dora');
-                              } else if (subItem === "Custom Frameworks") { navigate('/solutions?type=custom_frameworks');
-                              } else if (subItem === "Audit Services") { navigate('/solutions?type=audit_services');
-                              } else { navigate('/sap-service'); }
+                              const categoryTitle = dropdownServices[activeTab].title;
+                              const categorySlug = getCategorySlug(categoryTitle);
+                              const solutionKey = getSubItemSolutionKey(subItem);
+                              
+                              if (solutionKey) {
+                                navigate(`/services/${categorySlug}/${solutionKey}`);
+                              } else {
+                                navigate('/sap-service');
+                              }
                               window.scrollTo({ top: 0, behavior: 'smooth' });
                             }}
                           >
@@ -345,12 +511,16 @@ const Navbar = () => {
             </li>
 
             <li className="nav-item">
-              <button 
-                onClick={() => handleNavClick('technologies', 'technologies')} 
-                className={`nav-link ${activeItem === 'technologies' ? 'active' : ''}`}
+              <Link 
+                to="/industries" 
+                onClick={() => {
+                  setIsMenuOpen(false);
+                  setActiveItem('industries');
+                }}
+                className={`nav-link ${activeItem === 'industries' ? 'active' : ''}`}
               >
-                Technologies
-              </button>
+                Industries
+              </Link>
             </li>
             <li className="nav-item">
               <Link 
@@ -358,6 +528,7 @@ const Navbar = () => {
                 onClick={() => {
                   setIsMenuOpen(false);
                   setActiveItem('contact');
+                  window.scrollTo({ top: 0, behavior: 'smooth' });
                 }}
                 className={`nav-link ${activeItem === 'contact' ? 'active' : ''}`}
               >
@@ -366,27 +537,39 @@ const Navbar = () => {
             </li>
             <li className="nav-item">
               <Link 
-                to="/solutions" 
+                to="/career" 
                 onClick={() => {
                   setIsMenuOpen(false);
-                  setActiveItem('solutions');
+                  setActiveItem('career');
                 }}
-                className={`nav-link ${activeItem === 'solutions' ? 'active' : ''}`}
+                className={`nav-link ${activeItem === 'career' ? 'active' : ''}`}
               >
-                Solutions
+                Career
+              </Link>
+            </li>
+            <li className="nav-item">
+              <Link 
+                to="/about-us" 
+                onClick={() => {
+                  setIsMenuOpen(false);
+                  setActiveItem('about');
+                }}
+                className={`nav-link ${activeItem === 'about' ? 'active' : ''}`}
+              >
+                About Us
               </Link>
             </li>
           </ul>
           
           <div className="navbar-cta-mobile">
-            <button onClick={() => handleNavClick('appointment', 'contact')} className="btn-primary">
+            <button onClick={() => window.open('https://calendly.com/anshiyainnovations/30min', '_blank', 'noopener,noreferrer')} className="btn-primary">
               Get Free Consultation
             </button>
           </div>
         </div>
 
         <div className="navbar-cta">
-          <button onClick={() => handleNavClick('appointment', 'contact')} className="btn-primary">
+          <button onClick={() => window.open('https://calendly.com/anshiyainnovations/30min', '_blank', 'noopener,noreferrer')} className="btn-primary">
             Get Free Consultation
           </button>
         </div>

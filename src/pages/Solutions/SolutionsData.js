@@ -1,17 +1,20 @@
 // src/pages/Solutions/SolutionsData.js
-import showcasePie from '../../assets/showcase-dashboard-pie.png';
-import showcaseBars from '../../assets/showcase-dashboard-bars.png';
-import showcaseTable from '../../assets/showcase-dashboard-table.png';
-import solutionsDashboard from '../../assets/solutions-dashboard.png';
+import showcasePie from '../../assets/template-asset/Creating an Effective Customer Support Survey.jpg';
+import showcaseBars from '../../assets/template-asset/Inteligencia multigeneracional_ la clave para liderar equipos diversos.jpg';
+import showcaseTable from '../../assets/template-asset/The Role of Workplace Policies in Supporting Employees Through Life Events - HousesItWorld.jpg';
+import solutionsDashboard from '../../assets/template-asset/7 Proven Tips to Get Sales Fast.jpg';
+
+import { aiContentMap } from './aiContentMap';
 
 export const contentMap = {
+  ...aiContentMap,
   code: {
     hero: {
       badge: "FUTURE-READY ENTERPRISE",
       title1: "SAP Clean Core",
       title2: "Assessment",
       desc: "Evaluate, optimize, and modernize your SAP landscape for sustainable growth. A Clean Core strategy minimizes unnecessary customizations, making SAP systems easier to upgrade, maintain, and extend. Our assessment identifies optimization opportunities and delivers a clear roadmap for a modern, scalable, and future-ready SAP landscape.",
-      ctaPrimary: "Start Assessment",
+      ctaPrimary: "Get Free Consultation",
       ctaSecondary: "View Methodology"
     },
     insights: {
@@ -102,7 +105,7 @@ export const contentMap = {
       title: "Schedule Your SAP Clean Core Assessment",
       subtitle: "Build a Smarter, Simpler, and Future-Ready SAP Landscape. Take the first step toward a more agile, scalable, and upgrade-ready SAP environment. Let our experts help you unlock the full potential of your SAP investment.",
       primary: "Get Started Today",
-      secondary: "Download Brochure"
+      secondary: "Contact support"
     }
   },
   data: {
@@ -1489,7 +1492,7 @@ export const contentMap = {
   wiz_compliance: {
     hero: {
       badge: "CLOUD COMPLIANCE",
-      title1: "Wiz Cloud",
+      title1: "Cloud",
       title2: "Compliance",
       desc: "Stay compliant with global security standards and industry regulations through automated cloud compliance monitoring. Continuously assess, monitor, and improve your compliance posture across multi-cloud environments.",
       ctaPrimary: "Request Consultation",
@@ -1645,7 +1648,7 @@ export const contentMap = {
   wiz_os: {
     hero: {
       badge: "CONTAINER SECURITY",
-      title1: "WizOS: Secured",
+      title1: "Secured",
       title2: "Container Images",
       desc: "Build, deploy, and run containers with confidence. Reduce vulnerabilities, secure container images, and maintain compliance throughout the software development lifecycle.",
       ctaPrimary: "Request Consultation",
@@ -2011,7 +2014,7 @@ export const contentMap = {
   wiz_sensor: {
     hero: {
       badge: "RUNTIME PROTECTION",
-      title1: "Wiz Sensor:",
+      title1: "Sensor:",
       title2: "Runtime Protection",
       desc: "Protect every workload and AI application in real time. Secure your cloud workloads continuously, detect active threats, validate vulnerabilities, and stop attacks before they impact your business.",
       ctaPrimary: "Request Consultation",
@@ -2047,7 +2050,7 @@ export const contentMap = {
       title: "Why Choose Anshiya for Runtime Security?",
       subtitle: "Secure your cloud workloads and AI applications with comprehensive runtime protection solutions.",
       rows: [
-        { img: showcasePie, title: "Cloud Security Experts", desc: "Deploy runtime protection with security specialists experienced in low-level Linux telemetry, kernel instrumentation, and agent operations. We manage Wiz Sensor rollouts across large virtual machine fleets, container engines, and Kubernetes clusters. Our team ensures sensor configurations meet strict performance and security requirements.", badges: ["Experts", "Runtime"] },
+        { img: showcasePie, title: "Cloud Security Experts", desc: "Deploy runtime protection with security specialists experienced in low-level Linux telemetry, kernel instrumentation, and agent operations. We manage runtime sensor rollouts across large virtual machine fleets, container engines, and Kubernetes clusters. Our team ensures sensor configurations meet strict performance and security requirements.", badges: ["Experts", "Runtime"] },
         { img: showcaseBars, title: "Lightweight Deployment", desc: "Implement runtime visibility with minimal performance impact using lightweight, eBPF-based system monitoring. We baseline resource consumption and tune sensor configurations to prevent application latency or cpu-spikes. This ensures your production workloads remain fully protected without compromising operational performance.", badges: ["Lightweight", "Performance"] },
         { img: solutionsDashboard, title: "Threat Hunting & Forensics", desc: "Gather detailed process-execution, network-connection, and file-system event timelines to support proactive threat hunts and investigations. We reconstruct incident histories to determine threat actor access methods, lateral movement, and data exposure details. This forensic intelligence helps harden workloads and meets audit reporting requirements.", badges: ["Forensics", "Hunting"] },
         { img: showcaseTable, title: "Continuous Monitoring", desc: "Maintain runtime security visibility across all workloads with continuous health checks, automated sensor updates, and policy audits. We monitor sensor status to ensure comprehensive protection is maintained as resources scale up and down. This managed runtime protection ensures consistent risk visibility across your entire estate.", badges: ["Monitoring", "Continuous"] }

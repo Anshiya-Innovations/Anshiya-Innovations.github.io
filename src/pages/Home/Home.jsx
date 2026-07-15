@@ -5,6 +5,7 @@ import Clients from '../../components/Clients/Clients';
 import Services from '../../components/Services/Services';
 import About from '../../components/About/About';
 import Services2 from '../../components/Services2/Services2';
+import Commitment from '../../components/Commitment/Commitment';
 import Appointment from '../../components/Appointment/Appointment';
 import Projects from '../../components/Projects/Projects';
 import ClientReviews from '../../components/ClientReviews/ClientReviews';
@@ -43,9 +44,10 @@ const Home = () => {
     <div className="homepage">
       <Hero onCtaClick={handleScrollToSection} />
       <Clients />
-      <Services />
-      <About />
+      {/* <Services /> */}
       <Services2 />
+      <Commitment />
+      <About />
       <Appointment />
       <Projects />
       <ClientReviews />

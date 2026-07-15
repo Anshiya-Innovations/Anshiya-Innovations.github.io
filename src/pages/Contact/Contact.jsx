@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import contactBuilding from '../../assets/contact-building.png';
+import contactBuilding from '../../assets/uploaded-contact-building-hero.png';
 import badgeCheck from '../../assets/contact-badge-check.png';
-import contactMockup from '../../assets/contact-mockup.png';
+import contactMockup from '../../assets/uploaded-contact-building.png';
 
 // Import Info icons
 import iconMail from '../../assets/contact-icon-mail.png';
@@ -50,8 +50,32 @@ const Contact = () => {
 
   const handleFormSubmit = (e) => {
     e.preventDefault();
-    alert('Thank you! Your message has been sent. One of our solution architects will contact you within 24 hours.');
-    e.target.reset();
+    const formData = new FormData(e.target);
+    const data = {
+      access_key: "83390b46-d43e-4acf-ac88-dd001a4ba3a6",
+      subject: "New Contact Message - Anshiya Innovations",
+      name: formData.get("name"),
+      email: formData.get("email"),
+      phone: formData.get("phone"),
+      company: formData.get("company"),
+      message: formData.get("message")
+    };
+
+    fetch("https://api.web3forms.com/submit", {
+      method: "POST",
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+      },
+      body: JSON.stringify(data)
+    })
+    .then(res => {
+      alert('Thank you! Your message has been sent. One of our solution architects will contact you within 24 hours.');
+      e.target.reset();
+    })
+    .catch(err => {
+      alert('There was an error sending your message. Please try again.');
+    });
   };
 
   const toggleFaq = (index) => {
@@ -122,7 +146,7 @@ const Contact = () => {
             </div>
             <h3 className="contact-card-title">Email Us</h3>
             <p className="contact-card-desc">Our support team is here to help you.</p>
-            <a href="mailto:contact@anshiya.com" className="contact-card-link">contact@anshiya.com</a>
+            <a href="mailto:contact@anshiya.com" className="contact-card-link">contact@anshiyainnovations.com</a>
           </div>
 
           {/* Card 2: Call */}
@@ -132,16 +156,16 @@ const Contact = () => {
             </div>
             <h3 className="contact-card-title">Call Us</h3>
             <p className="contact-card-desc">Monday - Friday, 9am to 6pm IST.</p>
-            <a href="tel:+911234567890" className="contact-card-link">+91 12345 67890</a>
+            <a href="tel:+919003186479" className="contact-card-link">+91-9003186479</a>
           </div>
 
           {/* Card 3: Location */}
           <div className="contact-info-card">
             <div className="contact-card-icon-box">
-              <img src={iconLoc} alt="Location Pin Icon" className="contact-card-icon" />
+              <img src={iconLoc} alt="Location Pin Icon" className="contact-card-icon HQicon" />
             </div>
             <h3 className="contact-card-title">Headquarters</h3>
-            <p className="contact-card-desc">Coimbatore, Tamil Nadu, India</p>
+            <p className="contact-card-desc">Building No. D-52A, Anna Salai, Pammal, Chennai, Chengalpattu, Tamil Nadu 600075, India</p>
             <a 
               href="https://maps.google.com" 
               target="_blank" 
@@ -170,6 +194,7 @@ const Contact = () => {
                   <label>FULL NAME</label>
                   <input 
                     type="text" 
+                    name="name"
                     placeholder="John Doe" 
                     required 
                   />
@@ -178,6 +203,7 @@ const Contact = () => {
                   <label>EMAIL ADDRESS</label>
                   <input 
                     type="email" 
+                    name="email"
                     placeholder="john@company.com" 
                     required 
                   />
@@ -189,6 +215,7 @@ const Contact = () => {
                   <label>PHONE NUMBER</label>
                   <input 
                     type="tel" 
+                    name="phone"
                     placeholder="+91 00000 00000" 
                     required 
                   />
@@ -197,6 +224,7 @@ const Contact = () => {
                   <label>COMPANY NAME</label>
                   <input 
                     type="text" 
+                    name="company"
                     placeholder="Architectural Innovations Ltd" 
                     required 
                   />
@@ -207,6 +235,7 @@ const Contact = () => {
                 <label>YOUR MESSAGE</label>
                 <textarea 
                   rows="5" 
+                  name="message"
                   placeholder="How can we help you transform your business?"
                   required
                 ></textarea>
@@ -248,7 +277,7 @@ const Contact = () => {
                 >
                   <div className="contact-faq-question-row">
                     <h4 className="contact-faq-question">{faq.question}</h4>
-                    <span className="contact-faq-arrow-icon">&#9662;</span>
+                    <span className="contact-faq-arrow-icon">+</span>
                   </div>
                   <div className="contact-faq-answer-wrapper">
                     <p className="contact-faq-answer">{faq.answer}</p>

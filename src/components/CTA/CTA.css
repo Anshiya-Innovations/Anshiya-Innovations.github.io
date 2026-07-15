@@ -1,118 +1,95 @@
-.cta-section {
+/* Ready to Transform Your Industry Bottom CTA */
+.industry-bottom-cta-section {
+  padding: 90px 0;
+  background-color: #074EA6;
   position: relative;
-  background-color: var(--bg-primary);
-  padding: 80px 0;
+  z-index: 10;
 }
 
-/* Rounded Blue Consultation Banner */
-.cta-container {
-  height: 220px;
-  background-color: var(--primary-color);
-  border-radius: 24px;
-  padding: 60px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 40px;
-  box-shadow: 0 10px 30px rgba(0, 66, 200, 0.15);
-}
-
-.cta-content-left {
+.industry-bottom-cta-container {
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
-  text-align: left;
+  align-items: center;
+  text-align: center;
 }
 
-.cta-title {
-  font-size: 2.25rem;
+.industry-bottom-cta-title {
+  font-size: 2.4rem;
   font-weight: 800;
-  color: var(--text-light);
-  margin-bottom: 12px;
-  letter-spacing: -0.5px;
+  color: #ffffff;
+  margin-bottom: 18px;
+  letter-spacing: -0.8px;
 }
 
-.cta-description {
+.industry-bottom-cta-subtitle {
   font-size: 1.05rem;
-  color: rgba(255, 255, 255, 0.9);
-  max-width: 580px;
-  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.88);
+  max-width: 680px;
+  line-height: 1.65;
+  margin-bottom: 36px;
+  font-weight: 500;
 }
 
-/* Semi-transparent Email Card Link */
-.cta-contact-card {
-  background-color: rgba(255, 255, 255, 0.08);
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  border-radius: 12px;
-  padding: 20px 28px;
+.industry-bottom-cta-actions {
   display: flex;
-  align-items: center;
-  gap: 18px;
-  text-decoration: none;
-  transition: var(--transition-smooth);
-  flex-shrink: 0;
-  cursor: pointer;
+  gap: 16px;
 }
 
-.cta-contact-card:hover {
-  background-color: rgba(255, 255, 255, 0.15);
-  border-color: rgba(255, 255, 255, 0.3);
-  transform: translateY(-2px);
-}
-
-.cta-mail-icon-box {
-  color: var(--text-light);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.cta-envelope-svg {
-  width: 26px;
-  height: 26px;
-}
-
-.cta-contact-text {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-}
-
-.cta-email-addr {
-  font-size: 1.05rem;
+.industry-bottom-cta-btn {
+  padding: 14px 32px;
+  font-size: 0.95rem;
   font-weight: 700;
-  color: var(--text-light);
-  line-height: 1.2;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
 }
 
-.cta-send-email-lbl {
-  font-size: 0.72rem;
-  font-weight: 800;
-  color: rgba(255, 255, 255, 0.7);
-  letter-spacing: 1px;
-  margin-top: 4px;
+.cta-btn-primary {
+  background-color: #16376A;
+  color: #ffffff;
+  border: none;
 }
 
-/* Responsive adjust */
+.cta-btn-primary:hover {
+  background-color: #0f2445;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.cta-btn-secondary {
+  background-color: transparent;
+  color: #ffffff;
+  border: 2px solid #ffffff;
+}
+
+.cta-btn-secondary:hover {
+  background-color: #ffffff;
+  color: #074EA6;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(255, 255, 255, 0.2);
+}
+
+/* Responsive adjustments */
 @media (max-width: 991px) {
-  .cta-container {
-    flex-direction: column;
-    align-items: flex-start;
-    padding: 40px;
-    gap: 30px;
+  .industry-bottom-cta-section {
+    padding: 70px 0;
   }
-  .cta-contact-card {
+
+  .industry-bottom-cta-title {
+    font-size: 1.9rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .industry-bottom-cta-actions {
+    flex-direction: column;
+    gap: 12px;
+    width: 100%;
+    max-width: 320px;
+  }
+
+  .industry-bottom-cta-btn {
     width: 100%;
     justify-content: center;
   }
-}
-
-@media (max-width: 576px) {
-  .cta-title {
-    font-size: 1.75rem;
-  }
-  .cta-description {
-    font-size: 0.95rem;
-  }
-  
 }

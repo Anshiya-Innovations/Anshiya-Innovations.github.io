@@ -891,35 +891,37 @@
 
 /* Actions CTA buttons */
 .solutions-cta-btn {
-  padding: 14px 28px;
+  padding: 14px 32px;
   border-radius: 8px;
   font-size: 0.95rem;
   font-weight: 700;
   cursor: pointer;
-  transition: var(--transition-smooth);
+  transition: all 0.3s ease;
 }
 
 .solutions-cta-btn-primary {
-  background-color: #0c2340;
+  background-color: #16376A;
   color: #ffffff;
   border: none;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
 }
 
 .solutions-cta-btn-primary:hover {
-  background-color: #051429;
-  transform: translateY(-1px);
+  background-color: #0f2445;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
 }
 
 .solutions-cta-btn-secondary {
   background-color: transparent;
   color: #ffffff;
-  border: 1px solid #ffffff;
+  border: 2px solid #ffffff;
 }
 
 .solutions-cta-btn-secondary:hover {
-  background-color: rgba(255, 255, 255, 0.1);
-  transform: translateY(-1px);
+  background-color: #ffffff;
+  color: #074EA6;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(255, 255, 255, 0.2);
 }
 
 /* Responsive adjust */

@@ -7,27 +7,38 @@ const Appointment = () => {
     name: '',
     email: '',
     phone: '',
-    service: 'Custom Software',
+    service: 'AI Integration & Automation',
     message: ''
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState(null); // 'success' | 'error' | null
 
   const services = [
-    "Custom Software",
-    "IT Consultancy",
+    "AI Integration & Automation",
+    "SAP BTP",
     "Cyber Security",
-    "Backup & Recovery",
+    "Security Compliance & Audit",
     "Cloud Solutions",
-    "Business Automations"
+    "Business Automations",
+    "Employee Training Program",
+    "Internship for Students",
+    "Mobile App Development"
   ];
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
-    setFormData({
-      ...formData,
-      [name]: value
-    });
+    if (name === 'phone') {
+      const cleanValue = value.replace(/\D/g, '').slice(0, 10);
+      setFormData({
+        ...formData,
+        phone: cleanValue
+      });
+    } else {
+      setFormData({
+        ...formData,
+        [name]: value
+      });
+    }
   };
 
   const handleSubmit = (e) => {
@@ -40,18 +51,37 @@ const Appointment = () => {
     setIsSubmitting(true);
     setSubmitStatus(null);
 
-    // Simulate API request
-    setTimeout(() => {
+    fetch("https://api.web3forms.com/submit", {
+      method: "POST",
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+      },
+      body: JSON.stringify({
+        access_key: "83390b46-d43e-4acf-ac88-dd001a4ba3a6",
+        subject: "New Appointment Request - Anshiya Innovations",
+        name: formData.name,
+        email: formData.email,
+        phone: formData.phone,
+        service: formData.service,
+        message: formData.message
+      })
+    })
+    .then(res => {
       setIsSubmitting(false);
       setSubmitStatus('success');
       setFormData({
         name: '',
         email: '',
         phone: '',
-        service: 'Custom Software',
+        service: 'AI Integration & Automation',
         message: ''
       });
-    }, 1500);
+    })
+    .catch(err => {
+      setIsSubmitting(false);
+      setSubmitStatus('error');
+    });
   };
 
   return (
@@ -129,7 +159,10 @@ const Appointment = () => {
                     name="phone"
                     value={formData.phone}
                     onChange={handleInputChange}
-                    placeholder="+1 (555) 000-0000"
+                    placeholder="98765 43210"
+                    maxLength={10}
+                    pattern="[0-9]{10}"
+                    title="Please enter a valid 10-digit mobile number"
                     required
                   />
                 </div>
