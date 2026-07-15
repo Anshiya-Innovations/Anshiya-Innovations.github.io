@@ -138,7 +138,7 @@ const Industries = () => {
                 onClick={() => window.open('https://calendly.com/anshiyainnovations/30min', '_blank', 'noopener,noreferrer')} 
                 className="industry-btn-outline"
               >
-                View Case Studies
+                Enquiry now
               </button>
             </div>
           </div>

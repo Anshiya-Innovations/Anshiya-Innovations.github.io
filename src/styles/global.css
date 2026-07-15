@@ -112,3 +112,19 @@ section {
 .hover-scale:hover {
   transform: translateY(-5px);
 }
+
+/* Custom styling and z-index safety overrides for the tawk.to chat widget */
+#tawk-min-container,
+.tawk-min-container,
+.tawk-chat-panel,
+#tawk-chat-panel {
+  z-index: 999999 !important;
+}
+
+@media (max-width: 576px) {
+  #tawk-min-container,
+  .tawk-min-container {
+    bottom: 16px !important;
+    right: 16px !important;
+  }
+}

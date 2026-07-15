@@ -411,7 +411,6 @@ const Navbar = () => {
                 className={`nav-link ${activeItem === 'services' ? 'active' : ''}`}
               >
                 Services
-                <span className="dropdown-caret-icon">&#9662;</span>
               </button>
               
               {/* Mobile Services Dropdown (Visible only on mobile/tablet view) */}
