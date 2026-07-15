@@ -37,4 +37,5 @@ appendData.cjs
 updateSolutions.cjs
 src/assets/*.zip
 *.cjs
+!scripts/generate-sitemap.cjs
 scratch/
