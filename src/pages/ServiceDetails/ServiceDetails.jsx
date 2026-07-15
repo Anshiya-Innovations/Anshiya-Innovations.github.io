@@ -2,11 +2,23 @@ import React, { useEffect } from 'react';
 import { useSearchParams, useNavigate, Link, useParams } from 'react-router-dom';
 import './ServiceDetails.css';
 
+// Import icons from services2 for matching categories
+import iconMonitor from '../../assets/services2/icon-monitor.png';
+import iconLock from '../../assets/services2/icon-lock.png';
+import iconShieldDoc from '../../assets/services2/icon-shield-doc.png';
+import iconGearBriefcase from '../../assets/services2/icon-gear-briefcase.png';
+import iconCloud from '../../assets/services2/icon-cloud.png';
+import iconPeople from '../../assets/services2/icon-people.png';
+import iconCap from '../../assets/services2/icon-cap.png';
+import iconPhone from '../../assets/services2/icon-phone.png';
+
 const dropdownServices = [
   {
     slug: "ai-integration-automation",
     title: "AI Integration & Automation",
     description: "Integrate AI to automate workflows and enhance decision-making.",
+    iconType: "image",
+    icon: iconMonitor,
     subItems: [
       "AI Consulting",
       "SAP AI Services",
@@ -24,6 +36,8 @@ const dropdownServices = [
     slug: "sap-btp",
     title: "SAP S/4 or SAP BTP",
     description: "Build, extend, and integrate SAP solutions on the Business Technology Platform.",
+    iconType: "text",
+    iconText: "SAP",
     subItems: [
       "Code Assessment",
       "Data Assessment",
@@ -47,6 +61,8 @@ const dropdownServices = [
     slug: "cyber-security",
     title: "Cyber Security",
     description: "Protect your data, systems, and users with advanced security solutions.",
+    iconType: "image",
+    icon: iconLock,
     subItems: [
       "AI Security",
       "Exposure Management",
@@ -72,6 +88,8 @@ const dropdownServices = [
     slug: "security-compliance-audit",
     title: "Security Compliance & Audit",
     description: "Ensure compliance and mitigate risk with our audit services.",
+    iconType: "image",
+    icon: iconShieldDoc,
     subItems: [
       "SOC 2",
       "ISO 27001",
@@ -92,6 +110,8 @@ const dropdownServices = [
     slug: "business-automations",
     title: "Business Automations",
     description: "Automate repetitive tasks and streamline business operations.",
+    iconType: "image",
+    icon: iconGearBriefcase,
     subItems: [
       "Customer Service Automation",
       "Finance & Accounting Automation",
@@ -105,6 +125,8 @@ const dropdownServices = [
     slug: "cloud-solutions",
     title: "Cloud Solutions",
     description: "Migrate, manage, and scale with secure and reliable cloud services.",
+    iconType: "image",
+    icon: iconCloud,
     subItems: [
       "Cloud Consulting",
       "Cloud Migration & Modernization",
@@ -117,6 +139,8 @@ const dropdownServices = [
     slug: "employee-training-program",
     title: "Employee Training Program",
     description: "Upskill your workforce with specialized job-oriented training.",
+    iconType: "image",
+    icon: iconCap,
     subItems: [
       "AI & ML Corporate",
       "Project & Process Management",
@@ -131,6 +155,8 @@ const dropdownServices = [
     slug: "internship-for-students",
     title: "Internship for Students",
     description: "Real-world exposure and mentorship for future tech professionals.",
+    iconType: "image",
+    icon: iconPeople,
     subItems: [
       "Agentic AI Applied Program",
       "Digital Communication and GenAI Tools",
@@ -152,6 +178,8 @@ const dropdownServices = [
     slug: "mobile-app-development",
     title: "Mobile App Development",
     description: "Build user-friendly and scalable mobile apps for iOS and Android.",
+    iconType: "image",
+    icon: iconPhone,
     subItems: [
       "iOS App Development",
       "Android App Development",
@@ -318,19 +346,15 @@ const ServiceDetails = () => {
                   <div className="card-hover-border"></div>
                   <div className="subitem-card-content">
                     <div className="subitem-icon-wrapper">
-                      <svg viewBox="0 0 24 24" className="subitem-icon" fill="none" stroke="currentColor" strokeWidth="2">
-                        {typeParam.includes('ai') || typeParam.includes('automation') ? (
-                          <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41M12 7a5 5 0 100 10 5 5 0 000-10z" />
-                        ) : typeParam.includes('security') || typeParam.includes('compliance') ? (
-                          <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
-                        ) : typeParam.includes('sap') ? (
-                          <path d="M4 7V4h16v3M9 20h6M12 4v16" />
-                        ) : typeParam.includes('cloud') ? (
-                          <path d="M18 10a5 5 0 00-9.53-2.27A6 6 0 1011 18h7a5 5 0 000-10z" />
-                        ) : (
-                          <path d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
-                        )}
-                      </svg>
+                      {activeService.iconType === "image" ? (
+                        <img 
+                          src={activeService.icon} 
+                          alt="Service Icon" 
+                          className="subitem-icon-img" 
+                        />
+                      ) : (
+                        <span className="subitem-icon-text">{activeService.iconText}</span>
+                      )}
                     </div>
                     <h3 className="subitem-title">{subItem}</h3>
                     <span className="subitem-link">Explore Solution &rarr;</span>

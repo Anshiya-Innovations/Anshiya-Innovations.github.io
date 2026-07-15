@@ -186,9 +186,26 @@
   color: #FFFFFF;
 }
 
-.subitem-icon {
-  width: 24px;
-  height: 24px;
+.subitem-icon-img {
+  width: 28px;
+  height: 28px;
+  object-fit: contain;
+  transition: filter 0.3s ease;
+}
+
+.subitem-card:hover .subitem-icon-img {
+  filter: brightness(0) invert(1);
+}
+
+.subitem-icon-text {
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: #074EA6;
+  transition: color 0.3s ease;
+}
+
+.subitem-card:hover .subitem-icon-text {
+  color: #FFFFFF;
 }
 
 .subitem-title {
