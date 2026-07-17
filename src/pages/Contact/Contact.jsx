@@ -156,7 +156,7 @@ const Contact = () => {
             </div>
             <h3 className="contact-card-title">Call Us</h3>
             <p className="contact-card-desc">Monday - Friday, 9am to 6pm IST.</p>
-            <a href="tel:+919003186479" className="contact-card-link">+91-9003186479</a>
+            <a href="tel:+918870618531" className="contact-card-link">+91-8870618531</a>
           </div>
 
           {/* Card 3: Location */}

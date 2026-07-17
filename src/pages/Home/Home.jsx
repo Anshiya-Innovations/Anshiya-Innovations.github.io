@@ -2,17 +2,47 @@ import React, { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import Hero from '../../components/Hero/Hero';
 
-// Lazy load below-the-fold components to reduce initial JS payload
-const Clients = React.lazy(() => import('../../components/Clients/Clients'));
-const Services2 = React.lazy(() => import('../../components/Services2/Services2'));
-const Commitment = React.lazy(() => import('../../components/Commitment/Commitment'));
-const About = React.lazy(() => import('../../components/About/About'));
-const Appointment = React.lazy(() => import('../../components/Appointment/Appointment'));
-const Projects = React.lazy(() => import('../../components/Projects/Projects'));
-const ClientReviews = React.lazy(() => import('../../components/ClientReviews/ClientReviews'));
-const Technologies = React.lazy(() => import('../../components/Technologies/Technologies'));
-const Blog = React.lazy(() => import('../../components/Blog/Blog'));
-const CTA = React.lazy(() => import('../../components/CTA/CTA'));
+// Detect mobile device
+const isMobile = window.innerWidth <= 768 || /Mobi|Android|iP(hone|od|ad)/i.test(navigator.userAgent);
+
+let Clients, Services2, Commitment, About, Appointment, Projects, ClientReviews, Technologies, Blog, CTA;
+
+if (isMobile) {
+  // Trigger dynamic imports in parallel on mobile to bypass the Suspense rendering waterfall
+  const ClientsPromise = import('../../components/Clients/Clients');
+  const Services2Promise = import('../../components/Services2/Services2');
+  const CommitmentPromise = import('../../components/Commitment/Commitment');
+  const AboutPromise = import('../../components/About/About');
+  const AppointmentPromise = import('../../components/Appointment/Appointment');
+  const ProjectsPromise = import('../../components/Projects/Projects');
+  const ClientReviewsPromise = import('../../components/ClientReviews/ClientReviews');
+  const TechnologiesPromise = import('../../components/Technologies/Technologies');
+  const BlogPromise = import('../../components/Blog/Blog');
+  const CTAPromise = import('../../components/CTA/CTA');
+
+  Clients = React.lazy(() => ClientsPromise);
+  Services2 = React.lazy(() => Services2Promise);
+  Commitment = React.lazy(() => CommitmentPromise);
+  About = React.lazy(() => AboutPromise);
+  Appointment = React.lazy(() => AppointmentPromise);
+  Projects = React.lazy(() => ProjectsPromise);
+  ClientReviews = React.lazy(() => ClientReviewsPromise);
+  Technologies = React.lazy(() => TechnologiesPromise);
+  Blog = React.lazy(() => BlogPromise);
+  CTA = React.lazy(() => CTAPromise);
+} else {
+  // Keep original lazy loading behavior on desktop
+  Clients = React.lazy(() => import('../../components/Clients/Clients'));
+  Services2 = React.lazy(() => import('../../components/Services2/Services2'));
+  Commitment = React.lazy(() => import('../../components/Commitment/Commitment'));
+  About = React.lazy(() => import('../../components/About/About'));
+  Appointment = React.lazy(() => import('../../components/Appointment/Appointment'));
+  Projects = React.lazy(() => import('../../components/Projects/Projects'));
+  ClientReviews = React.lazy(() => import('../../components/ClientReviews/ClientReviews'));
+  Technologies = React.lazy(() => import('../../components/Technologies/Technologies'));
+  Blog = React.lazy(() => import('../../components/Blog/Blog'));
+  CTA = React.lazy(() => import('../../components/CTA/CTA'));
+}
 
 import './Home.css';
 

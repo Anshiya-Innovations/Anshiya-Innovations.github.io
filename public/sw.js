@@ -24,8 +24,16 @@ self.addEventListener("activate", (event) => {
 self.addEventListener("fetch", (event) => {
   const requestUrl = new URL(event.request.url);
 
-  // Intercept and cache requests to the static assets folder (/assets/*)
-  if (requestUrl.pathname.includes("/assets/")) {
+  // Intercept and cache static assets (/assets/*, /fonts/*, /libs/*, and common static files)
+  const isStaticAsset =
+    requestUrl.pathname.includes("/assets/") ||
+    requestUrl.pathname.includes("/fonts/") ||
+    requestUrl.pathname.includes("/libs/") ||
+    /\.(woff2?|ttf|otf|sfnt|css|js|webp|png|jpe?g|gif|svg|ico)$/i.test(requestUrl.pathname);
+
+  const isHtmlRequest = event.request.mode === "navigate" || requestUrl.pathname.endsWith(".html");
+
+  if (isStaticAsset && !isHtmlRequest) {
     event.respondWith(
       caches.match(event.request).then((cachedResponse) => {
         if (cachedResponse) {
@@ -41,11 +49,6 @@ self.addEventListener("fetch", (event) => {
               return response;
             }
 
-            const responseToCache = response.clone();
-            caches.open(CACHE_NAME).then((cache) => {
-              cache.put(event.request, responseToCache);
-            });
-
             // Construct a new response with overridden Cache-Control headers to optimize cache TTL on mobile
             try {
               const newHeaders = new Headers(response.headers);
@@ -54,13 +57,27 @@ self.addEventListener("fetch", (event) => {
                 "public, max-age=31536000, immutable"
               );
 
-              return new Response(response.body, {
+              // Clone the response first to read its body safely
+              const responseClone = response.clone();
+              const modifiedResponse = new Response(responseClone.body, {
                 status: response.status,
                 statusText: response.statusText,
                 headers: newHeaders,
               });
+
+              // Cache the modified response (which includes the custom Cache-Control header)
+              const responseToCache = modifiedResponse.clone();
+              caches.open(CACHE_NAME).then((cache) => {
+                cache.put(event.request, responseToCache);
+              });
+
+              return modifiedResponse;
             } catch (err) {
-              // Fail-safe: fallback to the original network response if body constructor is not supported
+              // Fail-safe: fallback to caching and returning the original network response
+              const responseToCache = response.clone();
+              caches.open(CACHE_NAME).then((cache) => {
+                cache.put(event.request, responseToCache);
+              });
               return response;
             }
           })

@@ -2,26 +2,33 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/png" href="/src/assets/logo.png" />
+    <link rel="icon" type="image/png" href="/favicon.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content="Anshiya Innovations - AI Innovation That Moves Business" />
     <title>Anshiya Innovations</title>
-    <!-- Preconnect to Font and CDN Origins -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin />
-
-    <!-- Mobile View Preloads to Shorten Critical Request Chains (Hosted Locally) -->
-    <link rel="preload" href="/libs/font-awesome/css/all-mobile.min.css" as="style" media="screen and (max-width: 768px)" />
-    <link rel="preload" href="/fonts/google-fonts.css" as="style" media="screen and (max-width: 768px)" />
-    <link rel="preload" href="/libs/font-awesome/webfonts/fa-solid-900.woff2" as="font" type="font/woff2" crossorigin="anonymous" media="screen and (max-width: 768px)" />
-    <link rel="preload" href="/libs/font-awesome/webfonts/fa-regular-400.woff2" as="font" type="font/woff2" crossorigin="anonymous" media="screen and (max-width: 768px)" />
-
-    <!-- Dynamically load external stylesheets (FontAwesome and Google Fonts) -->
+    <!-- Preconnect links and stylesheets loaded dynamically based on device type -->
     <script>
       (function() {
         var isMobile = window.innerWidth <= 768 || /Mobi|Android|iP(hone|od|ad)/i.test(navigator.userAgent);
         
+        // Dynamically add preconnect tags for Desktop to prevent unused preconnect warnings on Mobile
+        if (!isMobile) {
+          var preconnects = [
+            { href: "https://fonts.googleapis.com" },
+            { href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
+            { href: "https://cdnjs.cloudflare.com", crossOrigin: "anonymous" }
+          ];
+          preconnects.forEach(function(item) {
+            var link = document.createElement('link');
+            link.rel = 'preconnect';
+            link.href = item.href;
+            if (item.crossOrigin) {
+              link.crossOrigin = item.crossOrigin;
+            }
+            document.head.appendChild(link);
+          });
+        }
+
         var files = isMobile ? [
           {
             url: "/libs/font-awesome/css/all-mobile.min.css",
@@ -180,7 +187,6 @@
     s1.async=true;
     s1.src='https://embed.tawk.to/6a50cbcc9bba891d4322202a/1jt5po5um';
     s1.charset='UTF-8';
-    s1.setAttribute('crossorigin','*');
     s0.parentNode.insertBefore(s1,s0);
     })();
     </script>

@@ -79,7 +79,7 @@ const Footer = () => {
 
         {/* Column 2: Company */}
         <div className="footer-links-col">
-          <h4 className="footer-title">COMPANY</h4>
+          <h3 className="footer-title">COMPANY</h3>
           <ul className="footer-links">
             <li><Link to="/about-us" onClick={handleScrollToTop}>About Us</Link></li>
             <li><Link to="/about-us" onClick={handleScrollToTop}>Our Team</Link></li>
@@ -91,7 +91,7 @@ const Footer = () => {
 
         {/* Column 3: Service Links */}
         <div className="footer-links-col">
-          <h4 className="footer-title">SERVICE LINKS</h4>
+          <h3 className="footer-title">SERVICE LINKS</h3>
           <ul className="footer-links">
             <li><Link to="/service-details/ai-integration-automation" onClick={handleScrollToTop}>AI Integration & Automation</Link></li>
             <li><Link to="/service-details/sap-btp" onClick={handleScrollToTop}>SAP BTP</Link></li>
@@ -103,7 +103,7 @@ const Footer = () => {
 
         {/* Column 4: Newsletter & Extra Links */}
         <div className="footer-links-col footer-newsletter-col">
-          <h4 className="footer-title">NEWSLETTER</h4>
+          <h3 className="footer-title">NEWSLETTER</h3>
           <p className="footer-newsletter-text">
             Subscribe to our newsletter for the latest tech updates and strategic business insights.
           </p>
@@ -123,7 +123,7 @@ const Footer = () => {
 
           {/* More Links Block */}
           <div className="footer-more-links-block">
-            <h4 className="footer-title-more">MORE LINKS</h4>
+            <h3 className="footer-title-more">MORE LINKS</h3>
             <div className="footer-more-links-row">
               <Link to="/service-details/employee-training-program" onClick={handleScrollToTop}>EMPLOYEE TRAINING</Link>
               <Link to="/service-details/internship-for-students" onClick={handleScrollToTop}>INTERNSHIP</Link>

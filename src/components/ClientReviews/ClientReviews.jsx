@@ -141,7 +141,7 @@ const ClientReviews = () => {
                       )}
                     </div>
                     <div className="author-info">
-                      <h4 className="author-name">{review.name}</h4>
+                      <h3 className="author-name">{review.name}</h3>
                       <p className="author-role">{review.role}</p>
                     </div>
                   </div>
