@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 import logoImg from '../../assets/logo.png';
+import logoMobile from '../../assets/logo-mobile.webp';
 import './Navbar.css';
 
 const getCategorySlug = (title) => {
@@ -295,6 +296,15 @@ const Navbar = () => {
   ];
 
   const [activeTab, setActiveTab] = useState(0);
+  const [isDesktop, setIsDesktop] = useState(window.innerWidth > 768);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsDesktop(window.innerWidth > 768);
+    };
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -368,7 +378,10 @@ const Navbar = () => {
             setActiveItem('home');
           }}
         >
-          <img src={logoImg} alt="Anshiya Innovations Logo" className='navlogo' />
+          <picture>
+            <source media="(max-width: 768px)" srcSet={logoMobile} type="image/webp" />
+            <img src={logoImg} alt="Anshiya Innovations Logo" width="440" height="123" className='navlogo' />
+          </picture>
         </Link>
  
         <button className="navbar-toggle" onClick={toggleMenu} aria-label="Toggle Navigation">
@@ -436,78 +449,80 @@ const Navbar = () => {
               )}
               
               {/* Dropdown Mega Menu Panel */}
-              <div className="navbar-mega-dropdown">
-                <div className="mega-dropdown-split">
-                  {/* Left Column: 9 Tab Headings */}
-                  <div className="mega-dropdown-left">
-                    {dropdownServices.map((service, index) => {
-                      return (
-                        <button
-                          key={index}
-                          className={`mega-tab-btn ${activeTab === index ? 'active' : ''}`}
-                          onMouseEnter={() => setActiveTab(index)}
-                          onClick={() => {
-                            setIsMenuOpen(false);
-                            setShowDropdown(false);
-                            const slug = getCategorySlug(service.title);
-                            navigate(`/service-details/${slug}`);
-                            window.scrollTo({ top: 0, behavior: 'smooth' });
-                          }}
-                        >
-                          {service.title}
-                        </button>
-                      );
-                    })}
-                  </div>
-
-                  {/* Right Column: Active Tab Content Panel */}
-                  <div className="mega-dropdown-right">
-                    <div className="mega-right-header">
-                      <h4 className="mega-right-title">
-                        {dropdownServices[activeTab].title}
-                      </h4>
-                      <p className="mega-right-subtitle">
-                        {dropdownServices[activeTab].description}
-                      </p>
-                    </div>
-
-                    {/* Placeholder Grid for Sub-Items */}
-                    <div className="mega-right-grid">
-                      {dropdownServices[activeTab].subItems && dropdownServices[activeTab].subItems.length > 0 ? (
-                        dropdownServices[activeTab].subItems.map((subItem, subIndex) => (
-                          <div 
-                            key={subIndex} 
-                            className="mega-right-item"
+              {isDesktop && (
+                <div className="navbar-mega-dropdown">
+                  <div className="mega-dropdown-split">
+                    {/* Left Column: 9 Tab Headings */}
+                    <div className="mega-dropdown-left">
+                      {dropdownServices.map((service, index) => {
+                        return (
+                          <button
+                            key={index}
+                            className={`mega-tab-btn ${activeTab === index ? 'active' : ''}`}
+                            onMouseEnter={() => setActiveTab(index)}
                             onClick={() => {
                               setIsMenuOpen(false);
                               setShowDropdown(false);
-                              
-                              const categoryTitle = dropdownServices[activeTab].title;
-                              const categorySlug = getCategorySlug(categoryTitle);
-                              const solutionKey = getSubItemSolutionKey(subItem);
-                              
-                              if (solutionKey) {
-                                navigate(`/services/${categorySlug}/${solutionKey}`);
-                              } else {
-                                navigate('/sap-service');
-                              }
+                              const slug = getCategorySlug(service.title);
+                              navigate(`/service-details/${slug}`);
                               window.scrollTo({ top: 0, behavior: 'smooth' });
                             }}
                           >
-                            <span className="mega-right-item-bullet">&rsaquo;</span>
-                            <span className="mega-right-item-text">{subItem}</span>
+                            {service.title}
+                          </button>
+                        );
+                      })}
+                    </div>
+
+                    {/* Right Column: Active Tab Content Panel */}
+                    <div className="mega-dropdown-right">
+                      <div className="mega-right-header">
+                        <h4 className="mega-right-title">
+                          {dropdownServices[activeTab].title}
+                        </h4>
+                        <p className="mega-right-subtitle">
+                          {dropdownServices[activeTab].description}
+                        </p>
+                      </div>
+
+                      {/* Placeholder Grid for Sub-Items */}
+                      <div className="mega-right-grid">
+                        {dropdownServices[activeTab].subItems && dropdownServices[activeTab].subItems.length > 0 ? (
+                          dropdownServices[activeTab].subItems.map((subItem, subIndex) => (
+                            <div 
+                              key={subIndex} 
+                              className="mega-right-item"
+                              onClick={() => {
+                                setIsMenuOpen(false);
+                                setShowDropdown(false);
+                                
+                                const categoryTitle = dropdownServices[activeTab].title;
+                                const categorySlug = getCategorySlug(categoryTitle);
+                                const solutionKey = getSubItemSolutionKey(subItem);
+                                
+                                if (solutionKey) {
+                                  navigate(`/services/${categorySlug}/${solutionKey}`);
+                                } else {
+                                  navigate('/sap-service');
+                                }
+                                window.scrollTo({ top: 0, behavior: 'smooth' });
+                              }}
+                            >
+                              <span className="mega-right-item-bullet">&rsaquo;</span>
+                              <span className="mega-right-item-text">{subItem}</span>
+                            </div>
+                          ))
+                        ) : (
+                          <div className="mega-right-placeholder">
+                            <div className="placeholder-pulse-line"></div>
+                            <div className="placeholder-pulse-line second"></div>
                           </div>
-                        ))
-                      ) : (
-                        <div className="mega-right-placeholder">
-                          <div className="placeholder-pulse-line"></div>
-                          <div className="placeholder-pulse-line second"></div>
-                        </div>
-                      )}
+                        )}
+                      </div>
                     </div>
                   </div>
                 </div>
-              </div>
+              )}
             </li>
 
             <li className="nav-item">

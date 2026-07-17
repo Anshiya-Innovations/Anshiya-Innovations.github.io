@@ -1,8 +1,11 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import aboutMeeting from '../../assets/about-meeting.png';
+import aboutMeetingMobile from '../../assets/about-meeting-mobile.webp';
 import aboutServers from '../../assets/about-servers.png';
+import aboutServersMobile from '../../assets/about-servers-mobile.webp';
 import aboutPlayCard from '../../assets/about-play-card.png';
+import aboutPlayCardMobile from '../../assets/about-play-card-mobile.webp';
 import iconDelivered from '../../assets/about-icon-delivered.png';
 import iconHappy from '../../assets/about-icon-happy.png';
 import './About.css';
@@ -16,21 +19,36 @@ const About = () => {
         {/* Left Side: Overlapping Mockups with Play Button card */}
         <div className="about-image-wrapper">
           <div className="about-overlapping-container">
-            <img 
-              src={aboutMeeting} 
-              alt="Client Team Collaboration" 
-              className="about-img-meeting"
-            />
-            <img 
-              src={aboutServers} 
-              alt="Server Rooms Infrastructure" 
-              className="about-img-servers"
-            />
-            <img 
-              src={aboutPlayCard} 
-              alt="Play Video Button Card" 
-              className="about-img-play-card"
-            />
+            <picture>
+              <source media="(max-width: 768px)" srcSet={aboutMeetingMobile} type="image/webp" />
+              <img 
+                src={aboutMeeting} 
+                alt="Client Team Collaboration" 
+                width="1024"
+                height="682"
+                className="about-img-meeting"
+              />
+            </picture>
+            <picture>
+              <source media="(max-width: 768px)" srcSet={aboutServersMobile} type="image/webp" />
+              <img 
+                src={aboutServers} 
+                alt="Server Rooms Infrastructure" 
+                width="1024"
+                height="682"
+                className="about-img-servers"
+              />
+            </picture>
+            <picture>
+              <source media="(max-width: 768px)" srcSet={aboutPlayCardMobile} type="image/webp" />
+              <img 
+                src={aboutPlayCard} 
+                alt="Play Video Button Card" 
+                width="400"
+                height="267"
+                className="about-img-play-card"
+              />
+            </picture>
           </div>
         </div>
 
@@ -46,7 +64,7 @@ const About = () => {
             {/* Stat 1: Projects Delivered */}
             <div className="about-stat-card">
               <div className="about-stat-icon-box">
-                <img src={iconDelivered} alt="Checkmark icon" className="about-stat-icon-img" />
+                <img src={iconDelivered} alt="Checkmark icon" width="45" height="46" className="about-stat-icon-img" />
               </div>
               <div className="about-stat-info">
                 <span className="about-stat-number">50+</span>
@@ -57,7 +75,7 @@ const About = () => {
             {/* Stat 2: Happy Clients */}
             <div className="about-stat-card">
               <div className="about-stat-icon-box">
-                <img src={iconHappy} alt="Smiley face icon" className="about-stat-icon-img" />
+                <img src={iconHappy} alt="Smiley face icon" width="44" height="50" className="about-stat-icon-img" />
               </div>
               <div className="about-stat-info">
                 <span className="about-stat-number">30+</span>

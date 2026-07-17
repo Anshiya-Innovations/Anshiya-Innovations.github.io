@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 
 // Import footer images
 import logoImg from '../../assets/footer-logo.png';
+import logoFooterMobile from '../../assets/footer-logo-mobile.webp';
 import iconLinkedin from '../../assets/footer-linkedin.png';
 import iconFacebook from '../../assets/footer-facebook.png';
 import iconInstagram from '../../assets/footer-instagram.png';
@@ -52,7 +53,10 @@ const Footer = () => {
         {/* Column 1: Brand Info & Socials */}
         <div className="footer-brand-col">
           <Link to="/" className="footer-logo" onClick={handleScrollToTop}>
-            <img src={logoImg} alt="Anshiya Innovations Logo" className="footer-logo-img" />
+            <picture>
+              <source media="(max-width: 768px)" srcSet={logoFooterMobile} type="image/webp" />
+              <img src={logoImg} alt="Anshiya Innovations Logo" width="440" height="123" className="footer-logo-img" />
+            </picture>
           </Link>
           <p className="footer-description">
             Delivering innovative IT solutions to help businesses grow, automate and stay secure in an ever-changing digital landscape.
@@ -113,7 +117,7 @@ const Footer = () => {
               required 
             />
             <button type="submit" className="footer-newsletter-btn-wrapper">
-              <img src={btnNewsletter} alt="Submit Arrow" className="footer-newsletter-btn-img" />
+              <img src={btnNewsletter} alt="Submit Arrow" width="52" height="38" className="footer-newsletter-btn-img" />
             </button>
           </form>
 

@@ -1,8 +1,11 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import commitmentTeam from '../../assets/uploaded-commitment-team.png';
+import commitmentTeamMobile from '../../assets/uploaded-commitment-team-mobile.webp';
 import commitmentCap from '../../assets/uploaded-commitment-cap.png';
+import commitmentCapMobile from '../../assets/uploaded-commitment-cap-mobile.webp';
 import commitmentFemale from '../../assets/uploaded-commitment-female.png';
+import commitmentFemaleMobile from '../../assets/uploaded-commitment-female-mobile.webp';
 import './Commitment.css';
 
 const Commitment = () => {
@@ -25,11 +28,16 @@ const Commitment = () => {
           </div>
           <div className="commitment-hero-right">
             <div className="commitment-image-wrapper">
-              <img 
-                src={commitmentTeam} 
-                alt="Four team members collaborating on a laptop" 
-                className="commitment-team-img"
-              />
+              <picture>
+                <source media="(max-width: 768px)" srcSet={commitmentTeamMobile} type="image/webp" />
+                <img 
+                  src={commitmentTeam} 
+                  alt="Four team members collaborating on a laptop" 
+                  width="1024"
+                  height="534"
+                  className="commitment-team-img"
+                />
+              </picture>
             </div>
           </div>
         </div>
@@ -39,7 +47,10 @@ const Commitment = () => {
           {/* Card 1: Internships */}
           <div className="commitment-card">
             <div className="commitment-icon-box">
-              <img src={commitmentCap} alt="Graduation Cap Icon" className="commitment-card-icon-img" />
+              <picture>
+                <source media="(max-width: 768px)" srcSet={commitmentCapMobile} type="image/webp" />
+                <img src={commitmentCap} alt="Graduation Cap Icon" width="80" height="80" className="commitment-card-icon-img" />
+              </picture>
             </div>
             <h3 className="commitment-card-title">Internships for Students</h3>
             <p className="commitment-card-desc">
@@ -53,7 +64,10 @@ const Commitment = () => {
           {/* Card 2: Women in Tech */}
           <div className="commitment-card">
             <div className="commitment-icon-box">
-              <img src={commitmentFemale} alt="Female Symbol Icon" className="commitment-card-icon-img" />
+              <picture>
+                <source media="(max-width: 768px)" srcSet={commitmentFemaleMobile} type="image/webp" />
+                <img src={commitmentFemale} alt="Female Symbol Icon" width="80" height="80" className="commitment-card-icon-img" />
+              </picture>
             </div>
             <h3 className="commitment-card-title">Women in Tech</h3>
             <p className="commitment-card-desc">

@@ -3,15 +3,19 @@ import { Link } from 'react-router-dom';
 import './Blog.css';
 
 // Import blog images
-import blog1 from '../../assets/blog-1.png';
-import blog2 from '../../assets/blog-2.png';
+import blog1 from '../../assets/blog-1.jpg';
+import blog1Mobile from '../../assets/blog-1-mobile.webp';
+import blog2 from '../../assets/blog-2.jpg';
+import blog2Mobile from '../../assets/blog-2-mobile.webp';
 import blog3 from '../../assets/blog-3.png';
+import blog3Mobile from '../../assets/blog-3-mobile.webp';
 
 const Blog = () => {
   const posts = [
     {
       slug: "scale-it-infrastructure",
       image: blog1,
+      imageMobile: blog1Mobile,
       date: "July 2, 2026",
       category: "IT Infrastructure",
       title: "How to scale your IT infrastructure for rapid growth",
@@ -20,6 +24,7 @@ const Blog = () => {
     {
       slug: "future-cloud-computing",
       image: blog2,
+      imageMobile: blog2Mobile,
       date: "June 28, 2026",
       category: "Cloud Computing",
       title: "The future of Cloud Computing in modern business",
@@ -28,6 +33,7 @@ const Blog = () => {
     {
       slug: "cybersecurity-digital-trust",
       image: blog3,
+      imageMobile: blog3Mobile,
       date: "June 15, 2026",
       category: "Cybersecurity",
       title: "Why cyber security is the foundation of digital trust",
@@ -47,7 +53,10 @@ const Blog = () => {
           {posts.map((post, index) => (
             <article key={index} className="blog-card">
               <div className="blog-image-container">
-                <img src={post.image} alt={post.title} className="blog-post-img" />
+                <picture>
+                  <source media="(max-width: 768px)" srcSet={post.imageMobile} type="image/webp" />
+                  <img src={post.image} alt={post.title} width="640" height="427" className="blog-post-img" />
+                </picture>
               </div>
               
               <div className="blog-card-content">

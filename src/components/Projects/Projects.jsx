@@ -3,10 +3,21 @@ import './Projects.css';
 
 // Import image assets for project cards
 import projectImg1 from '../../assets/Border (2).png'; // large dashboard
+import projectImg1Mobile from '../../assets/Border-2-mobile.webp';
 import projectImg2 from '../../assets/project-2.png'; // laptop and tablet mockup
+import projectImg2Mobile from '../../assets/project-2-mobile.webp';
 import projectImg3 from '../../assets/project-3.png'; // typing on keyboard
+import projectImg3Mobile from '../../assets/project-3-mobile.webp';
 
 const Projects = () => {
+  const [isMobile, setIsMobile] = React.useState(false);
+  React.useEffect(() => {
+    const checkMobile = () => setIsMobile(window.innerWidth <= 768);
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
+
   return (
     <section id="projects" className="projects-section">
       <div className="container">
@@ -24,7 +35,7 @@ const Projects = () => {
           {/* Left Large Card with Info Overlay */}
           <div 
             className="project-card-v2 project-large"
-            style={{ backgroundImage: `url('${projectImg1}')` }}
+            style={{ backgroundImage: `url('${isMobile ? projectImg1Mobile : projectImg1}')` }}
           >
             <div className="project-card-overlay">
               <div className="project-card-info">
@@ -44,11 +55,11 @@ const Projects = () => {
           <div className="projects-right-column">
             <div 
               className="project-card-v2 project-small"
-              style={{ backgroundImage: `url('${projectImg2}')` }}
+              style={{ backgroundImage: `url('${isMobile ? projectImg2Mobile : projectImg2}')` }}
             ></div>
             <div 
               className="project-card-v2 project-small"
-              style={{ backgroundImage: `url('${projectImg3}')` }}
+              style={{ backgroundImage: `url('${isMobile ? projectImg3Mobile : projectImg3}')` }}
             ></div>
           </div>
         </div>

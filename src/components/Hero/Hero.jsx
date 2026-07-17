@@ -1,7 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import heroDashboard from '../../assets/hero-dashboard.png';
+import heroDashboardMobile from '../../assets/hero-dashboard-mobile.webp';
 import serviceIconIt from '../../assets/uploaded-it-icon.png';
+import serviceIconItMobile from '../../assets/uploaded-it-icon-mobile.webp';
 import uploadedRobotIcon from '../../assets/uploaded-robot-icon.png';
+import uploadedRobotIconMobile from '../../assets/uploaded-robot-icon-mobile.webp';
 import './Hero.css';
 
 const Hero = ({ onCtaClick }) => {
@@ -46,11 +49,16 @@ const Hero = ({ onCtaClick }) => {
         </div>
         
         <div className="hero-image-wrapper">
-          <img 
-            src={heroDashboard} 
-            alt="Anshiya Innovations IT Platform Dashboard" 
-            className="hero-dashboard-img"
-          />
+          <picture>
+            <source media="(max-width: 768px)" srcSet={heroDashboardMobile} type="image/webp" />
+            <img 
+              src={heroDashboard} 
+              alt="Anshiya Innovations IT Platform Dashboard" 
+              width="605"
+              height="330"
+              className="hero-dashboard-img"
+            />
+          </picture>
           
           {/* Floating Badges */}
           {/* Top Left Corner Cards */}
@@ -66,7 +74,10 @@ const Hero = ({ onCtaClick }) => {
 
           <div className={`hero-floating-card badge-top-left ${activeCard === 1 ? 'active' : 'inactive'}`}>
             <div className="floating-icon-box it-box">
-              <img src={serviceIconIt} alt="IT Consultancy" className="floating-card-icon-img" />
+              <picture>
+                <source media="(max-width: 768px)" srcSet={serviceIconItMobile} type="image/webp" />
+                <img src={serviceIconIt} alt="IT Consultancy" width="80" height="80" className="floating-card-icon-img" />
+              </picture>
             </div>
             <div className="floating-info">
               <span className="floating-title">IT Consultancy</span>
@@ -87,7 +98,10 @@ const Hero = ({ onCtaClick }) => {
 
           <div className={`hero-floating-card badge-bottom-right ${activeCard === 1 ? 'active' : 'inactive'}`}>
             <div className="floating-icon-box ai-box">
-              <img src={uploadedRobotIcon} alt="AI Integration & Automation" className="floating-card-icon-img" />
+              <picture>
+                <source media="(max-width: 768px)" srcSet={uploadedRobotIconMobile} type="image/webp" />
+                <img src={uploadedRobotIcon} alt="AI Integration & Automation" width="80" height="80" className="floating-card-icon-img" />
+              </picture>
             </div>
             <div className="floating-info">
               <span className="floating-title">AI Integration & Automation</span>

@@ -1,17 +1,19 @@
 import React, { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import Hero from '../../components/Hero/Hero';
-import Clients from '../../components/Clients/Clients';
-import Services from '../../components/Services/Services';
-import About from '../../components/About/About';
-import Services2 from '../../components/Services2/Services2';
-import Commitment from '../../components/Commitment/Commitment';
-import Appointment from '../../components/Appointment/Appointment';
-import Projects from '../../components/Projects/Projects';
-import ClientReviews from '../../components/ClientReviews/ClientReviews';
-import Technologies from '../../components/Technologies/Technologies';
-import Blog from '../../components/Blog/Blog';
-import CTA from '../../components/CTA/CTA';
+
+// Lazy load below-the-fold components to reduce initial JS payload
+const Clients = React.lazy(() => import('../../components/Clients/Clients'));
+const Services2 = React.lazy(() => import('../../components/Services2/Services2'));
+const Commitment = React.lazy(() => import('../../components/Commitment/Commitment'));
+const About = React.lazy(() => import('../../components/About/About'));
+const Appointment = React.lazy(() => import('../../components/Appointment/Appointment'));
+const Projects = React.lazy(() => import('../../components/Projects/Projects'));
+const ClientReviews = React.lazy(() => import('../../components/ClientReviews/ClientReviews'));
+const Technologies = React.lazy(() => import('../../components/Technologies/Technologies'));
+const Blog = React.lazy(() => import('../../components/Blog/Blog'));
+const CTA = React.lazy(() => import('../../components/CTA/CTA'));
+
 import './Home.css';
 
 const Home = () => {
@@ -43,17 +45,18 @@ const Home = () => {
   return (
     <div className="homepage">
       <Hero onCtaClick={handleScrollToSection} />
-      <Clients />
-      {/* <Services /> */}
-      <Services2 />
-      <Commitment />
-      <About />
-      <Appointment />
-      <Projects />
-      <ClientReviews />
-      <Technologies />
-      <Blog />
-      <CTA onCtaClick={handleScrollToSection} />
+      <React.Suspense fallback={<div style={{ minHeight: '100px' }}></div>}>
+        <Clients />
+        <Services2 />
+        <Commitment />
+        <About />
+        <Appointment />
+        <Projects />
+        <ClientReviews />
+        <Technologies />
+        <Blog />
+        <CTA onCtaClick={handleScrollToSection} />
+      </React.Suspense>
     </div>
   );
 };

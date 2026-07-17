@@ -107,7 +107,7 @@ const Services2 = () => {
               >
                 <div className="service2-icon-wrapper">
                   {service.type === "image" ? (
-                    <img src={service.icon} alt="Service Icon" className="service2-icon-img" />
+                    <img src={service.icon} alt="Service Icon" width="48" height="48" className="service2-icon-img" />
                   ) : (
                     <span className="service2-icon-text">{service.iconText}</span>
                   )}

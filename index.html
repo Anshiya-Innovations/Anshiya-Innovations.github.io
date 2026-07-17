@@ -6,12 +6,172 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content="Anshiya Innovations - AI Innovation That Moves Business" />
     <title>Anshiya Innovations</title>
-    <!-- Font Awesome CDN for Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <!-- Preconnect to Font and CDN Origins -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin />
+
+    <!-- Mobile View Preloads to Shorten Critical Request Chains (Hosted Locally) -->
+    <link rel="preload" href="/libs/font-awesome/css/all-mobile.min.css" as="style" media="screen and (max-width: 768px)" />
+    <link rel="preload" href="/fonts/google-fonts.css" as="style" media="screen and (max-width: 768px)" />
+    <link rel="preload" href="/libs/font-awesome/webfonts/fa-solid-900.woff2" as="font" type="font/woff2" crossorigin="anonymous" media="screen and (max-width: 768px)" />
+    <link rel="preload" href="/libs/font-awesome/webfonts/fa-regular-400.woff2" as="font" type="font/woff2" crossorigin="anonymous" media="screen and (max-width: 768px)" />
+
+    <!-- Dynamically load external stylesheets (FontAwesome and Google Fonts) -->
+    <script>
+      (function() {
+        var isMobile = window.innerWidth <= 768 || /Mobi|Android|iP(hone|od|ad)/i.test(navigator.userAgent);
+        
+        var files = isMobile ? [
+          {
+            url: "/libs/font-awesome/css/all-mobile.min.css",
+            crossOrigin: ""
+          },
+          {
+            url: "/fonts/google-fonts.css",
+            crossOrigin: ""
+          }
+        ] : [
+          {
+            url: "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css",
+            crossOrigin: "anonymous"
+          },
+          {
+            url: "https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap",
+            crossOrigin: ""
+          }
+        ];
+
+        files.forEach(function(file) {
+          var link = document.createElement('link');
+          if (file.crossOrigin) {
+            link.crossOrigin = file.crossOrigin;
+          }
+          if (isMobile) {
+            // Mobile: Asynchronous load via preload to avoid render-blocking
+            link.rel = 'preload';
+            link.as = 'style';
+            link.href = file.url;
+            link.onload = function() { this.onload = null; this.rel = 'stylesheet'; };
+          } else {
+            // Desktop: Synchronous load (render-blocking) to prevent FOUT/missing icons
+            link.rel = 'stylesheet';
+            link.href = file.url;
+          }
+          document.head.appendChild(link);
+        });
+      })();
+    </script>
+    <noscript>
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" />
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" />
+    </noscript>
+    <!-- Inline Critical CSS for Mobile Pre-rendered Hero (LCP Optimization) -->
+    <style>
+      #hero-preload {
+        display: none;
+      }
+      @media (max-width: 768px) {
+        #hero-preload {
+          display: block;
+          position: relative;
+          background-color: #ffffff;
+          padding: 40px 0;
+          margin-top: 80px;
+          color: #0f172a;
+          font-family: 'Outfit', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        }
+        #hero-preload .hero-container {
+          width: 100%;
+          margin: 0 auto;
+          padding: 0 24px;
+        }
+        #hero-preload .hero-content {
+          display: flex;
+          flex-direction: column;
+          align-items: flex-start;
+        }
+        #hero-preload .hero-top-badge {
+          display: flex;
+          align-items: center;
+          gap: 12px;
+          margin-bottom: 20px;
+        }
+        #hero-preload .badge-line {
+          width: 28px;
+          height: 1.5px;
+          background-color: #0042c8;
+          display: inline-block;
+        }
+        #hero-preload .badge-text {
+          font-size: 0.85rem;
+          font-weight: 700;
+          text-transform: uppercase;
+          letter-spacing: 2px;
+          color: #0042c8;
+        }
+        #hero-preload .hero-title {
+          font-size: 2.25rem;
+          font-weight: 800;
+          line-height: 1.15;
+          color: #0f172a;
+          margin-bottom: 16px;
+          letter-spacing: -1px;
+        }
+        #hero-preload .highlight-text {
+          color: #0042c8;
+        }
+        #hero-preload .hero-description {
+          font-size: 1rem;
+          line-height: 1.5;
+          color: #475569;
+          margin-bottom: 28px;
+        }
+      }
+    </style>
   </head>
   <body style="background-color: #000000;">
-    <div id="root"></div>
+    <div id="root">
+      <!-- Pre-rendered Static Hero for Instant LCP Paint (Mobile Only) -->
+      <section id="hero-preload" class="hero-section">
+        <div class="container hero-container">
+          <div class="hero-content">
+            <div class="hero-top-badge">
+              <span class="badge-line"></span>
+              <span class="badge-text">Innovate &bull; Integrate &bull; Inspire</span>
+              <span class="badge-line"></span>
+            </div>
+            <h1 class="hero-title">
+              Transform Your <br />
+              Business with <span class="highlight-text">Smart <br />IT Solutions</span>
+            </h1>
+            <p class="hero-description">
+              We help startups, Small and Medium-sized Enterprises (SMEs), and enterprises accelerate digital transformation through innovative software development, SAP BTP solutions, cloud technologies, and modern web applications.
+            </p>
+          </div>
+        </div>
+      </section>
+    </div>
     <script type="module" src="/src/main.jsx"></script>
+
+    <!-- Conditional Service Worker Registration for Mobile View Caching -->
+    <script>
+      if ('serviceWorker' in navigator) {
+        var isMobile = window.innerWidth <= 768 || /Mobi|Android|iP(hone|od|ad)/i.test(navigator.userAgent);
+        if (isMobile) {
+          window.addEventListener('load', function() {
+            navigator.serviceWorker.register('/sw.js')
+              .then(function(reg) {
+                console.log('Mobile Service Worker registered successfully:', reg.scope);
+              })
+              .catch(function(err) {
+                console.warn('Mobile Service Worker registration failed:', err);
+              });
+          });
+        }
+      }
+    </script>
+
     <!--Start of Tawk.to Script-->
     <script type="text/javascript">
     var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();

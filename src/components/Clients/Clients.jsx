@@ -1,5 +1,6 @@
 import React from 'react';
 import logoForte from '../../assets/client-logo-forte.png';
+import logoForteMobile from '../../assets/client-logo-forte-mobile.webp';
 import './Clients.css';
 
 const Clients = () => {
@@ -7,7 +8,8 @@ const Clients = () => {
     { 
       name: "Forte Innovations", 
       isImage: true, 
-      icon: logoForte 
+      icon: logoForte,
+      iconMobile: logoForteMobile
     },
     { 
       name: "Novus IT Solutions", 
@@ -42,7 +44,11 @@ const Clients = () => {
                 <span className="client-logo-wrapper-classic">
                   {client.isImage ? (
                     <div className='icon-container'>
-                    <img src={client.icon} alt={`${client.name} Logo`} className="client-logo-img-classic" /></div>
+                      <picture>
+                        <source media="(max-width: 768px)" srcSet={client.iconMobile} type="image/webp" />
+                        <img src={client.icon} alt={`${client.name} Logo`} width="344" height="96" className="client-logo-img-classic" />
+                      </picture>
+                    </div>
                   ) : (
                     <span className="client-logo-text-classic">{client.letters}</span>
                   )}
@@ -57,7 +63,10 @@ const Clients = () => {
               <div key={`second-${index}`} className="client-item">
                 <span className="client-logo-wrapper-classic">
                   {client.isImage ? (
-                    <img src={client.icon} alt={`${client.name} Logo`} className="client-logo-img-classic" />
+                    <picture>
+                      <source media="(max-width: 768px)" srcSet={client.iconMobile} type="image/webp" />
+                      <img src={client.icon} alt={`${client.name} Logo`} width="344" height="96" className="client-logo-img-classic" />
+                    </picture>
                   ) : (
                     <span className="client-logo-text-classic">{client.letters}</span>
                   )}

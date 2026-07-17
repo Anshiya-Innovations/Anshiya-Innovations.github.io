@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import featureGraphic from '../../assets/feature-graphic.png';
+import featureGraphicMobile from '../../assets/feature-graphic-mobile.webp';
 import './Appointment.css';
 
 const Appointment = () => {
@@ -95,11 +96,16 @@ const Appointment = () => {
             Ready to discuss your next big project? Our experts are standing by to provide you with a detailed consultation and roadmap.
           </p>
           <div className="appointment-image-wrapper">
-            <img 
-              src={featureGraphic} 
-              alt="Collaborative IT Meeting" 
-              className="appointment-img"
-            />
+            <picture>
+              <source media="(max-width: 768px)" srcSet={featureGraphicMobile} type="image/webp" />
+              <img 
+                src={featureGraphic} 
+                alt="Collaborative IT Meeting" 
+                width="588"
+                height="328"
+                className="appointment-img"
+              />
+            </picture>
           </div>
         </div>
 

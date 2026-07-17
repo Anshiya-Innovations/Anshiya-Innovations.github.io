@@ -1,6 +1,8 @@
 import React, { useState, useEffect, useRef } from 'react';
-import reviewsMain from '../../assets/reviews-main.png';
+import reviewsMain from '../../assets/reviews-main.jpg';
+import reviewsMainMobile from '../../assets/reviews-main-mobile.webp';
 import reviewsBadgeThumbs from '../../assets/reviews-badge-thumbs.png';
+import reviewsBadgeThumbsMobile from '../../assets/reviews-badge-thumbs-mobile.webp';
 import emilyWatsonAvatar from '../../assets/emily-watson.png';
 import './ClientReviews.css';
 
@@ -75,17 +77,27 @@ const ClientReviews = () => {
       <div className="container grid-2 reviews-container">
         {/* Left Column: Office Team Image and Satisfied Badge overlay */}
         <div className="reviews-image-wrapper">
-          <img 
-            src={reviewsMain} 
-            alt="Client Success Team" 
-            className="reviews-main-img"
-          />
-          <div className="reviews-satisfied-badge">
+          <picture>
+            <source media="(max-width: 768px)" srcSet={reviewsMainMobile} type="image/webp" />
             <img 
-              src={reviewsBadgeThumbs} 
-              alt="Satisfied user group" 
-              className="reviews-badge-thumbs-img"
+              src={reviewsMain} 
+              alt="Client Success Team" 
+              width="1024"
+              height="682"
+              className="reviews-main-img"
             />
+          </picture>
+          <div className="reviews-satisfied-badge">
+            <picture>
+              <source media="(max-width: 768px)" srcSet={reviewsBadgeThumbsMobile} type="image/webp" />
+              <img 
+                src={reviewsBadgeThumbs} 
+                alt="Satisfied user group" 
+                width="60"
+                height="60"
+                className="reviews-badge-thumbs-img"
+              />
+            </picture>
             <span className="reviews-badge-text">5k+ Satisfied</span>
           </div>
         </div>

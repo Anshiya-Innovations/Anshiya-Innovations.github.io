@@ -1,8 +1,11 @@
 import React, { useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
-import blog1 from '../../assets/blog-1.png';
-import blog2 from '../../assets/blog-2.png';
+import blog1 from '../../assets/blog-1.jpg';
+import blog1Mobile from '../../assets/blog-1-mobile.webp';
+import blog2 from '../../assets/blog-2.jpg';
+import blog2Mobile from '../../assets/blog-2-mobile.webp';
 import blog3 from '../../assets/blog-3.png';
+import blog3Mobile from '../../assets/blog-3-mobile.webp';
 import './BlogDetails.css';
 
 const blogPostsData = {
@@ -13,6 +16,7 @@ const blogPostsData = {
     readTime: "6 min read",
     author: "Anshiya Architecture Team",
     image: blog1,
+    imageMobile: blog1Mobile,
     intro: "As organizations experience rapid scaling, IT infrastructure often becomes the primary bottleneck. Balancing speed, stability, security, and cost requires a structured approach to systems engineering. At Anshiya Innovations, we help businesses build resilient digital foundations designed to scale seamlessly.",
     sections: [
       {
@@ -41,6 +45,7 @@ const blogPostsData = {
     readTime: "5 min read",
     author: "Anshiya Cloud Operations",
     image: blog2,
+    imageMobile: blog2Mobile,
     intro: "Cloud computing has evolved from a simple storage and hosting alternative to the primary engine of corporate innovation. Exploring hybrid cloud strategies, serverless container architectures, and tools designed for high accessibility workloads is now essential for modern enterprise operations.",
     sections: [
       {
@@ -69,6 +74,7 @@ const blogPostsData = {
     readTime: "7 min read",
     author: "Anshiya SecOps Group",
     image: blog3,
+    imageMobile: blog3Mobile,
     intro: "In a digital-first economy, security is not just an IT metric; it is the cornerstone of brand reputation and digital trust. Guarding enterprise assets requires continuous network audits, automated threat detection APIs, and best practices for securing database integrity.",
     sections: [
       {
@@ -81,7 +87,7 @@ const blogPostsData = {
       },
       {
         heading: "3. Protecting Data Integrity and Privacy",
-        content: "Customer data protection is a primary regulatory mandate. Restricting unauthorized data flows, implementing end-to-end data encryption (both in transit and at rest), and setting up robust Data Security Posture Management (DSPM) ensure sensitive PII remains confidential and tamper-proof."
+        content: "Customer data protection is a primary regulatory mandate. Restricting unauthorized data flows, implementing end-to-end data encryption (both in transit and at rest), and setting up Data Security Posture Management (DSPM) ensure sensitive PII remains confidential and tamper-proof."
       },
       {
         heading: "4. Integrating AI in Threat Detection",
@@ -141,7 +147,10 @@ const BlogDetails = () => {
           {/* Left Column: Post Content */}
           <article className="blog-main-content">
             <div className="blog-main-image-wrapper">
-              <img src={post.image} alt={post.title} className="blog-main-image" />
+              <picture>
+                <source media="(max-width: 768px)" srcSet={post.imageMobile} type="image/webp" />
+                <img src={post.image} alt={post.title} width="1024" height="682" className="blog-main-image" />
+              </picture>
             </div>
             
             <p className="blog-lead-paragraph">
