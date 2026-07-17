@@ -3,7 +3,7 @@ import { useLocation } from 'react-router-dom';
 import Hero from '../../components/Hero/Hero';
 
 // Detect mobile device
-const isMobile = window.innerWidth <= 768 || /Mobi|Android|iP(hone|od|ad)/i.test(navigator.userAgent);
+const isMobile = window.matchMedia('(max-width: 768px)').matches || /Mobi|Android|iP(hone|od|ad)/i.test(navigator.userAgent);
 
 let Clients, Services2, Commitment, About, Appointment, Projects, ClientReviews, Technologies, Blog, CTA;
 

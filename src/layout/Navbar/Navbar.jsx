@@ -41,7 +41,7 @@ const Navbar = () => {
   const location = useLocation();
 
   const [activeTab, setActiveTab] = useState(0);
-  const [isDesktop, setIsDesktop] = useState(window.innerWidth > 768);
+  const [isDesktop, setIsDesktop] = useState(window.matchMedia('(min-width: 769px)').matches);
   const [megaMenuData, setMegaMenuData] = useState(null);
 
   // Lazy load mega menu data on desktop view only to reduce mobile bundle size
@@ -55,7 +55,7 @@ const Navbar = () => {
 
   useEffect(() => {
     const handleResize = () => {
-      setIsDesktop(window.innerWidth > 768);
+      setIsDesktop(window.matchMedia('(min-width: 769px)').matches);
     };
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize);
@@ -160,15 +160,15 @@ const Navbar = () => {
             <li 
               className={`nav-item has-dropdown ${showDropdown ? 'show-dropdown' : ''} ${mobileDropdownOpen ? 'mobile-dropdown-open' : ''}`}
               onMouseEnter={() => {
-                if (window.innerWidth > 768) setShowDropdown(true);
+                if (window.matchMedia('(min-width: 769px)').matches) setShowDropdown(true);
               }}
               onMouseLeave={() => {
-                if (window.innerWidth > 768) setShowDropdown(false);
+                if (window.matchMedia('(min-width: 769px)').matches) setShowDropdown(false);
               }}
             >
               <button 
                 onClick={(e) => {
-                  if (window.innerWidth <= 768) {
+                  if (window.matchMedia('(max-width: 768px)').matches) {
                     e.preventDefault();
                     setMobileDropdownOpen(!mobileDropdownOpen);
                   } else {

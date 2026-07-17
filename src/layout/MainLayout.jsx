@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { Suspense } from 'react';
 import { Outlet } from 'react-router-dom';
 import Navbar from './Navbar/Navbar';
-import Footer from './Footer/Footer';
 import './MainLayout.css';
+
+const Footer = React.lazy(() => import('./Footer/Footer'));
 
 const MainLayout = () => {
   return (
@@ -11,7 +12,9 @@ const MainLayout = () => {
       <main className="layout-content">
         <Outlet />
       </main>
-      <Footer />
+      <Suspense fallback={<div style={{ minHeight: '300px' }}></div>}>
+        <Footer />
+      </Suspense>
     </div>
   );
 };

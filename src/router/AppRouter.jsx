@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import MainLayout from '../layout/MainLayout';
 
 // Lazy load route pages for chunk-splitting and CSS optimization
-const Home = React.lazy(() => import('../pages/Home/Home'));
+import Home from '../pages/Home/Home';
 const Contact = React.lazy(() => import('../pages/Contact/Contact'));
 const Solutions = React.lazy(() => import('../pages/Solutions/Solutions'));
 const SapService = React.lazy(() => import('../pages/SapService/SapService'));

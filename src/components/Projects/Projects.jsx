@@ -10,16 +10,20 @@ import projectImg3 from '../../assets/project-3.png'; // typing on keyboard
 import projectImg3Mobile from '../../assets/project-3-mobile.webp';
 
 const Projects = () => {
-  const [isMobile, setIsMobile] = React.useState(false);
-  React.useEffect(() => {
-    const checkMobile = () => setIsMobile(window.innerWidth <= 768);
-    checkMobile();
-    window.addEventListener('resize', checkMobile);
-    return () => window.removeEventListener('resize', checkMobile);
-  }, []);
-
   return (
     <section id="projects" className="projects-section">
+      <style>{`
+        @media (min-width: 769px) {
+          .proj-img-1 { background-image: url('${projectImg1}'); }
+          .proj-img-2 { background-image: url('${projectImg2}'); }
+          .proj-img-3 { background-image: url('${projectImg3}'); }
+        }
+        @media (max-width: 768px) {
+          .proj-img-1 { background-image: url('${projectImg1Mobile}'); }
+          .proj-img-2 { background-image: url('${projectImg2Mobile}'); }
+          .proj-img-3 { background-image: url('${projectImg3Mobile}'); }
+        }
+      `}</style>
       <div className="container">
         {/* Header Row */}
         <div className="projects-header-row">
@@ -33,10 +37,7 @@ const Projects = () => {
         {/* Projects Grid Layout */}
         <div className="projects-grid">
           {/* Left Large Card with Info Overlay */}
-          <div 
-            className="project-card-v2 project-large"
-            style={{ backgroundImage: `url('${isMobile ? projectImg1Mobile : projectImg1}')` }}
-          >
+          <div className="project-card-v2 project-large proj-img-1">
             <div className="project-card-overlay">
               <div className="project-card-info">
                 <span className="project-category-badge">CLOUD ENTERPRISE</span>
@@ -53,14 +54,8 @@ const Projects = () => {
 
           {/* Right Column: Two plain stacked image cards */}
           <div className="projects-right-column">
-            <div 
-              className="project-card-v2 project-small"
-              style={{ backgroundImage: `url('${isMobile ? projectImg2Mobile : projectImg2}')` }}
-            ></div>
-            <div 
-              className="project-card-v2 project-small"
-              style={{ backgroundImage: `url('${isMobile ? projectImg3Mobile : projectImg3}')` }}
-            ></div>
+            <div className="project-card-v2 project-small proj-img-2"></div>
+            <div className="project-card-v2 project-small proj-img-3"></div>
           </div>
         </div>
       </div>
